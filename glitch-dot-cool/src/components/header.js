@@ -12,9 +12,11 @@ const Header = () => {
         </Link>
       </StyledLink>
       <ul style={{ listStyle: `none`, float: `right` }}>
-        <ListLink to="/">Home</ListLink>
-        <ListLink to="/about/">About</ListLink>
-        <ListLink to="/contact/">Contact</ListLink>
+        <StyledLink>
+          <ListLink to="/">home</ListLink>
+          <ListLink to="/about/">about</ListLink>
+          <ListLink to="/contact/">contact</ListLink>
+        </StyledLink>
       </ul>
     </header>
   )

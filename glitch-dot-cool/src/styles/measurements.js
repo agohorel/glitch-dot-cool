@@ -1,3 +1,3 @@
 export default {
-  footerHeight: 5,
+  footerHeight: 4,
 }

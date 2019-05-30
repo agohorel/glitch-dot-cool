@@ -1,8 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
-import { StyledLink } from "../utils/utils"
+import { StyledLink, ListLink, Centered } from "../utils/utils"
 
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
@@ -13,19 +12,35 @@ const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
   height: ${measurements.footerHeight}rem;
-  background-color: ${colors.darkgrey};
+  background-color: ${colors.nearblack};
 `
+
 const Footer = () => {
   return (
     <StyledFooter>
-      <StyledLink>
-        <Link to="/">some link</Link>
-        <Link to="/">some link</Link>
-        <Link to="/">some link</Link>
-        <Link to="/">some link</Link>
-        <Link to="/">some link</Link>
-        <Link to="/">some link</Link>
-      </StyledLink>
+      <Centered>
+        <ul style={{ listStyle: `none`, padding: `.75rem` }}>
+          <StyledLink dark>
+            <ListLink to="/">home</ListLink>
+            <ListLink to="/about/">about</ListLink>
+            <ListLink to="/contact/">contact</ListLink>
+          </StyledLink>
+        </ul>
+      </Centered>
+      <Centered>
+        <StyledLink dark style={{ padding: `.25rem` }}>
+          <p style={{ fontSize: `.6rem`, color: colors.midgrey }}>
+            developed by{" "}
+            <a
+              href="https://agohorel.github.io/portfolio/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              alex gohorel
+            </a>
+          </p>
+        </StyledLink>
+      </Centered>
     </StyledFooter>
   )
 }
