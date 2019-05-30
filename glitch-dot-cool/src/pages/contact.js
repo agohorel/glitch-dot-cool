@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 export default () => {
     return (
         <Layout>
-            <p>home page</p>
+            <p>contact page</p>
         </Layout>
     )
 }
