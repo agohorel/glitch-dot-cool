@@ -10,7 +10,7 @@ const ListLink = props => (
   </StyledLink>
 )
 
-const StyledLink = styled.p`
+const StyledLink = styled.li`
   display: inline-block;
 
   &:not(:last-child) {

@@ -28,10 +28,11 @@ const Footer = () => {
         </ul>
       </Centered>
       <Centered>
-        <StyledLink dark style={{ padding: `.25rem` }}>
+        <StyledLink dark>
           <p style={{ fontSize: `.6rem`, color: colors.midgrey }}>
             developed by{" "}
             <a
+              style={{ color: colors.midgrey }}
               href="https://agohorel.github.io/portfolio/"
               target="_blank"
               rel="noopener noreferrer"

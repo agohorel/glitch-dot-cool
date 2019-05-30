@@ -11,13 +11,19 @@ const Header = () => {
           <h3>glitch[dot]cool</h3>
         </Link>
       </StyledLink>
-      <ul style={{ listStyle: `none`, float: `right` }}>
-        <StyledLink>
-          <ListLink to="/">home</ListLink>
-          <ListLink to="/about/">about</ListLink>
-          <ListLink to="/contact/">contact</ListLink>
-        </StyledLink>
-      </ul>
+      <nav style={{float: `right`}}>
+        <ul style={{ listStyle: `none`}}>
+          <StyledLink>
+            <ListLink to="/">home</ListLink>
+          </StyledLink>
+          <StyledLink>
+            <ListLink to="/about/">about</ListLink>
+          </StyledLink>
+          <StyledLink>
+            <ListLink to="/contact/">contact</ListLink>
+          </StyledLink>
+        </ul>
+      </nav>
     </header>
   )
 }
