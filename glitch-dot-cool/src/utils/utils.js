@@ -10,20 +10,32 @@ const ListLink = props => (
   </StyledLink>
 )
 
-const StyledLink = styled.li`
+const StyledLink = styled.p`
   display: inline-block;
-  margin-right: 1rem;
+
+  &:not(:last-child) {
+    margin-right: 1.5rem;
+  }
 
   a,
   a:visited {
     text-decoration: none;
-    color: ${colors.black};
+    color: ${props =>
+      props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
     transition: 0.2s ease all;
 
     :hover {
-      color: ${colors.lightgrey};
+      color: ${props =>
+        props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
     }
   }
 `
 
-export { ListLink, StyledLink }
+const Centered = styled.div`
+  display: flex;
+  flex-direction: ${props => (props.column ? `column` : `row`)};
+  justify-content: center;
+  align-items: center;
+`
+
+export { ListLink, StyledLink, Centered }
