@@ -6,7 +6,16 @@
 
 module.exports = {
   siteMetadata: {
-    title: `glitch [dot] cool`
+    title: `glitch[dot]cool`
   },
-  plugins: [`gatsby-plugin-styled-components`]
+  plugins: [`gatsby-plugin-styled-components`,
+  {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      name: "src",
+      path: `${__dirname}/src/`
+    }
+  },
+  "gatsby-transformer-remark"  
+  ]
 }

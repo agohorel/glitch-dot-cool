@@ -1,18 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 import { StyledLink, ListLink } from "../utils/utils"
 
 const Header = () => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+
   return (
     <header style={{ marginBottom: `1.5rem` }}>
       <StyledLink>
         <Link to="/">
-          <h3>glitch[dot]cool</h3>
+          <h3>{data.site.siteMetadata.title}</h3>
         </Link>
       </StyledLink>
-      <nav style={{float: `right`}}>
-        <ul style={{ listStyle: `none`}}>
+      <nav style={{ float: `right` }}>
+        <ul style={{ listStyle: `none` }}>
           <StyledLink>
             <ListLink to="/">home</ListLink>
           </StyledLink>
@@ -28,4 +40,4 @@ const Header = () => {
   )
 }
 
-export { Header, StyledLink }
+export { Header }
