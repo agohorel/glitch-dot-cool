@@ -4,9 +4,11 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import colors from "../styles/colors"
+import measurements from "../styles/measurements"
 
 const BlogPost = styled.div`
     margin-top: 2rem;
+    margin-bottom: ${measurements.footerHeight}rem;
 `
 
 const BlogTags = styled.p`

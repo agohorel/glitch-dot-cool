@@ -7,11 +7,9 @@ import Footer from "../components/footer"
 // eslint-disable-next-line
 import styles from "../styles/global.css"
 import colors from "../styles/colors"
-import measurements from "../styles/measurements"
 
 const Background = styled.div`
   width: 100%;
-  height: calc(100vh - ${measurements.footerHeight}rem);
   padding-top: 3rem;
   background-color: ${colors.offwhite};
 `
