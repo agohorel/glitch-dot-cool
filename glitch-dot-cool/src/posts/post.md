@@ -1,6 +1,7 @@
 ---
 title: "hello world"
 date : "2019-06-03"
+tags: "test"
 ---
 
 #hello world

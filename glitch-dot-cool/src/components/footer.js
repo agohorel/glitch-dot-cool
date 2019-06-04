@@ -27,11 +27,14 @@ const Footer = () => {
             <ListLink to="/about/">about</ListLink>
           </StyledLink>
           <StyledLink dark>
+            <ListLink to="/posts/">posts</ListLink>
+          </StyledLink>
+          <StyledLink dark>
             <ListLink to="/contact/">contact</ListLink>
           </StyledLink>
         </ul>
       </Centered>
-      
+
       <Centered>
         <StyledLink dark>
           <p style={{ fontSize: `.6rem`, color: colors.midgrey }}>
@@ -47,7 +50,6 @@ const Footer = () => {
           </p>
         </StyledLink>
       </Centered>
-    
     </StyledFooter>
   )
 }

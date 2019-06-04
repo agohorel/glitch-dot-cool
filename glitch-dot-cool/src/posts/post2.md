@@ -1,9 +1,11 @@
 ---
 title: "glitch.cool"
 date : "2019-06-01"
+tags: "glitch, cool stuff"
 ---
 
-#glitch.cool
-uR vIbE aTtRacTs uR tRiBe
+things that are cool:
 
-###u know wa'm sane?
+-glitch
+
+<img src=https://agohorel.github.io/portfolio/assets/img/misc/anomalia2.jpg width=300px>

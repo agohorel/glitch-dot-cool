@@ -24,12 +24,15 @@ const Header = () => {
         </Link>
       </StyledLink>
       <nav style={{ float: `right` }}>
-        <ul style={{ listStyle: `none` }}>
+        <ul>
           <StyledLink>
             <ListLink to="/">home</ListLink>
           </StyledLink>
           <StyledLink>
             <ListLink to="/about/">about</ListLink>
+          </StyledLink>
+          <StyledLink>
+            <ListLink to="/posts/">posts</ListLink>
           </StyledLink>
           <StyledLink>
             <ListLink to="/contact/">contact</ListLink>
