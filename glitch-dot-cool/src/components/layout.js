@@ -23,11 +23,11 @@ const Wrapper = styled.div`
 `
 
 export default ({ children }) => (
-  <Background>
-    <Wrapper>
-      <Header />
-      {children}
-    </Wrapper>
-    <Footer />
-  </Background>
+    <Background>
+      <Wrapper>
+        <Header />
+        {children}
+      </Wrapper>
+      <Footer />
+    </Background>
 )

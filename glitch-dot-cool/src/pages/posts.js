@@ -2,21 +2,25 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
+import { ListLink, StyledLink } from "../utils/utils";
 
 const Posts = () => {
   const data = useStaticQuery(graphql`
     query {
-  allMarkdownRemark {
-    edges {
-      node {
-        frontmatter {
-          title
-          date
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              date
+            }
+            id
+          }
         }
-        id
       }
-    }
-  }
     }
   `)
 
@@ -24,14 +28,18 @@ const Posts = () => {
     <Layout>
         <h1>posts</h1>
         <ol>
-            {data.allMarkdownRemark.edges.map( (post) => {
-                return (
-                    <li key={post.node.id}>
-                        <h2>{post.node.frontmatter.title}</h2>
-                        <p>{post.node.frontmatter.date}</p>
-                    </li>
-                )
-            })}
+          {data.allMarkdownRemark.edges.map(post => {
+            return (
+              <li key={post.node.id}>
+                <StyledLink>
+                  <ListLink to={`/blog/${post.node.fields.slug}`}>
+                    <h2>{post.node.frontmatter.title}</h2>
+                  </ListLink>
+                </StyledLink>
+                <p>{post.node.frontmatter.date}</p>
+              </li>
+            )
+          })}
         </ol>
     </Layout>
   )

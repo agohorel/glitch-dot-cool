@@ -5,9 +5,7 @@ import styled from "styled-components"
 import colors from "../styles/colors"
 
 const ListLink = props => (
-  <StyledLink>
     <Link to={props.to}>{props.children}</Link>
-  </StyledLink>
 )
 
 const StyledLink = styled.li`

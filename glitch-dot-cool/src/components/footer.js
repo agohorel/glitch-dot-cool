@@ -22,11 +22,16 @@ const Footer = () => {
         <ul style={{ listStyle: `none`, padding: `.75rem` }}>
           <StyledLink dark>
             <ListLink to="/">home</ListLink>
+          </StyledLink>
+          <StyledLink dark>
             <ListLink to="/about/">about</ListLink>
+          </StyledLink>
+          <StyledLink dark>
             <ListLink to="/contact/">contact</ListLink>
           </StyledLink>
         </ul>
       </Centered>
+      
       <Centered>
         <StyledLink dark>
           <p style={{ fontSize: `.6rem`, color: colors.midgrey }}>
@@ -42,6 +47,7 @@ const Footer = () => {
           </p>
         </StyledLink>
       </Centered>
+    
     </StyledFooter>
   )
 }
