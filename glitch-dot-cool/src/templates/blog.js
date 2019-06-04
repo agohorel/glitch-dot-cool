@@ -62,7 +62,7 @@ const Blog = props => {
       </BlogPost>
       {props.data.contentfulBlogPost.tags.map((tag) => {
       return (
-        <BlogTag>
+        <BlogTag key={tag}>
           <Link to="/">{tag}</Link>
         </BlogTag>
       )
