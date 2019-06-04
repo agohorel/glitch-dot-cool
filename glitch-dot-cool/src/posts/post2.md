@@ -8,4 +8,4 @@ things that are cool:
 
 -glitch
 
-<img src=https://agohorel.github.io/portfolio/assets/img/misc/anomalia2.jpg width=300px>
+![Anomalia Image](./assets/images/anomalia.jpg)
