@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
@@ -12,9 +12,21 @@ const BlogPost = styled.div`
   margin-bottom: ${measurements.footerHeight}rem;
 `
 
-const BlogTags = styled.p`
-  font-size: 0.8rem;
-  color: ${colors.midgrey};
+const BlogTag = styled.div`
+  display: inline-block;
+  background-color: ${colors.lightgrey};
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+
+  a {
+    font-size: 0.8rem;
+    color: ${colors.darkgrey};
+    transition: 0.2s ease color;
+  }
+
+  a:hover {
+    color: ${colors.offwhite};
+  }
 `
 export const query = graphql`
   query($slug: String!) {
@@ -24,11 +36,13 @@ export const query = graphql`
       body {
         json
       }
+      tags
     }
   }
 `
 
 const Blog = props => {
+    // config for setting up embedded imgs
     const options = {
         renderNode: {
             "embedded-asset-block": (node) => {
@@ -46,6 +60,13 @@ const Blog = props => {
       <BlogPost>
         {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
       </BlogPost>
+      {props.data.contentfulBlogPost.tags.map((tag) => {
+      return (
+        <BlogTag>
+          <Link to="/">{tag}</Link>
+        </BlogTag>
+      )
+      })}
     </Layout>
   )
 }
