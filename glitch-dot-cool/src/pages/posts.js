@@ -5,19 +5,32 @@ import Layout from "../components/layout"
 import { ListLink, StyledLink } from "../utils/utils";
 
 const Posts = () => {
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     allMarkdownRemark {
+  //       edges {
+  //         node {
+  //           fields {
+  //             slug
+  //           }
+  //           frontmatter {
+  //             title
+  //             date
+  //           }
+  //           id
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
         edges {
           node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              date
-            }
-            id
+            slug
+            title
+            publishedDate(formatString: "MMMM Do, YYYY")
           }
         }
       }
@@ -26,21 +39,21 @@ const Posts = () => {
 
   return (
     <Layout>
-        <h1>posts</h1>
-        <ol>
-          {data.allMarkdownRemark.edges.map(post => {
-            return (
-              <div key={post.node.id}>
-                <StyledLink>
-                  <ListLink to={`/blog${post.node.fields.slug}`}>
-                    <h2>{post.node.frontmatter.title}</h2>
-                  </ListLink>
-                </StyledLink>
-                <p>{post.node.frontmatter.date}</p>
-              </div>   
-            )
-          })}
-        </ol>
+      <h1>posts</h1>
+      <ol>
+        {data.allContentfulBlogPost.edges.map(post => {
+          return (
+            <div key={post.node.id}>
+              <StyledLink>
+                <ListLink to={`/blog/${post.node.slug}`}>
+                  <h2>{post.node.title}</h2>
+                </ListLink>
+              </StyledLink>
+              <p>{post.node.publishedDate}</p>
+            </div>
+          )
+        })}
+      </ol>
     </Layout>
   )
 }
