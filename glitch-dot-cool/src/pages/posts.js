@@ -30,14 +30,14 @@ const Posts = () => {
         <ol>
           {data.allMarkdownRemark.edges.map(post => {
             return (
-              <li key={post.node.id}>
+              <div key={post.node.id}>
                 <StyledLink>
-                  <ListLink to={`/blog/${post.node.fields.slug}`}>
+                  <ListLink to={`/blog${post.node.fields.slug}`}>
                     <h2>{post.node.frontmatter.title}</h2>
                   </ListLink>
                 </StyledLink>
                 <p>{post.node.frontmatter.date}</p>
-              </li>
+              </div>   
             )
           })}
         </ol>
