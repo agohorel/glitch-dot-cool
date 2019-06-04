@@ -5,24 +5,6 @@ import Layout from "../components/layout"
 import { ListLink, StyledLink } from "../utils/utils";
 
 const Posts = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     allMarkdownRemark {
-  //       edges {
-  //         node {
-  //           fields {
-  //             slug
-  //           }
-  //           frontmatter {
-  //             title
-  //             date
-  //           }
-  //           id
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
   const data = useStaticQuery(graphql`
     query {
       allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
