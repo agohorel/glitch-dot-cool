@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 
-import { StyledLink, ListLink } from "../utils/utils"
+import { StyledLink, ListLink } from "../utils/utilComponents"
 
 const Header = () => {
   const data = useStaticQuery(

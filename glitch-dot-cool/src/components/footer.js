@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { StyledLink, ListLink, Centered } from "../utils/utils"
+import { StyledLink, ListLink, Centered } from "../utils/utilComponents"
 
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
