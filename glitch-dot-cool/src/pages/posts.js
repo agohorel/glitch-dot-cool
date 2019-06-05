@@ -25,7 +25,7 @@ const Posts = () => {
       <ol>
         {data.allContentfulBlogPost.edges.map(post => {
           return (
-            <div key={post.node.id}>
+            <div key={post.node.title}>
               <StyledLink>
                 <ListLink to={`/blog/${post.node.slug}`}>
                   <h2>{post.node.title}</h2>
