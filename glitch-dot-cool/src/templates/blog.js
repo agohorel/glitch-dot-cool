@@ -6,6 +6,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Layout from "../components/layout"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
+import { slugify } from "../utils/utils"
 
 const BlogPost = styled.div`
   margin-top: 2rem;
@@ -42,30 +43,33 @@ export const query = graphql`
 `
 
 const Blog = props => {
-    // config for setting up embedded imgs
-    const options = {
-        renderNode: {
-            "embedded-asset-block": (node) => {
-                const alt = node.data.target.fields.title['en-US']
-                const url = node.data.target.fields.file['en-US'].url
-                return <img alt={alt} src={url}/>
-            }
-        }
-    }
+  // config for setting up embedded imgs
+  const options = {
+    renderNode: {
+      "embedded-asset-block": node => {
+        const alt = node.data.target.fields.title["en-US"]
+        const url = node.data.target.fields.file["en-US"].url
+        return <img alt={alt} src={url} />
+      },
+    },
+  }
 
   return (
     <Layout>
       <h1>{props.data.contentfulBlogPost.title}</h1>
       <p>{props.data.contentfulBlogPost.publishedDate}</p>
       <BlogPost>
-        {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
+        {documentToReactComponents(
+          props.data.contentfulBlogPost.body.json,
+          options
+        )}
       </BlogPost>
-      {props.data.contentfulBlogPost.tags.map((tag) => {
-      return (
-        <BlogTag key={tag}>
-          <Link to="/">{tag}</Link>
-        </BlogTag>
-      )
+      {props.data.contentfulBlogPost.tags.map(tag => {
+        return (
+          <BlogTag key={tag}>
+            <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
+          </BlogTag>
+        )
       })}
     </Layout>
   )
