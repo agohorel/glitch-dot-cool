@@ -1,12 +1,12 @@
 const path = require(`path`)
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
-  let slugs = [];
+  let slugs = []
 
   if (node.internal.type === `ContentfulBlogPost`) {
     node.tags.forEach(tag => {
-      slugs.push(slugify(tag));
+      slugs.push(slugify(tag))
     })
     createNodeField({
       node,
@@ -19,10 +19,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // get path to template
+  // MAKE BLOG PAGES
   const blogTemplate = path.resolve("./src/templates/blog.js")
   // get slug
-  const response = await graphql(`
+  const blogResponse = await graphql(`
     query {
       allContentfulBlogPost {
         edges {
@@ -34,13 +34,43 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   // create new pages
-  response.data.allContentfulBlogPost.edges.forEach(post => {
+  blogResponse.data.allContentfulBlogPost.edges.forEach(post => {
     createPage({
       component: blogTemplate,
       path: `/blog/${post.node.slug}`,
       context: {
         slug: post.node.slug,
       },
+    })
+  })
+
+  // MAKE TAG PAGES
+  const tagTemplate = path.resolve("./src/templates/tag.js")
+  // get slug
+  const tagResponse = await graphql(`
+    query {
+      allContentfulBlogPost {
+        edges {
+          node {
+            tags
+            fields {
+              tagSlugs
+            }
+          }
+        }
+      }
+    }
+  `)
+  // create new pages
+  tagResponse.data.allContentfulBlogPost.edges.forEach(post => {
+    post.node.fields.tagSlugs.forEach(tag => {
+      createPage({
+        component: tagTemplate,
+        path: `/tags/${tag}`,
+        context: {
+          slug: tag,
+        },
+      })
     })
   })
 }
