@@ -63,12 +63,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
   // create new pages
   tagResponse.data.allContentfulBlogPost.edges.forEach(post => {
-    post.node.fields.tagSlugs.forEach(tag => {
+    post.node.fields.tagSlugs.forEach((tag, i) => {
       createPage({
         component: tagTemplate,
         path: `/tags/${tag}`,
         context: {
           slug: tag,
+          tag: post.node.tags[i]
         },
       })
     })
