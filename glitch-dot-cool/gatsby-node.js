@@ -74,6 +74,30 @@ module.exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
+
+    // MAKE AUTHOR PAGES
+  const authorTemplate = path.resolve("./src/templates/author.js")
+  // get slug
+  const authorResponse = await graphql(`
+    query {
+      allContentfulBlogPost(sort: { fields: author }) {
+        group(field: author) {
+          fieldValue
+        }
+      }
+    }
+  `)
+  // create new pages
+  authorResponse.data.allContentfulBlogPost.group.forEach(author => {
+    console.log(author)
+      createPage({
+        component: authorTemplate,
+        path: `/${slugify(author.fieldValue)}/posts`,
+        context: {
+          author: author.fieldValue
+        }
+      })
+  })
 }
 
 const slugify = string => {
