@@ -2,7 +2,8 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import { ListLink, StyledLink } from "../utils/utilComponents";
+import { ListLink, StyledLink } from "../utils/utilComponents"
+import { slugify } from "../utils/utils"
 
 const Posts = () => {
   const data = useStaticQuery(graphql`
@@ -33,7 +34,12 @@ const Posts = () => {
                 </ListLink>
               </StyledLink>
               <p>{post.node.publishedDate}</p>
-              <p>{`by ${post.node.author}`}</p>
+              <StyledLink>
+                {`by `}
+                <ListLink to={`/${slugify(post.node.author)}/posts`}>
+                  <strong>{post.node.author}</strong>
+                </ListLink>
+              </StyledLink>
             </div>
           )
         })}
@@ -42,4 +48,4 @@ const Posts = () => {
   )
 }
 
-export default Posts;
+export default Posts
