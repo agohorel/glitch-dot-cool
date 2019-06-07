@@ -38,6 +38,7 @@ export const query = graphql`
         json
       }
       tags
+      author
     }
   }
 `
@@ -57,6 +58,9 @@ const Blog = props => {
   return (
     <Layout>
       <h1>{props.data.contentfulBlogPost.title}</h1>
+      <p>
+        by <strong>{props.data.contentfulBlogPost.author}</strong>
+      </p>
       <p>{props.data.contentfulBlogPost.publishedDate}</p>
       <BlogPost>
         {documentToReactComponents(

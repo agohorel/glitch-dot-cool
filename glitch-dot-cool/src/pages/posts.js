@@ -13,6 +13,7 @@ const Posts = () => {
             slug
             title
             publishedDate(formatString: "MMMM Do, YYYY")
+            author
           }
         }
       }
@@ -32,6 +33,7 @@ const Posts = () => {
                 </ListLink>
               </StyledLink>
               <p>{post.node.publishedDate}</p>
+              <p>{`by ${post.node.author}`}</p>
             </div>
           )
         })}
