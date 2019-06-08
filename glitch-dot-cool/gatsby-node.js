@@ -89,7 +89,6 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
   // create new pages
   authorResponse.data.allContentfulBlogPost.group.forEach(author => {
-    console.log(author)
       createPage({
         component: authorTemplate,
         path: `/${slugify(author.fieldValue)}/posts`,
