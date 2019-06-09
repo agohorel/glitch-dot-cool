@@ -48,6 +48,7 @@ export const query = graphql`
         node {
           authorName
           contactEmail
+          location
           avatar {
             file {
               url
@@ -84,7 +85,7 @@ const Tag = props => {
               src={props.data.allContentfulAuthor.edges[0].node.avatar.file.url}
             />
             <h1>{props.pageContext.author}</h1>
-
+            <p>{props.data.allContentfulAuthor.edges[0].node.location}</p>
             {Object.keys(links).map(key => {
               return (
                 <StyledLink key={key}>
