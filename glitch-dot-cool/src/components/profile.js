@@ -23,31 +23,29 @@ const ProfileCard = styled.div`
 `
 
 const Profile = props => {
-  let links = props.props.data.allContentfulAuthor.edges[0].node.links
-  console.log(props.props)
+  let myProps = props.props
+  let links = myProps.data.allContentfulAuthor.edges[0].node.links
   return (
     <ProfileCard>
       <Centered column>
         <ProfileImage
-          src={props.props.data.allContentfulAuthor.edges[0].node.avatar.file.url}
+          src={myProps.data.allContentfulAuthor.edges[0].node.avatar.file.url}
         />
-        <h1>{props.props.pageContext.author}</h1>
+        <h1>{myProps.pageContext.author}</h1>
         <p>
           <FontAwesomeIcon icon={faMapMarkerAlt} />
-          {` ${props.props.data.allContentfulAuthor.edges[0].node.location}`}
+          {` ${myProps.data.allContentfulAuthor.edges[0].node.location}`}
         </p>
         {Object.keys(links).map(key => {
           return (
-            <StyledLink key={key}>
-              <p>
-                <a href={`${links[key]}`}>{key} </a>
-                <FontAwesomeIcon icon={faExternalLinkAlt} />
-              </p>
+            <StyledLink key={key} href={`${links[key]}`} target="_blank">
+              {`${key} `}
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
             </StyledLink>
           )
         })}
 
-        <p>{props.props.data.allContentfulAuthor.edges[0].node.contactEmail}</p>
+        <p>{myProps.data.allContentfulAuthor.edges[0].node.contactEmail}</p>
       </Centered>
     </ProfileCard>
   )

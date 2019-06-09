@@ -28,17 +28,14 @@ const StyledList = styled.li`
 `
 
 const StyledLink = styled.a`
-  a,
-  a:visited {
-    text-decoration: none;
-    color: ${props =>
-      props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
-    transition: 0.2s ease all;
+  text-decoration: none;
+  color: ${props =>
+    props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+  transition: 0.2s ease all;
 
-    :hover {
-      color: ${props =>
-        props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
-    }
+  :hover {
+    color: ${props =>
+      props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
   }
 `
 

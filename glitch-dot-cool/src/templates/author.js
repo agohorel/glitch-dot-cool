@@ -2,16 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 
-
 import Layout from "../components/layout"
 import Profile from "../components/profile"
-import {
-  StyledList,
-  ListLink,
-  StyledLink,
-  Centered,
-} from "../utils/utilComponents"
-
+import { StyledList, ListLink } from "../utils/utilComponents"
 
 const Wrapper = styled.div`
   margin-top: 3rem;
@@ -65,31 +58,7 @@ const Tag = props => {
   return (
     <Layout>
       <Wrapper>
-        <Profile props={props}></Profile>
-        {/* <Profile>
-          <Centered column>
-            <ProfileImage
-              src={props.data.allContentfulAuthor.edges[0].node.avatar.file.url}
-            />
-            <h1>{props.pageContext.author}</h1>
-            <p>
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-              {` ${props.data.allContentfulAuthor.edges[0].node.location}`}
-            </p>
-            {Object.keys(links).map(key => {
-              return (
-                <StyledLink key={key}>
-                  <p>
-                    <a href={`${links[key]}`}>{key} </a>
-                    <FontAwesomeIcon icon={faExternalLinkAlt} />
-                  </p>
-                </StyledLink>
-              )
-            })}
-
-            <p>{props.data.allContentfulAuthor.edges[0].node.contactEmail}</p>
-          </Centered>
-        </Profile> */}
+        <Profile props={props} />
 
         <Posts>
           <h1>posts:</h1>
