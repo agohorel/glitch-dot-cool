@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 // import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
-import { StyledList, ListLink, StyledLink } from "../utils/utilComponents"
+import { StyledList, ListLink } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 // import colors from "../styles/colors"
 // import measurements from "../styles/measurements"
@@ -41,11 +41,11 @@ const Tag = props => {
               </StyledList>
               <p>
                 by{" "}
-                <StyledLink>
+                <StyledList>
                   <ListLink to={`/${slugify(post.node.author)}/posts`}>
                     {post.node.author}
                   </ListLink>
-                </StyledLink>
+                </StyledList>
                 {` - ${post.node.publishedDate}`}
               </p>
             </div>
