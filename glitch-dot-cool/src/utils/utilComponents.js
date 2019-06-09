@@ -6,13 +6,28 @@ import colors from "../styles/colors"
 
 const ListLink = props => <Link to={props.to}>{props.children}</Link>
 
-const StyledLink = styled.li`
+const StyledList = styled.li`
   display: inline-block;
 
   &:not(:last-child) {
     margin-right: 1.5rem;
   }
 
+  a,
+  a:visited {
+    text-decoration: none;
+    color: ${props =>
+      props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+    transition: 0.2s ease all;
+
+    :hover {
+      color: ${props =>
+        props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
+    }
+  }
+`
+
+const StyledLink = styled.a`
   a,
   a:visited {
     text-decoration: none;
@@ -34,4 +49,4 @@ const Centered = styled.div`
   align-items: center;
 `
 
-export { ListLink, StyledLink, Centered }
+export { ListLink, StyledList, StyledLink, Centered }

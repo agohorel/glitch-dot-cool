@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import { ListLink, StyledLink } from "../utils/utilComponents"
+import { ListLink, StyledList } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Posts = () => {
@@ -23,11 +23,11 @@ const Posts = () => {
         {data.allContentfulBlogPost.group.map(post => {
           return (
             <div key={post.fieldValue}>
-              <StyledLink>
+              <StyledList>
                 <ListLink to={`/${slugify(post.fieldValue)}/posts`}>
                   <h2>{post.fieldValue}</h2>
                 </ListLink>
-              </StyledLink>
+              </StyledList>
             </div>
           )
         })}

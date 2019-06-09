@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 // import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
-import { StyledLink, ListLink } from "../utils/utilComponents"
+import { StyledList, ListLink } from "../utils/utilComponents"
 // import colors from "../styles/colors"
 // import measurements from "../styles/measurements"
 
@@ -32,11 +32,11 @@ const Tag = props => {
         {props.data.allContentfulBlogPost.edges.map(post => {
           return (
             <div key={post.node.title}>
-              <StyledLink>
+              <StyledList>
                 <ListLink to={`/blog/${post.node.slug}`}>
                   <h2>{post.node.title}</h2>
                 </ListLink>
-              </StyledLink>
+              </StyledList>
               <p>{post.node.publishedDate}</p>
             </div>
           )

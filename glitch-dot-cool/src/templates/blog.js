@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
-import { StyledLink, ListLink } from "../utils/utilComponents";
+import { StyledList, ListLink } from "../utils/utilComponents";
 
 const BlogPost = styled.div`
   margin-top: 2rem;
@@ -64,9 +64,9 @@ const Blog = props => {
       <p>
         {`by `} 
         <strong>
-          <StyledLink>
+          <StyledList>
             <ListLink to={authorSlug}>{props.data.contentfulBlogPost.author}</ListLink>
-          </StyledLink>
+          </StyledList>
         </strong>
       </p>
       <p>{props.data.contentfulBlogPost.publishedDate}</p>

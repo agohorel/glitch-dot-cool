@@ -4,7 +4,7 @@ import styled from "styled-components"
 // import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
-import { StyledLink, ListLink } from "../utils/utilComponents"
+import { StyledList, ListLink, StyledLink, Centered } from "../utils/utilComponents"
 // import colors from "../styles/colors"
 // import measurements from "../styles/measurements"
 
@@ -19,7 +19,7 @@ const Posts = styled.div`
   display: inline-block;
   float: left;
   clear: left;
-  margin-top: 3rem;
+  margin: 2rem 0 0 0 ;
   padding: 2rem;
   background-color: #fff;
 `
@@ -61,7 +61,9 @@ const Tag = props => {
 
   return (
     <Layout>
+      <Centered>
         <Posts>
+          <Centered column>
             <ProfileImage
               src={props.data.allContentfulAuthor.edges[0].node.avatar.file.url}
             />
@@ -76,25 +78,29 @@ const Tag = props => {
             })}
 
             <p>{props.data.allContentfulAuthor.edges[0].node.contactEmail}</p>
+          </Centered>
         </Posts>
+      </Centered>
 
+      <Centered>
         <Posts>
           <h2>posts:</h2>
           <ol>
             {props.data.allContentfulBlogPost.edges.map(post => {
               return (
                 <div key={post.node.title}>
-                  <StyledLink>
+                  <StyledList>
                     <ListLink to={`/blog/${post.node.slug}`}>
                       <h3>{post.node.title}</h3>
                     </ListLink>
-                  </StyledLink>
+                  </StyledList>
                   <p>{post.node.publishedDate}</p>
                 </div>
               )
             })}
           </ol>
         </Posts>
+      </Centered>
     </Layout>
   )
 }

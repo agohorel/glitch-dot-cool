@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { StyledLink, ListLink, Centered } from "../utils/utilComponents"
+import { StyledList, ListLink, Centered } from "../utils/utilComponents"
 
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
@@ -20,23 +20,23 @@ const Footer = () => {
     <StyledFooter>
       <Centered>
         <ul style={{ listStyle: `none`, padding: `.75rem` }}>
-          <StyledLink dark>
+          <StyledList dark>
             <ListLink to="/">home</ListLink>
-          </StyledLink>
-          <StyledLink dark>
+          </StyledList>
+          <StyledList dark>
             <ListLink to="/about/">about</ListLink>
-          </StyledLink>
-          <StyledLink dark>
+          </StyledList>
+          <StyledList dark>
             <ListLink to="/posts/">posts</ListLink>
-          </StyledLink>
-          <StyledLink dark>
+          </StyledList>
+          <StyledList dark>
             <ListLink to="/contact/">contact</ListLink>
-          </StyledLink>
+          </StyledList>
         </ul>
       </Centered>
 
       <Centered>
-        <StyledLink dark>
+        <StyledList dark>
           <p style={{ fontSize: `.6rem`, color: colors.midgrey }}>
             developed by{" "}
             <a
@@ -48,7 +48,7 @@ const Footer = () => {
               alex gohorel
             </a>
           </p>
-        </StyledLink>
+        </StyledList>
       </Centered>
     </StyledFooter>
   )
