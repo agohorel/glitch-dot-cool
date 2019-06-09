@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 
 import { Centered, StyledLink } from "../utils/utilComponents"
+import colors from "../styles/colors"
 
 const ProfileImage = styled.img`
   width: 5rem;
@@ -22,6 +23,11 @@ const ProfileCard = styled.div`
   align-self: flex-start;
 `
 
+const iconStyle = {
+    fontSize: ".9rem",
+    color: `${colors.midgrey}`
+}
+
 const Profile = props => {
   let myProps = props.props
   let links = myProps.data.allContentfulAuthor.edges[0].node.links
@@ -33,14 +39,14 @@ const Profile = props => {
         />
         <h1>{myProps.pageContext.author}</h1>
         <p>
-          <FontAwesomeIcon icon={faMapMarkerAlt} />
+          <FontAwesomeIcon icon={faMapMarkerAlt}  style={iconStyle}/>
           {` ${myProps.data.allContentfulAuthor.edges[0].node.location}`}
         </p>
         {Object.keys(links).map(key => {
           return (
             <StyledLink key={key} href={`${links[key]}`} target="_blank">
               {`${key} `}
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
+              <FontAwesomeIcon icon={faExternalLinkAlt} style={iconStyle} />
             </StyledLink>
           )
         })}
