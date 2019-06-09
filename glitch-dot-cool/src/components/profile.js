@@ -24,7 +24,7 @@ const ProfileCard = styled.div`
 `
 
 const iconStyle = {
-    fontSize: ".9rem",
+    fontSize: ".8rem",
     color: `${colors.midgrey}`
 }
 
