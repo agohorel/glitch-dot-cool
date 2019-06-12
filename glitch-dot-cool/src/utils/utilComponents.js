@@ -56,4 +56,22 @@ const Centered = styled.div`
   align-items: center;
 `
 
-export { GatsbyLink, StyledList, StyledLink, Centered }
+const StyledButton = styled.button`
+  display: inline-block;
+  padding: .5rem 1rem;
+  background-color: ${colors.midgrey};
+  color: ${colors.offwhite};
+  border: none;
+  transition: .2s ease all;
+
+  :hover {
+    cursor: pointer;
+    background-color: ${colors.darkgrey};
+  }
+`
+
+const PageTitle = styled.h1`
+  display: inline;
+`
+
+export { GatsbyLink, StyledList, StyledLink, Centered, StyledButton, PageTitle }

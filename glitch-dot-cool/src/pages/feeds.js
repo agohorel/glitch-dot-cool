@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
-import { GatsbyLink, StyledList } from "../utils/utilComponents"
+import { GatsbyLink, StyledList, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Avatar = styled.img`
@@ -48,7 +48,12 @@ const Posts = () => {
 
   return (
     <Layout>
-      <h1>feeds</h1>
+      <PageTitle>feeds</PageTitle>
+
+      <GatsbyLink to={"/"}>
+        <StyledButton style={{float: `right`, marginTop: `3px`}}>view all posts</StyledButton>
+      </GatsbyLink>
+
       <ol>
         {data.allContentfulAuthor.edges.map(post => {
           return (

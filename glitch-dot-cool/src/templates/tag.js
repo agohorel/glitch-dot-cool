@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 // import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
-import { StyledList, GatsbyLink } from "../utils/utilComponents"
+import { StyledList, GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 // import colors from "../styles/colors"
 // import measurements from "../styles/measurements"
@@ -29,7 +29,12 @@ const Tag = props => {
 
   return (
     <Layout>
-      <h1>posts tagged with "{props.pageContext.tag}"</h1>
+      <PageTitle>posts tagged with "{props.pageContext.tag}"</PageTitle>
+      <GatsbyLink to={"/"}>
+        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
+          view all posts
+        </StyledButton>
+      </GatsbyLink>
       <ol>
         {props.data.allContentfulBlogPost.edges.map(post => {
           return (
