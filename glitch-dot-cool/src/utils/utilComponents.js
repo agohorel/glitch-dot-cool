@@ -4,7 +4,17 @@ import styled from "styled-components"
 
 import colors from "../styles/colors"
 
-const ListLink = props => <Link to={props.to}>{props.children}</Link>
+const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
+  text-decoration: none;
+  color: ${props =>
+    props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+  transition: 0.2s ease all;
+
+  :hover {
+    color: ${props =>
+      props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
+  }
+`
 
 const StyledList = styled.li`
   display: inline-block;
@@ -46,4 +56,4 @@ const Centered = styled.div`
   align-items: center;
 `
 
-export { ListLink, StyledList, StyledLink, Centered }
+export { GatsbyLink, StyledList, StyledLink, Centered }

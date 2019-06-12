@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
-import { ListLink, StyledList } from "../utils/utilComponents"
+import { GatsbyLink, StyledList } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Avatar = styled.img`
@@ -53,17 +53,17 @@ const Posts = () => {
         {data.allContentfulAuthor.edges.map(post => {
           return (
             <Wrapper key={post.node.authorName} style={ListStyle}>
-              <ListLink to={`/${slugify(post.node.authorName)}/posts`}>
+              <GatsbyLink to={`/${slugify(post.node.authorName)}/posts`}>
                 <Avatar
                   src={post.node.avatar.file.url}
                   alt={post.node.avatar.file.fileName}
                 />
-              </ListLink>
+              </GatsbyLink>
 
               <StyledList>
-                <ListLink to={`/${slugify(post.node.authorName)}/posts`}>
+                <GatsbyLink to={`/${slugify(post.node.authorName)}/posts`}>
                   <h2>{post.node.authorName}</h2>
-                </ListLink>
+                </GatsbyLink>
               </StyledList>
             </Wrapper>
           )

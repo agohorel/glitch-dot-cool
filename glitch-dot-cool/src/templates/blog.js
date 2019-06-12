@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
-import { StyledList, ListLink } from "../utils/utilComponents";
+import { StyledList, GatsbyLink } from "../utils/utilComponents";
 
 const BlogPost = styled.div`
   margin-top: 2rem;
@@ -45,6 +45,7 @@ export const query = graphql`
 `
 
 const Blog = props => {
+  console.log(props);
   // config for setting up embedded imgs
   const options = {
     renderNode: {
@@ -65,7 +66,7 @@ const Blog = props => {
         {`by `} 
         <strong>
           <StyledList>
-            <ListLink to={authorSlug}>{props.data.contentfulBlogPost.author}</ListLink>
+            <GatsbyLink to={authorSlug}>{props.data.contentfulBlogPost.author}</GatsbyLink>
           </StyledList>
         </strong>
       </p>

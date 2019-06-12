@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Profile from "../components/profile"
-import { StyledList, ListLink } from "../utils/utilComponents"
+import { StyledList, GatsbyLink } from "../utils/utilComponents"
 
 const Wrapper = styled.div`
   margin-top: 3rem;
@@ -67,9 +67,9 @@ const Tag = props => {
               return (
                 <Post key={post.node.title}>
                   <StyledList>
-                    <ListLink to={`/blog/${post.node.slug}`}>
+                    <GatsbyLink to={`/blog/${post.node.slug}`}>
                       <h3>{post.node.title}</h3>
-                    </ListLink>
+                    </GatsbyLink>
                   </StyledList>
                   <p>{post.node.publishedDate}</p>
                 </Post>
