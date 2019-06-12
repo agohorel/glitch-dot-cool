@@ -27,7 +27,7 @@ const Footer = () => {
             <GatsbyLink to="/about/">about</GatsbyLink>
           </StyledList>
           <StyledList dark>
-            <GatsbyLink to="/posts/">posts</GatsbyLink>
+            <GatsbyLink to="/feeds/">feeds</GatsbyLink>
           </StyledList>
           <StyledList dark>
             <GatsbyLink to="/contact/">contact</GatsbyLink>
