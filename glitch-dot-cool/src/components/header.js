@@ -32,7 +32,7 @@ const Header = () => {
             <GatsbyLink to="/about/">about</GatsbyLink>
           </StyledList>
           <StyledList>
-            <GatsbyLink to="/posts/">posts</GatsbyLink>
+            <GatsbyLink to="/feeds/">feeds</GatsbyLink>
           </StyledList>
           <StyledList>
             <GatsbyLink to="/contact/">contact</GatsbyLink>

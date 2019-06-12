@@ -48,7 +48,7 @@ const Posts = () => {
 
   return (
     <Layout>
-      <h1>authors</h1>
+      <h1>feeds</h1>
       <ol>
         {data.allContentfulAuthor.edges.map(post => {
           return (
