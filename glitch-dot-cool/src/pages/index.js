@@ -7,6 +7,7 @@ import { GatsbyLink } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const PostContainer = styled.div`
+  margin-top: 3rem;
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(30vmin, max-content));
@@ -31,7 +32,9 @@ const Post = styled.div`
     props.backgroundImg
       ? `linear-gradient(to bottom right, rgba(255, 255, 255, .5), rgba(0, 0, 0, .5)), 
       url(${props.backgroundImg})`
-      : `linear-gradient(to bottom right, #fff, #000)`};
+      : `linear-gradient(217deg, rgba(200,200,200,.8), rgba(200,200,200,0) 70.71%),
+         linear-gradient(127deg, rgba(127,127,127,.8), rgba(127,127,127,0) 70.71%),
+         linear-gradient(336deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%);`};
   background-size: cover;
   background-position: center;
 `
