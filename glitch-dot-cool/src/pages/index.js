@@ -12,6 +12,15 @@ const PostContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(30vmin, max-content));
 `
 
+const TextContainer = styled.div`
+  padding: 1rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 2rem));
+  background-color: rgba(255, 255, 255, 0.5);
+`
+
 const Post = styled.div`
   display: inline-block;
   padding: 2rem;
@@ -65,14 +74,16 @@ export default () => {
               key={post.node.slug}
               backgroundImg={img ? img.file["en-US"].url : null}
             >
-              <GatsbyLink to={`/blog/${post.node.slug}`}>
-                <h1>{post.node.title}</h1>
-              </GatsbyLink>
-              <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
-                <h3>
-                  by <strong>{post.node.author}</strong>
-                </h3>
-              </GatsbyLink>
+              <TextContainer>
+                <GatsbyLink to={`/blog/${post.node.slug}`}>
+                  <h1>{post.node.title}</h1>
+                </GatsbyLink>
+                <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
+                  <h3>
+                    by <strong>{post.node.author}</strong>
+                  </h3>
+                </GatsbyLink>
+              </TextContainer>
             </Post>
           )
         })}
