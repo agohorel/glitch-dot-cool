@@ -1,8 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Centered, StyledButton } from "../utils/utilComponents"
+import { Centered, StyledButton, PageTitle } from "../utils/utilComponents"
 import colors from "../styles/colors"
+
+const StyledForm = styled.form`
+  padding: 5rem;
+`
 
 const FormInput = styled.input`
   display: block;
@@ -54,8 +58,8 @@ const FormGroup = styled.div`
 const ContactForm = () => {
   return (
     <Centered>
-      <form action="https://formspree.io/info@glitch.cool" method="POST">
-        <h2>contact</h2>
+      <StyledForm action="https://formspree.io/info@glitch.cool" method="POST">
+        <PageTitle>contact</PageTitle>
         <FormGroup>
           <label for="name">name</label>
           <FormInput type="text" name="name" required />
@@ -74,7 +78,7 @@ const ContactForm = () => {
         <FormGroup>
           <FormSubmit type="submit" value="Send Message" />
         </FormGroup>
-      </form>
+      </StyledForm>
     </Centered>
   )
 }
