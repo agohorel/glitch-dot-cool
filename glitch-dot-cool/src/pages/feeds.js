@@ -50,7 +50,7 @@ const Posts = () => {
     <Layout>
       <PageTitle>feeds</PageTitle>
 
-      <GatsbyLink to={"/"}>
+      <GatsbyLink to={"/posts"}>
         <StyledButton style={{float: `right`, marginTop: `3px`}}>view all posts</StyledButton>
       </GatsbyLink>
 

@@ -30,9 +30,14 @@ const Tag = props => {
   return (
     <Layout>
       <PageTitle>posts tagged with "{props.pageContext.tag}"</PageTitle>
-      <GatsbyLink to={"/"}>
+      <GatsbyLink to={"/posts"}>
         <StyledButton style={{ float: `right`, marginTop: `3px` }}>
           view all posts
+        </StyledButton>
+      </GatsbyLink>
+      <GatsbyLink to={"/tags"}>
+        <StyledButton style={{ float: `right`, marginTop: `3px`, marginRight: `1rem` }}>
+          view all tags
         </StyledButton>
       </GatsbyLink>
       <ol>
