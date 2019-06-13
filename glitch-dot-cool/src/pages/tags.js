@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import { GatsbyLink, StyledList } from "../utils/utilComponents"
+import { GatsbyLink, StyledList, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Tags = () => {
@@ -18,7 +18,12 @@ const Tags = () => {
 
   return (
     <Layout>
-      <h1>tags</h1>
+      <PageTitle>tags</PageTitle>
+      <GatsbyLink to={"/posts"}>
+        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
+          view all posts
+        </StyledButton>
+      </GatsbyLink>
       <ol>
         {data.allContentfulBlogPost.group.map(tag => {
           return (
