@@ -1,8 +1,26 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 
 import colors from "../styles/colors"
+
+const chromaticAbberationAnimation = keyframes`
+    0% {
+      text-shadow: 1px 0px 1px ${colors.valid}, -1px 0px 1px ${colors.invalid};
+    }
+
+    50% {
+      text-shadow: -1px 0px 2px ${colors.valid}, 1px 0px 2px ${colors.invalid};
+    }
+
+    100% {
+      text-shadow: 1px -1px 1px ${colors.valid}, -1px 0px 1px ${colors.invalid};
+    } 
+`
+
+const chromaticAbberation = css`
+  animation: ${chromaticAbberationAnimation} 3s ease alternate infinite;
+`
 
 const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
@@ -12,7 +30,8 @@ const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
 
   :hover {
     color: ${props =>
-      props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
+      props.dark ? `${colors.darkgrey}` : `${colors.darkgrey}`};
+    ${chromaticAbberation}
   }
 `
 
@@ -32,7 +51,8 @@ const StyledList = styled.li`
 
     :hover {
       color: ${props =>
-        props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
+        props.dark ? `${colors.darkgrey}` : `${colors.darkgrey}`};
+      ${chromaticAbberation}
     }
   }
 `
@@ -45,7 +65,8 @@ const StyledLink = styled.a`
 
   :hover {
     color: ${props =>
-      props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
+      props.dark ? `${colors.darkgrey}` : `${colors.darkgrey}`};
+      ${chromaticAbberation}
   }
 `
 
@@ -58,11 +79,11 @@ const Centered = styled.div`
 
 const StyledButton = styled.button`
   display: inline-block;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: ${colors.midgrey};
   color: ${colors.offwhite};
   border: none;
-  transition: .2s ease all;
+  transition: 0.2s ease all;
 
   :hover {
     cursor: pointer;
