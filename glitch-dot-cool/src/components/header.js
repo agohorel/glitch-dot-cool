@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 
-import { StyledLink, ListLink } from "../utils/utils"
+import { StyledList, GatsbyLink } from "../utils/utilComponents"
 
 const Header = () => {
   const data = useStaticQuery(
@@ -18,25 +18,25 @@ const Header = () => {
 
   return (
     <header style={{ marginBottom: `1.5rem` }}>
-      <StyledLink>
+      <StyledList>
         <Link to="/">
           <h3>{data.site.siteMetadata.title}</h3>
         </Link>
-      </StyledLink>
+      </StyledList>
       <nav style={{ float: `right` }}>
         <ul>
-          <StyledLink>
-            <ListLink to="/">home</ListLink>
-          </StyledLink>
-          <StyledLink>
-            <ListLink to="/about/">about</ListLink>
-          </StyledLink>
-          <StyledLink>
-            <ListLink to="/posts/">posts</ListLink>
-          </StyledLink>
-          <StyledLink>
-            <ListLink to="/contact/">contact</ListLink>
-          </StyledLink>
+          <StyledList>
+            <GatsbyLink to="/">home</GatsbyLink>
+          </StyledList>
+          <StyledList>
+            <GatsbyLink to="/about/">about</GatsbyLink>
+          </StyledList>
+          <StyledList>
+            <GatsbyLink to="/feeds/">feeds</GatsbyLink>
+          </StyledList>
+          <StyledList>
+            <GatsbyLink to="/contact/">contact</GatsbyLink>
+          </StyledList>
         </ul>
       </nav>
     </header>

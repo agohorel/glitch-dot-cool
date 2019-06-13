@@ -1,51 +1,91 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import styled from "styled-components"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
+import { slugify } from "../utils/utils"
+import { StyledList, GatsbyLink } from "../utils/utilComponents";
 
 const BlogPost = styled.div`
-    margin-top: 2rem;
-    margin-bottom: ${measurements.footerHeight}rem;
+  margin-top: 2rem;
+  margin-bottom: ${measurements.footerHeight}rem;
 `
 
-const BlogTags = styled.p`
-    font-size: .8rem;
-    color: ${colors.midgrey};
-`
+const BlogTag = styled.div`
+  display: inline-block;
+  background-color: ${colors.lightgrey};
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
 
+  a {
+    font-size: 0.8rem;
+    color: ${colors.darkgrey};
+    transition: 0.2s ease color;
+  }
+
+  a:hover {
+    color: ${colors.offwhite};
+  }
+`
 export const query = graphql`
-    query (
-        $slug: String!
-    ) {
-        markdownRemark (
-            fields : {
-                slug: {
-                    eq: $slug
-                }
-            }
-        ) {
-            frontmatter {
-                title
-                date
-                tags
-            }
-            html
-        }
+  query($slug: String!) {
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      publishedDate(formatString: "MMMM Do, YYYY")
+      body {
+        json
+      }
+      tags
+      author
     }
-` 
+  }
+`
 
-const Blog = (props) => {
-    return (
-        <Layout>
-            <h1>{props.data.markdownRemark.frontmatter.title}</h1>
-            <p>{props.data.markdownRemark.frontmatter.date}</p>
-            <BlogPost dangerouslySetInnerHTML={{__html: props.data.markdownRemark.html}}></BlogPost>
-            <BlogTags>{`tags: ${props.data.markdownRemark.frontmatter.tags}`}</BlogTags>
-        </Layout>
-    )
+const Blog = props => {
+  console.log(props);
+  // config for setting up embedded imgs
+  const options = {
+    renderNode: {
+      "embedded-asset-block": node => {
+        const alt = node.data.target.fields.title["en-US"]
+        const url = node.data.target.fields.file["en-US"].url
+        return <img alt={alt} src={url} />
+      },
+    },
+  }
+
+  let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`;
+
+  return (
+    <Layout>
+      <h1>{props.data.contentfulBlogPost.title}</h1>
+      <p>
+        {`by `} 
+        <strong>
+          <StyledList>
+            <GatsbyLink to={authorSlug}>{props.data.contentfulBlogPost.author}</GatsbyLink>
+          </StyledList>
+        </strong>
+      </p>
+      <p>{props.data.contentfulBlogPost.publishedDate}</p>
+      <BlogPost>
+        {documentToReactComponents(
+          props.data.contentfulBlogPost.body.json,
+          options
+        )}
+      </BlogPost>
+      {props.data.contentfulBlogPost.tags.map(tag => {
+        return (
+          <BlogTag key={tag}>
+            <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
+          </BlogTag>
+        )
+      })}
+    </Layout>
+  )
 }
 
-export default Blog;
+export default Blog

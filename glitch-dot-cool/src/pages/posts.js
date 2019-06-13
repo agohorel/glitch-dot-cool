@@ -2,22 +2,19 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import { ListLink, StyledLink } from "../utils/utils";
+import { GatsbyLink, StyledList, PageTitle, StyledButton } from "../utils/utilComponents"
+import { slugify } from "../utils/utils"
 
 const Posts = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
         edges {
           node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              date
-            }
-            id
+            slug
+            title
+            publishedDate(formatString: "MMMM Do, YYYY")
+            author
           }
         }
       }
@@ -26,23 +23,34 @@ const Posts = () => {
 
   return (
     <Layout>
-        <h1>posts</h1>
-        <ol>
-          {data.allMarkdownRemark.edges.map(post => {
-            return (
-              <div key={post.node.id}>
-                <StyledLink>
-                  <ListLink to={`/blog${post.node.fields.slug}`}>
-                    <h2>{post.node.frontmatter.title}</h2>
-                  </ListLink>
-                </StyledLink>
-                <p>{post.node.frontmatter.date}</p>
-              </div>   
-            )
-          })}
-        </ol>
+      <PageTitle>posts</PageTitle>
+      <GatsbyLink to={"/tags"}>
+        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
+          view all tags
+        </StyledButton>
+      </GatsbyLink>
+      <ol>
+        {data.allContentfulBlogPost.edges.map(post => {
+          return (
+            <div key={post.node.title}>
+              <StyledList>
+                <GatsbyLink to={`/blog/${post.node.slug}`}>
+                  <h2>{post.node.title}</h2>
+                </GatsbyLink>
+              </StyledList>
+              <p>{post.node.publishedDate}</p>
+              <StyledList>
+                {`by `}
+                <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
+                  <strong>{post.node.author}</strong>
+                </GatsbyLink>
+              </StyledList>
+            </div>
+          )
+        })}
+      </ol>
     </Layout>
   )
 }
 
-export default Posts;
+export default Posts

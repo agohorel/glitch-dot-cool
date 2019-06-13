@@ -6,6 +6,6 @@ tags: "glitch, cool stuff"
 
 things that are cool:
 
--glitch
+-glitch 
 
 ![Anomalia Image](./assets/images/anomalia.jpg)

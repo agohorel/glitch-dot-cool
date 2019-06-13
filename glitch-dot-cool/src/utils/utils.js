@@ -1,39 +1,22 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+const slugify = string => {
+  const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
+  const b = "aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------"
+  const p = new RegExp(a.split("").join("|"), "g")
 
-import colors from "../styles/colors"
+  return (
+    string
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, "-") // Replace spaces with -
+      .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+      .replace(/&/g, "-and-") // Replace & with 'and'
+      // eslint-disable-next-line
+      .replace(/[^\w\-]+/g, "") // Remove all non-word characters
+      // eslint-disable-next-line
+      .replace(/\-\-+/g, "-") // Replace multiple - with single -
+      .replace(/^-+/, "") // Trim - from start of text
+      .replace(/-+$/, "") // Trim - from end of text
+  ) 
+}
 
-const ListLink = props => (
-    <Link to={props.to}>{props.children}</Link>
-)
-
-const StyledLink = styled.li`
-  display: inline-block;
-
-  &:not(:last-child) {
-    margin-right: 1.5rem;
-  }
-
-  a,
-  a:visited {
-    text-decoration: none;
-    color: ${props =>
-      props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
-    transition: 0.2s ease all;
-
-    :hover {
-      color: ${props =>
-        props.dark ? `${colors.darkgrey}` : `${colors.lightgrey}`};
-    }
-  }
-`
-
-const Centered = styled.div`
-  display: flex;
-  flex-direction: ${props => (props.column ? `column` : `row`)};
-  justify-content: center;
-  align-items: center;
-`
-
-export { ListLink, StyledLink, Centered }
+export { slugify }
