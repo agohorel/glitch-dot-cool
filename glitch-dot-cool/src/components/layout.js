@@ -9,8 +9,6 @@ import styles from "../styles/global.css"
 import colors from "../styles/colors"
 
 const Background = styled.div`
-  width: 100%;
-  padding-top: 3rem;
   background-color: ${colors.offwhite};
 `
 
