@@ -9,17 +9,13 @@ const chromaticAbberationAnimation = keyframes`
       text-shadow: 1px 0px 1px ${colors.valid}, -1px 0px 1px ${colors.invalid};
     }
 
-    50% {
+    100% {
       text-shadow: -1px 0px 2px ${colors.valid}, 1px 0px 2px ${colors.invalid};
     }
-
-    100% {
-      text-shadow: 1px -1px 1px ${colors.valid}, -1px 0px 1px ${colors.invalid};
-    } 
 `
 
 const chromaticAbberation = css`
-  animation: ${chromaticAbberationAnimation} 3s ease alternate infinite;
+  animation: ${chromaticAbberationAnimation} 3s linear alternate infinite;
 `
 
 const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
@@ -30,7 +26,7 @@ const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
 
   :hover {
     color: ${props =>
-      props.dark ? `${colors.darkgrey}` : `${colors.darkgrey}`};
+      props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
     ${chromaticAbberation}
   }
 `
@@ -51,7 +47,7 @@ const StyledList = styled.li`
 
     :hover {
       color: ${props =>
-        props.dark ? `${colors.darkgrey}` : `${colors.darkgrey}`};
+        props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
       ${chromaticAbberation}
     }
   }
@@ -65,8 +61,8 @@ const StyledLink = styled.a`
 
   :hover {
     color: ${props =>
-      props.dark ? `${colors.darkgrey}` : `${colors.darkgrey}`};
-      ${chromaticAbberation}
+      props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
+    ${chromaticAbberation}
   }
 `
 
