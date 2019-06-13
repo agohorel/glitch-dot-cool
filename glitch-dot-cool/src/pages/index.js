@@ -10,7 +10,7 @@ const PostContainer = styled.div`
   margin-top: 3rem;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(30vmin, max-content));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 `
 
 const TextContainer = styled.div`
@@ -25,8 +25,6 @@ const TextContainer = styled.div`
 const Post = styled.div`
   display: inline-block;
   padding: 2rem;
-  min-width: 15vw;
-  min-height: 15vw;
 
   background-image: ${props =>
     props.backgroundImg
