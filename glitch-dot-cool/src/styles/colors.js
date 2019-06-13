@@ -6,4 +6,6 @@ export default {
   lightgrey: "#c4c4c4",
   offwhite: "#e6e6e6",
   white: "#fff",
+  invalid: "#ba1a35",
+  valid: "#15c6b0"
 }
