@@ -19,4 +19,8 @@ const slugify = string => {
   ) 
 }
 
-export { slugify }
+const activeNavStyles = {
+  textDecoration: "line-through"
+}
+
+export { slugify, activeNavStyles }

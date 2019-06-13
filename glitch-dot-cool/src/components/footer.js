@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import { StyledList, GatsbyLink, Centered } from "../utils/utilComponents"
+import { activeNavStyles } from "../utils/utils"
 
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
@@ -21,16 +22,16 @@ const Footer = () => {
       <Centered>
         <ul style={{ listStyle: `none`, padding: `.75rem` }}>
           <StyledList dark>
-            <GatsbyLink to="/">home</GatsbyLink>
+            <GatsbyLink to="/" activeStyle={activeNavStyles}>home</GatsbyLink>
           </StyledList>
           <StyledList dark>
-            <GatsbyLink to="/about/">about</GatsbyLink>
+            <GatsbyLink to="/about/" activeStyle={activeNavStyles}>about</GatsbyLink>
           </StyledList>
           <StyledList dark>
-            <GatsbyLink to="/feeds/">feeds</GatsbyLink>
+            <GatsbyLink to="/feeds/" activeStyle={activeNavStyles}>feeds</GatsbyLink>
           </StyledList>
           <StyledList dark>
-            <GatsbyLink to="/contact/">contact</GatsbyLink>
+            <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>contact</GatsbyLink>
           </StyledList>
         </ul>
       </Centered>

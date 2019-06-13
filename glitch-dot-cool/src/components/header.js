@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
+import { activeNavStyles } from "../utils/utils"
 
 const Header = () => {
   const data = useStaticQuery(
@@ -26,16 +27,24 @@ const Header = () => {
       <nav style={{ float: `right` }}>
         <ul>
           <StyledList>
-            <GatsbyLink to="/">home</GatsbyLink>
+            <GatsbyLink to="/" activeStyle={activeNavStyles}>
+              home
+            </GatsbyLink>
           </StyledList>
           <StyledList>
-            <GatsbyLink to="/about/">about</GatsbyLink>
+            <GatsbyLink to="/about/" activeStyle={activeNavStyles}>
+              about
+            </GatsbyLink>
           </StyledList>
           <StyledList>
-            <GatsbyLink to="/feeds/">feeds</GatsbyLink>
+            <GatsbyLink to="/feeds/" activeStyle={activeNavStyles}>
+              feeds
+            </GatsbyLink>
           </StyledList>
           <StyledList>
-            <GatsbyLink to="/contact/">contact</GatsbyLink>
+            <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
+              contact
+            </GatsbyLink>
           </StyledList>
         </ul>
       </nav>
