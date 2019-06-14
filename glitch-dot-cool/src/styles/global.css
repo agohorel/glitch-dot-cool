@@ -15,6 +15,7 @@ body {
 
 code {
   font-family: "Roboto Mono", monospace;
+  white-space: pre-wrap;
 }
 
 :root {
