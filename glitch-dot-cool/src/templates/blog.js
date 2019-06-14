@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
-import { StyledList, GatsbyLink } from "../utils/utilComponents";
+import { StyledList, GatsbyLink } from "../utils/utilComponents"
 
 const BlogHeader = styled.div`
   margin-bottom: 1rem;
@@ -24,6 +24,10 @@ const BlogPost = styled.div`
     display: block;
     margin: 1rem auto;
     max-width: 100%;
+  }
+
+  code {
+    font-family: "Roboto Mono", monospace;
   }
 `
 const BlogTags = styled.div`
@@ -69,10 +73,29 @@ const Blog = props => {
         const url = node.data.target.fields.file["en-US"].url
         return <img alt={alt} src={url} />
       },
-    },
+      paragraph: node => {
+        // console.log(node)
+        return node.content.map(contentItem => {
+          console.log(contentItem)
+          if (
+            contentItem.marks.length &&
+            contentItem.marks[0].type === "code"
+          ) {
+            console.log(`found some code: ${contentItem.value}`)
+            return (
+              <pre>
+                <code>{contentItem.value}</code>
+              </pre>
+            )
+          } else {
+            return <p>{contentItem.value}</p>
+          }
+        })
+      },
+    }
   }
 
-  let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`;
+  let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
 
   return (
     <Layout>
