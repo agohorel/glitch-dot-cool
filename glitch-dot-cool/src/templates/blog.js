@@ -9,9 +9,25 @@ import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
 import { StyledList, GatsbyLink } from "../utils/utilComponents";
 
+const BlogHeader = styled.div`
+  margin-bottom: 1rem;
+`
+
 const BlogPost = styled.div`
+  display: block;
+  max-width: 67%;
+  margin: 2rem auto ${measurements.footerHeight}rem auto;
+  // margin-top: 2rem;
+  // margin-bottom: ${measurements.footerHeight}rem;
+
+  img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
+  }
+`
+const BlogTags = styled.div`
   margin-top: 2rem;
-  margin-bottom: ${measurements.footerHeight}rem;
 `
 
 const BlogTag = styled.div`
@@ -45,7 +61,6 @@ export const query = graphql`
 `
 
 const Blog = props => {
-  console.log(props);
   // config for setting up embedded imgs
   const options = {
     renderNode: {
@@ -61,29 +76,37 @@ const Blog = props => {
 
   return (
     <Layout>
-      <h1>{props.data.contentfulBlogPost.title}</h1>
-      <p>
-        {`by `} 
-        <strong>
-          <StyledList>
-            <GatsbyLink to={authorSlug}>{props.data.contentfulBlogPost.author}</GatsbyLink>
-          </StyledList>
-        </strong>
-      </p>
-      <p>{props.data.contentfulBlogPost.publishedDate}</p>
       <BlogPost>
+        <BlogHeader>
+          <h1>{props.data.contentfulBlogPost.title}</h1>
+          <p>
+            {`by `}
+            <strong>
+              <StyledList>
+                <GatsbyLink to={authorSlug}>
+                  {props.data.contentfulBlogPost.author}
+                </GatsbyLink>
+              </StyledList>
+            </strong>
+          </p>
+          <p>{props.data.contentfulBlogPost.publishedDate}</p>
+        </BlogHeader>
+
         {documentToReactComponents(
           props.data.contentfulBlogPost.body.json,
           options
         )}
+
+        <BlogTags>
+          {props.data.contentfulBlogPost.tags.map(tag => {
+            return (
+              <BlogTag key={tag}>
+                <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
+              </BlogTag>
+            )
+          })}
+        </BlogTags>
       </BlogPost>
-      {props.data.contentfulBlogPost.tags.map(tag => {
-        return (
-          <BlogTag key={tag}>
-            <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
-          </BlogTag>
-        )
-      })}
     </Layout>
   )
 }
