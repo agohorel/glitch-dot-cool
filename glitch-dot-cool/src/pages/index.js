@@ -64,10 +64,11 @@ export default () => {
       <PostContainer>
         {data.allContentfulBlogPost.edges.map(post => {
           let img
-          post.node.body.json.content.forEach(contentItem => {
-            if (contentItem.nodeType === "embedded-asset-block") {
-              img = contentItem.data.target.fields
-            }
+          post.node.body.json.content.some(contentItem => {
+             if (contentItem.nodeType === "embedded-asset-block") {
+               img = contentItem.data.target.fields
+             }
+             return img
           })
 
           return (
