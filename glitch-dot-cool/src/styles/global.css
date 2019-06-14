@@ -1,14 +1,35 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
 *,
 *::after,
 *::before {
-	margin: 0;
-	padding: 0;
-	box-sizing: inherit;
-	font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
-	background-color: #e6e6e6;
+  background-color: #e6e6e6;
+}
+
+:root {
+  overflow-y: scroll;
+  scrollbar-color: #2b2b2b #e6e6e6;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 0.35rem;
+  background-color: #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 0.35rem;
+  background-color: #2b2b2b;
+}
+
+::selection {
+  background: #191919;
+  color: #e6e6e6;
 }
