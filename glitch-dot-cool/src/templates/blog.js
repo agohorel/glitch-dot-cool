@@ -27,7 +27,7 @@ const BlogPost = styled.div`
   }
 
   code {
-    font-family: "Roboto Mono", monospace; 
+    font-family: "Roboto Mono", monospace;
     // style nested elements within code block
     * {
       font-family: inherit;
@@ -85,16 +85,20 @@ const Blog = props => {
             contentItem.marks.length &&
             contentItem.marks[0].type === "code"
           ) {
+            // pull out language specified as first line of code block to set language
+            let lang = contentItem.value.split("\n")[0].trim()
+            // remove language declaration from actual code block
+            let code = contentItem.value.replace(lang, "").trim()
             return (
               <pre
-                className={"language-javascript"}
+                className={`language-${lang}`}
                 key={contentItem.value.substring(0, 10)}
               >
                 <code
-                  className={"language-javascript"}
+                  className={`language-${lang}`}
                   key={contentItem.value.substring(0, 10)}
                 >
-                  {contentItem.value}
+                  {code}
                 </code>
               </pre>
             )
@@ -107,7 +111,7 @@ const Blog = props => {
           }
         })
       },
-    }
+    },
   }
 
   let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
