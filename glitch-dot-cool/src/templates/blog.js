@@ -28,6 +28,7 @@ const BlogPost = styled.div`
 
   code {
     font-family: "Roboto Mono", monospace;
+    
     // style nested elements within code block
     * {
       font-family: inherit;
@@ -92,11 +93,11 @@ const Blog = props => {
             return (
               <pre
                 className={`language-${lang}`}
-                key={contentItem.value.substring(0, 10)}
+                key={`${contentItem.value.substring(0, 10)}-pre`}
               >
                 <code
                   className={`language-${lang}`}
-                  key={contentItem.value.substring(0, 10)}
+                  key={`${contentItem.value.substring(0, 10)}-codeblock`}
                 >
                   {code}
                 </code>
