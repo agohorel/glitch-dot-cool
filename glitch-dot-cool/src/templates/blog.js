@@ -8,6 +8,8 @@ import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
+import "../styles/prism.css"
+import Prism from "prismjs"
 
 const BlogHeader = styled.div`
   margin-bottom: 1rem;
@@ -17,8 +19,6 @@ const BlogPost = styled.div`
   display: block;
   max-width: 67%;
   margin: 2rem auto ${measurements.footerHeight}rem auto;
-  // margin-top: 2rem;
-  // margin-bottom: ${measurements.footerHeight}rem;
 
   img {
     display: block;
@@ -27,7 +27,11 @@ const BlogPost = styled.div`
   }
 
   code {
-    font-family: "Roboto Mono", monospace;
+    font-family: "Roboto Mono", monospace; 
+    // style nested elements within code block
+    * {
+      font-family: inherit;
+    }
   }
 `
 const BlogTags = styled.div`
@@ -73,22 +77,33 @@ const Blog = props => {
         const url = node.data.target.fields.file["en-US"].url
         return <img alt={alt} src={url} />
       },
+      // setup for styling code blocks
       paragraph: node => {
-        // console.log(node)
+        Prism.highlightAll()
         return node.content.map(contentItem => {
-          console.log(contentItem)
           if (
             contentItem.marks.length &&
             contentItem.marks[0].type === "code"
           ) {
-            console.log(`found some code: ${contentItem.value}`)
             return (
-              <pre>
-                <code>{contentItem.value}</code>
+              <pre
+                className={"language-javascript"}
+                key={contentItem.value.substring(0, 10)}
+              >
+                <code
+                  className={"language-javascript"}
+                  key={contentItem.value.substring(0, 10)}
+                >
+                  {contentItem.value}
+                </code>
               </pre>
             )
           } else {
-            return <p>{contentItem.value}</p>
+            return (
+              <p key={contentItem.value.substring(0, 10)}>
+                {contentItem.value}
+              </p>
+            )
           }
         })
       },
