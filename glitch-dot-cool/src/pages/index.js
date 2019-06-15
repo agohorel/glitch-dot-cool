@@ -15,15 +15,14 @@ const PostContainer = styled.div`
 
 const TextContainer = styled.div`
   padding: 1rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% - 2rem));
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
 `
 
 const Post = styled.div`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-contents: center;
   padding: 2rem;
 
   background-image: ${props =>
