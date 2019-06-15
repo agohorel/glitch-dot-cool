@@ -11,7 +11,6 @@ import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 
-
 const BlogHeader = styled.div`
   margin-bottom: 1rem;
 `
@@ -29,8 +28,8 @@ const BlogPost = styled.div`
 
   code {
     font-family: "Roboto Mono", monospace;
-    font-size: .8rem;
-    
+    font-size: 0.8rem;
+
     // style nested elements within code block
     * {
       font-family: inherit;
@@ -83,10 +82,12 @@ const Blog = props => {
       },
       // setup for styling code blocks
       paragraph: node => {
-        setTimeout(() => {
-           Prism.highlightAll()
-        }, 200);
-       
+        if (typeof window !== `undefined`) {
+          setTimeout(() => {
+            Prism.highlightAll()
+          }, 200)
+        }
+
         return node.content.map(contentItem => {
           if (
             contentItem.marks.length &&
