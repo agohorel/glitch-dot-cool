@@ -61,17 +61,17 @@ const ContactForm = () => {
       <StyledForm action="https://formspree.io/info@glitch.cool" method="POST">
         <PageTitle>contact</PageTitle>
         <FormGroup>
-          <label for="name">name</label>
+          <label htmlFor="name">name</label>
           <FormInput type="text" name="name" required />
         </FormGroup>
 
         <FormGroup>
-          <label for="_replyto">email</label>
+          <label htmlFor="_replyto">email</label>
           <FormInput type="email" name="_replyto" required />
         </FormGroup>
 
         <FormGroup>
-          <label for="body">message</label>
+          <label htmlFor="body">message</label>
           <FormTextArea type="text" name="body" rows="6" required />
         </FormGroup>
 
