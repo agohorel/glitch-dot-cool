@@ -2,14 +2,15 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import "prismjs/themes/prism-coy.css"
+import Prism from "prismjs"
 
 import Layout from "../components/layout"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
-import "../styles/prism.css"
-import Prism from "prismjs"
+
 
 const BlogHeader = styled.div`
   margin-bottom: 1rem;
@@ -28,10 +29,12 @@ const BlogPost = styled.div`
 
   code {
     font-family: "Roboto Mono", monospace;
+    font-size: .8rem;
     
     // style nested elements within code block
     * {
       font-family: inherit;
+      font-size: inherit;
     }
   }
 `
@@ -80,7 +83,10 @@ const Blog = props => {
       },
       // setup for styling code blocks
       paragraph: node => {
-        Prism.highlightAll()
+        setTimeout(() => {
+           Prism.highlightAll()
+        }, 200);
+       
         return node.content.map(contentItem => {
           if (
             contentItem.marks.length &&

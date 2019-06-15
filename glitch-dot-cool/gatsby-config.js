@@ -35,9 +35,9 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
-          {
-            resolve: "gatsby-remark-prismjs",
-          },
+          // {
+          //   resolve: "gatsby-remark-prismjs",
+          // },
         ],
       },
     },
