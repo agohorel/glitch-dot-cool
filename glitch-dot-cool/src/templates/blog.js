@@ -110,6 +110,24 @@ const Blog = props => {
                 </code>
               </pre>
             )
+          } else if (
+            contentItem.nodeType === `text` &&
+            contentItem.value.substring(0, 7).includes(`<iframe`)
+          ) {
+            let doc = new DOMParser().parseFromString(
+              contentItem.value,
+              `text/html`
+            )
+            let iframeAttributes =
+              doc.childNodes[0].childNodes[1].childNodes[0].attributes
+            let embed = {}
+
+            for (var i = 0; i < iframeAttributes.length; i++) {
+              var attrib = iframeAttributes[i]
+              embed[attrib.name] = attrib.value
+            }
+
+            return <iframe title={embed.class} key={embed.src} {...embed} />
           } else {
             return (
               <p key={contentItem.value.substring(0, 10)}>
