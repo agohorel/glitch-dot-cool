@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "prismjs/themes/prism-coy.css"
 import Prism from "prismjs"
+import convert from "react-attr-converter"
 
 import Layout from "../components/layout"
 import colors from "../styles/colors"
@@ -124,7 +125,7 @@ const Blog = props => {
 
             for (var i = 0; i < iframeAttributes.length; i++) {
               var attrib = iframeAttributes[i]
-              embed[attrib.name] = attrib.value
+              embed[convert(attrib.name)] = attrib.value
             }
 
             return <iframe title={embed.class} key={embed.src} {...embed} />
