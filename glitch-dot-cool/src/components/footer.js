@@ -21,16 +21,16 @@ const Footer = () => {
     <StyledFooter>
       <Centered>
         <ul style={{ listStyle: `none`, padding: `.75rem` }}>
-          <StyledList dark>
+          <StyledList dark footer>
             <GatsbyLink to="/" activeStyle={activeNavStyles}>home</GatsbyLink>
           </StyledList>
-          <StyledList dark>
+          <StyledList dark footer>
             <GatsbyLink to="/about/" activeStyle={activeNavStyles}>about</GatsbyLink>
           </StyledList>
-          <StyledList dark>
+          <StyledList dark footer>
             <GatsbyLink to="/feeds/" activeStyle={activeNavStyles}>feeds</GatsbyLink>
           </StyledList>
-          <StyledList dark>
+          <StyledList dark footer>
             <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>contact</GatsbyLink>
           </StyledList>
         </ul>

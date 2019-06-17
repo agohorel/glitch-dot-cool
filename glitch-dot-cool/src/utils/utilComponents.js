@@ -51,6 +51,13 @@ const StyledList = styled.li`
       ${chromaticAbberation}
     }
   }
+
+  @media only screen and (max-width: 900px) {
+    &:not(:last-child) {
+      margin-right: ${props =>
+        props.footer ? `2rem` : `.5rem`};
+    }
+  }
 `
 
 const StyledLink = styled.a`

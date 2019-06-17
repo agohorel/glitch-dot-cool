@@ -39,6 +39,16 @@ const BlogPost = styled.div`
       font-size: inherit;
     }
   }
+
+  @media only screen and (max-width: 1200px) {
+    max-width: 80%;
+    padding: 2rem 0 ${measurements.footerHeight}rem 0;
+  }
+
+  @media only screen and (max-width: 900px) {
+    max-width: 100%;
+    padding: 2rem 0 ${measurements.footerHeight}rem 0;
+  }
 `
 const BlogTags = styled.div`
   margin-top: 2rem;
