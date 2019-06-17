@@ -117,25 +117,29 @@ const Blog = props => {
             contentItem.nodeType === `text` &&
             contentItem.value.substring(0, 7).includes(`<iframe`)
           ) {
-            let doc = new DOMParser().parseFromString(
-              contentItem.value,
-              `text/html`
-            )
-            let iframeAttributes =
-              doc.childNodes[0].childNodes[1].childNodes[0].attributes
-            let embed = {}
+            if (typeof window !== `undefined`) {
+              let doc = new DOMParser().parseFromString(
+                contentItem.value,
+                `text/html`
+              )
+              let iframeAttributes =
+                doc.childNodes[0].childNodes[1].childNodes[0].attributes
+              let embed = {}
 
-            for (var i = 0; i < iframeAttributes.length; i++) {
-              var attrib = iframeAttributes[i]
-              if (attrib.name === "style"){
-                let styleObject = CSSJSON.toJSON(attrib.value).attributes 
-                embed[convert(attrib.name)] = styleObject
-              } else {
-                embed[convert(attrib.name)] = attrib.value
+              for (var i = 0; i < iframeAttributes.length; i++) {
+                var attrib = iframeAttributes[i]
+                if (attrib.name === "style") {
+                  let styleObject = CSSJSON.toJSON(attrib.value).attributes
+                  embed[convert(attrib.name)] = styleObject
+                } else {
+                  embed[convert(attrib.name)] = attrib.value
+                }
               }
-            }
 
-            return <iframe title={embed.class} key={embed.src} {...embed} />
+              return <iframe title={embed.class} key={embed.src} {...embed} />
+            } else {
+              return null
+            }
           } else {
             return (
               <p key={contentItem.value.substring(0, 10)}>
@@ -152,7 +156,7 @@ const Blog = props => {
 
   return (
     <Layout>
-      <Head title={props.data.contentfulBlogPost.title}/>
+      <Head title={props.data.contentfulBlogPost.title} />
       <BlogPost>
         <BlogHeader>
           <h1>{props.data.contentfulBlogPost.title}</h1>
