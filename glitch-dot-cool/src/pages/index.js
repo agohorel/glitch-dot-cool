@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
+import Head from "../components/head"
 import { GatsbyLink } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
@@ -60,6 +61,7 @@ export default () => {
 
   return (
     <Layout>
+      <Head title="home"></Head>
       <PostContainer>
         {data.allContentfulBlogPost.edges.map(post => {
           let img

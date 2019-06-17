@@ -3,7 +3,13 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
-import { GatsbyLink, StyledList, StyledButton, PageTitle } from "../utils/utilComponents"
+import Head from "../components/head"
+import {
+  GatsbyLink,
+  StyledList,
+  StyledButton,
+  PageTitle,
+} from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Avatar = styled.img`
@@ -48,10 +54,13 @@ const Posts = () => {
 
   return (
     <Layout>
+      <Head title="feeds"/>
       <PageTitle>feeds</PageTitle>
 
       <GatsbyLink to={"/posts"}>
-        <StyledButton style={{float: `right`, marginTop: `3px`}}>view all posts</StyledButton>
+        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
+          view all posts
+        </StyledButton>
       </GatsbyLink>
 
       <ol>

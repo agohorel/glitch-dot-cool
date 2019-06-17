@@ -2,7 +2,13 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import { GatsbyLink, StyledList, StyledButton, PageTitle } from "../utils/utilComponents"
+import Head from "../components/head"
+import {
+  GatsbyLink,
+  StyledList,
+  StyledButton,
+  PageTitle,
+} from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Tags = () => {
@@ -18,6 +24,7 @@ const Tags = () => {
 
   return (
     <Layout>
+      <Head title="tags" />
       <PageTitle>tags</PageTitle>
       <GatsbyLink to={"/posts"}>
         <StyledButton style={{ float: `right`, marginTop: `3px` }}>
