@@ -1,13 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-// import styled from "styled-components"
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
+import Head from "../components/head"
 import { StyledList, GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
-// import colors from "../styles/colors"
-// import measurements from "../styles/measurements"
+
 
 export const query = graphql`
   query($tag: String!) {
@@ -29,6 +27,7 @@ const Tag = props => {
 
   return (
     <Layout>
+      <Head title={props.pageContext.tag} />
       <PageTitle>posts tagged with "{props.pageContext.tag}"</PageTitle>
       <GatsbyLink to={"/posts"}>
         <StyledButton style={{ float: `right`, marginTop: `3px` }}>
@@ -36,7 +35,9 @@ const Tag = props => {
         </StyledButton>
       </GatsbyLink>
       <GatsbyLink to={"/tags"}>
-        <StyledButton style={{ float: `right`, marginTop: `3px`, marginRight: `1rem` }}>
+        <StyledButton
+          style={{ float: `right`, marginTop: `3px`, marginRight: `1rem` }}
+        >
           view all tags
         </StyledButton>
       </GatsbyLink>

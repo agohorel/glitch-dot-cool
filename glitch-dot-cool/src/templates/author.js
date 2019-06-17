@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
+import Head from "../components/head"
 import Profile from "../components/profile"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 
@@ -57,6 +58,7 @@ export const query = graphql`
 const Tag = props => {
   return (
     <Layout>
+      <Head title={props.data.allContentfulAuthor.edges[0].node.authorName} />
       <Wrapper>
         <Profile props={props} />
 

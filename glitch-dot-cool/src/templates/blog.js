@@ -8,6 +8,7 @@ import convert from "react-attr-converter"
 import CSSJSON from "cssjson"
 
 import Layout from "../components/layout"
+import Head from "../components/head"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify } from "../utils/utils"
@@ -151,6 +152,7 @@ const Blog = props => {
 
   return (
     <Layout>
+      <Head title={props.data.contentfulBlogPost.title}/>
       <BlogPost>
         <BlogHeader>
           <h1>{props.data.contentfulBlogPost.title}</h1>
