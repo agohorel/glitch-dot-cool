@@ -5,6 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "prismjs/themes/prism-coy.css"
 import Prism from "prismjs"
 import convert from "react-attr-converter"
+import CSSJSON from "cssjson"
 
 import Layout from "../components/layout"
 import colors from "../styles/colors"
@@ -125,7 +126,12 @@ const Blog = props => {
 
             for (var i = 0; i < iframeAttributes.length; i++) {
               var attrib = iframeAttributes[i]
-              embed[convert(attrib.name)] = attrib.value
+              if (attrib.name === "style"){
+                let styleObject = CSSJSON.toJSON(attrib.value).attributes 
+                embed[convert(attrib.name)] = styleObject
+              } else {
+                embed[convert(attrib.name)] = attrib.value
+              }
             }
 
             return <iframe title={embed.class} key={embed.src} {...embed} />
