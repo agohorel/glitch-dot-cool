@@ -20,7 +20,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   // MAKE BLOG PAGES
-  const blogTemplate = path.resolve("./src/templates/blog.js")
+  const blogTemplate = path.resolve("src/templates/blog.js")
   // get slug
   const blogResponse = await graphql(`
     query {
@@ -45,7 +45,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   })
 
   // MAKE TAG PAGES
-  const tagTemplate = path.resolve("./src/templates/tag.js")
+  const tagTemplate = path.resolve("src/templates/tag.js")
   // get slug
   const tagResponse = await graphql(`
     query {
@@ -76,7 +76,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   })
 
     // MAKE AUTHOR PAGES
-  const authorTemplate = path.resolve("./src/templates/author.js")
+  const authorTemplate = path.resolve("src/templates/author.js")
   // get slug
   const authorResponse = await graphql(`
     query {
@@ -91,7 +91,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   authorResponse.data.allContentfulBlogPost.group.forEach(author => {
       createPage({
         component: authorTemplate,
-        path: `/${slugify(author.fieldValue)}/posts`,
+        path: `${slugify(author.fieldValue)}/posts`,
         context: {
           author: author.fieldValue
         }
