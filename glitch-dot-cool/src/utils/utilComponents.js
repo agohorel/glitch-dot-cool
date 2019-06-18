@@ -35,7 +35,8 @@ const StyledList = styled.li`
   display: inline-block;
 
   &:not(:last-child) {
-    margin-right: 1.5rem;
+    margin-right: ${props => (props.drawer ? `0` : `1.5rem`)};
+    margin-bottom: ${props => (props.drawer ? `1.5rem` : `0`)};
   }
 
   a,
@@ -43,19 +44,13 @@ const StyledList = styled.li`
     text-decoration: none;
     color: ${props =>
       props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+    font-size: ${props => props.drawer ? `2rem` : `inherit`}
     transition: 0.2s ease all;
 
     :hover {
       color: ${props =>
         props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
       ${chromaticAbberation}
-    }
-  }
-
-  @media only screen and (max-width: 900px) {
-    &:not(:last-child) {
-      margin-right: ${props =>
-        props.footer ? `2rem` : `.5rem`};
     }
   }
 `
@@ -75,6 +70,7 @@ const StyledLink = styled.a`
 
 const Centered = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: ${props => (props.column ? `column` : `row`)};
   justify-content: center;
   align-items: center;

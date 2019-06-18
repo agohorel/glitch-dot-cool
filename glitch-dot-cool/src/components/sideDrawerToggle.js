@@ -11,6 +11,7 @@ const ToggleButton = styled.button`
   border: none;
   cursor: pointer;
   outline: none;
+  // prevent blue flash on chrome
   -webkit-tap-highlight-color: transparent;
 
   @media only screen and (min-width: 767px){
