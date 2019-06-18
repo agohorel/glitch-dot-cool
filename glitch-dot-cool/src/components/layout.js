@@ -1,8 +1,10 @@
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 
 import { Header } from "../components/header"
 import Footer from "../components/footer"
+import Backdrop from "../components/backdrop"
+import SideDrawer from "../components/sideDrawer"
 
 // eslint-disable-next-line
 import styles from "../styles/global.css"
@@ -29,12 +31,47 @@ const Wrapper = styled.div`
   }
 `
 
-export default ({ children }) => (
-  <Background>
-    <Wrapper>
-      <Header />
-      {children}
-    </Wrapper>
-    <Footer />
-  </Background>
-)
+class Layout extends Component {
+  state = {
+    sideDrawerOpen: false,
+    backdropVisible: false,
+  }
+
+  drawerToggleClickHandler = () => {
+    this.setState(prevState => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen }
+    })
+  }
+
+  backdropToggleClickHandler = () => {
+    this.setState( () => {
+      return { sideDrawerOpen: false }
+    })
+  }
+
+  render() {
+    let backdrop
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = (
+        <Backdrop
+          backdropToggleClickHandler={this.backdropToggleClickHandler}
+        />
+      )
+    } 
+
+    return (
+      <Background>
+        <Wrapper>
+          <Header drawerToggleClickHandler={this.drawerToggleClickHandler} />
+          <SideDrawer show={this.state.sideDrawerOpen}/>
+          {backdrop}
+          {this.props.children}
+        </Wrapper>
+        <Footer />
+      </Background>
+    )
+  }
+}
+
+export default Layout

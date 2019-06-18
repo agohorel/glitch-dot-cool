@@ -2,14 +2,27 @@ import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
+import DrawerToggle from "./sideDrawerToggle"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { activeNavStyles } from "../utils/utils"
 
 const StyledHeader = styled.header`
+  display: flex;
+  height: 30px;
   margin: 3rem 0 1.5rem 0;
 `
 
-const Header = () => {
+const StyledNav = styled.nav`
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+`
+
+const Spacer = styled.div`
+  flex: 1;
+`
+
+const Header = props => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -23,13 +36,14 @@ const Header = () => {
   )
 
   return (
-    <StyledHeader style={{ marginBottom: `1.5rem` }}>
+    <StyledHeader>
       <StyledList>
         <Link to="/">
           <h3>{data.site.siteMetadata.title}</h3>
         </Link>
       </StyledList>
-      <nav style={{ float: `right` }}>
+      <Spacer />
+      <StyledNav>
         <ul>
           <StyledList>
             <GatsbyLink to="/" activeStyle={activeNavStyles}>
@@ -52,7 +66,8 @@ const Header = () => {
             </GatsbyLink>
           </StyledList>
         </ul>
-      </nav>
+      </StyledNav>
+      <DrawerToggle click={props.drawerToggleClickHandler} />
     </StyledHeader>
   )
 }
