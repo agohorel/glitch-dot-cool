@@ -12,6 +12,10 @@ const PostContainer = styled.div`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+
+  @media only screen and (max-width: 767px){
+    margin-top: 1rem;
+  }
 `
 
 const TextContainer = styled.div`

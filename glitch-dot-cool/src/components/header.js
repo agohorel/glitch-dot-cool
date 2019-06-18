@@ -10,6 +10,10 @@ const StyledHeader = styled.header`
   display: flex;
   height: 30px;
   margin: 3rem 0 1.5rem 0;
+
+  @media only screen and (max-width: 767px) {
+    margin: 1.5rem 0 0.75rem 0;
+  }
 `
 
 const StyledNav = styled.nav`
