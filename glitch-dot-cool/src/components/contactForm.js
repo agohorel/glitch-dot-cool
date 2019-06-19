@@ -5,15 +5,20 @@ import { Centered, StyledButton, PageTitle } from "../utils/utilComponents"
 import colors from "../styles/colors"
 
 const StyledForm = styled.form`
-  padding: 5rem;
+  width: 75%;
+  margin-top: 3rem;
+
+  @media only screen and (min-width: 900px){
+    width: 50%;
+  }
 `
 
 const FormInput = styled.input`
   display: block;
   border: none;
-  width: 34vw;
+  width: 100%;
   font-size: 1.2rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   transition: 0.2s ease all;
 
   :focus {
@@ -25,22 +30,14 @@ const FormInput = styled.input`
     outline: none;
     border-bottom: 3px solid ${colors.invalid};
   }
-
-  @media only screen and (max-width: 1200px) {
-    width: 60vw;
-  }
-
-  @media only screen and (max-width: 767px) {
-    width: 80vw;
-  }
 `
 
 const FormTextArea = styled.textarea`
   display: block;
   border: none;
-  width: 34vw;
+  width: 100%;
   font-size: 1rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   transition: 0.2s ease all;
   resize: none;
 
@@ -52,14 +49,6 @@ const FormTextArea = styled.textarea`
   :focus:invalid {
     outline: none;
     border-bottom: 3px solid ${colors.invalid};
-  }
-
-  @media only screen and (max-width: 1200px) {
-    width: 60vw;
-  }
-
-  @media only screen and (max-width: 767px) {
-    width: 80vw;
   }
 `
 
