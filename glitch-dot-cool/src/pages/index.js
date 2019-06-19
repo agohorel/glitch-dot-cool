@@ -13,6 +13,10 @@ const PostContainer = styled.div`
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 
+  :last-child {
+    margin-bottom: 1rem;
+  }
+
   @media only screen and (max-width: 767px) {
     margin-top: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
