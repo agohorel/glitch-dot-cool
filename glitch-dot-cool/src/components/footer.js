@@ -14,6 +14,12 @@ const StyledFooter = styled.footer`
   width: 100%;
   height: ${measurements.footerHeight}rem;
   background-color: ${colors.nearblack};
+
+  @media only screen and (max-width: 320px){
+    li {
+      font-size: .8rem;
+    }
+  }
 `
 
 const Footer = () => {
@@ -39,7 +45,7 @@ const Footer = () => {
       <Centered>
         <StyledList dark>
           <p style={{ fontSize: `.6rem`, color: colors.midgrey }}>
-            developed by{" "}
+            site developed by{" "}
             <a
               style={{ color: colors.midgrey }}
               href="https://agohorel.github.io/portfolio/"
