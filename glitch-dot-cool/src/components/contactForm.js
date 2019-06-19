@@ -25,6 +25,14 @@ const FormInput = styled.input`
     outline: none;
     border-bottom: 3px solid ${colors.invalid};
   }
+
+  @media only screen and (max-width: 1200px) {
+    width: 60vw;
+  }
+
+  @media only screen and (max-width: 767px) {
+    width: 80vw;
+  }
 `
 
 const FormTextArea = styled.textarea`
@@ -44,6 +52,14 @@ const FormTextArea = styled.textarea`
   :focus:invalid {
     outline: none;
     border-bottom: 3px solid ${colors.invalid};
+  }
+
+  @media only screen and (max-width: 1200px) {
+    width: 60vw;
+  }
+
+  @media only screen and (max-width: 767px) {
+    width: 80vw;
   }
 `
 
