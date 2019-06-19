@@ -26,7 +26,7 @@ const SideDrawer = props => {
   let slideOut
   props.show
     ? (slideOut = { transform: `translateX(0)` })
-    : (slideOut = { transform: `translateX(100%)` })
+    : (slideOut = { transform: `translateX(110%)` })
 
   return (
     <Drawer style={slideOut}>
