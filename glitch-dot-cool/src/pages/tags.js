@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
@@ -10,6 +11,16 @@ import {
   PageTitle,
 } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
+
+const Tag = styled.div`
+  padding: 1rem;
+  background-color: #fff;
+  margin-top: 1rem;
+
+  :last-child {
+    margin-bottom: 1rem;
+  }
+`
 
 const Tags = () => {
   const data = useStaticQuery(graphql`
@@ -34,13 +45,13 @@ const Tags = () => {
       <ol>
         {data.allContentfulBlogPost.group.map(tag => {
           return (
-            <div key={tag.fieldValue}>
+            <Tag key={tag.fieldValue}>
               <StyledList>
                 <GatsbyLink to={`/tags/${slugify(tag.fieldValue)}`}>
                   <h2>{tag.fieldValue}</h2>
                 </GatsbyLink>
               </StyledList>
-            </div>
+            </Tag>
           )
         })}
       </ol>
