@@ -1,11 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
 import { StyledList, GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
+const Post = styled.div`
+  padding: 1rem;
+  background-color: #fff;
+  margin-top: 1rem;
+
+  :last-child {
+    margin-bottom: 1rem;
+  }
+`
 
 export const query = graphql`
   query($tag: String!) {
@@ -44,7 +54,7 @@ const Tag = props => {
       <ol>
         {props.data.allContentfulBlogPost.edges.map(post => {
           return (
-            <div key={post.node.title}>
+            <Post key={post.node.title}>
               <StyledList>
                 <GatsbyLink to={`/blog/${post.node.slug}`}>
                   <h2>{post.node.title}</h2>
@@ -59,7 +69,7 @@ const Tag = props => {
                 </StyledList>
                 {` - ${post.node.publishedDate}`}
               </p>
-            </div>
+            </Post>
           )
         })}
       </ol>
