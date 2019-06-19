@@ -70,7 +70,6 @@ const StyledLink = styled.a`
 
 const Centered = styled.div`
   display: flex;
-  height: 100%;
   flex-direction: ${props => (props.column ? `column` : `row`)};
   justify-content: center;
   align-items: center;

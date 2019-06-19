@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
@@ -10,6 +11,16 @@ import {
   StyledButton,
 } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
+
+const Post = styled.div`
+  padding: 1rem;
+  background-color: #fff;
+  margin-top: 1rem;
+
+  :last-child {
+    margin-bottom: 1rem;
+  }
+`
 
 const Posts = () => {
   const data = useStaticQuery(graphql`
@@ -39,7 +50,7 @@ const Posts = () => {
       <ol>
         {data.allContentfulBlogPost.edges.map(post => {
           return (
-            <div key={post.node.title}>
+            <Post key={post.node.title}>
               <StyledList>
                 <GatsbyLink to={`/blog/${post.node.slug}`}>
                   <h2>{post.node.title}</h2>
@@ -52,7 +63,7 @@ const Posts = () => {
                   <strong>{post.node.author}</strong>
                 </GatsbyLink>
               </StyledList>
-            </div>
+            </Post>
           )
         })}
       </ol>

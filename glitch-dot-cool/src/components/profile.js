@@ -21,6 +21,11 @@ const ProfileCard = styled.div`
   margin-right: 3rem;
   background-color: #fff;
   align-self: flex-start;
+
+  @media only screen and (max-width: 900px) {
+    margin: 0 0 2rem 0;
+    width: 100%;
+  }
 `
 
 const iconStyle = {

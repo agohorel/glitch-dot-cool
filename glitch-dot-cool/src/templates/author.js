@@ -10,6 +10,11 @@ import { StyledList, GatsbyLink } from "../utils/utilComponents"
 const Wrapper = styled.div`
   margin-top: 3rem;
   display: flex;
+
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
 `
 
 const Posts = styled.div`
@@ -17,6 +22,11 @@ const Posts = styled.div`
   padding: 2rem;
   background-color: #fff;
   flex-grow: 1;
+
+  // @media only screen and (max-width: 900px) {
+  //   width: 100%;
+  //   flex-grow: 0;
+  // }
 `
 
 const Post = styled.div`
