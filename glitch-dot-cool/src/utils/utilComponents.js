@@ -78,6 +78,7 @@ const Centered = styled.div`
 const StyledButton = styled.button`
   display: inline-block;
   padding: 0.5rem 1rem;
+  min-width: 5rem;
   background-color: ${colors.midgrey};
   color: ${colors.offwhite};
   border: none;
