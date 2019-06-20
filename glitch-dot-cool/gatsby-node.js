@@ -69,13 +69,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
         path: `/tags/${tag}`,
         context: {
           slug: tag,
-          tag: post.node.tags[i]
+          tag: post.node.tags[i],
         },
       })
     })
   })
 
-    // MAKE AUTHOR PAGES
+  // MAKE AUTHOR PAGES
   const authorTemplate = path.resolve("src/templates/author.js")
   // get slug
   const authorResponse = await graphql(`
@@ -89,12 +89,37 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
   // create new pages
   authorResponse.data.allContentfulBlogPost.group.forEach(author => {
-      createPage({
-        component: authorTemplate,
-        path: `${slugify(author.fieldValue)}/posts`,
-        context: {
-          author: author.fieldValue
+    createPage({
+      component: authorTemplate,
+      path: `${slugify(author.fieldValue)}/posts`,
+      context: {
+        author: author.fieldValue,
+      },
+    })
+  })
+
+  // MAKE PROJECTS pages
+  const projectTemplate = path.resolve("src/templates/project.js")
+  // get slug
+  const projectResponse = await graphql(`
+    query {
+      allContentfulProject(sort: { fields: releaseDate }) {
+        edges {
+          node {
+            title
+          }
         }
+      }
+    }
+  `)
+  // create new pages
+  projectResponse.data.allContentfulProject.edges.forEach(project => {
+      createPage({
+        component: projectTemplate,
+        path: `projects/${slugify(project.node.title)}`,
+        context: {
+          project: project.node.title,
+        },
       })
   })
 }
