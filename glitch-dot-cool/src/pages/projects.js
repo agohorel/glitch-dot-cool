@@ -59,7 +59,7 @@ const Posts = () => {
 
   return (
     <Layout>
-      <Head title="posts" />
+      <Head title="projects" />
       <PageTitle>projects</PageTitle>
       <ol>
         {data.allContentfulProject.edges.map(post => {
