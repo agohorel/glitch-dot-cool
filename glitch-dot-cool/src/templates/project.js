@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import {PageTitle, StyledButton} from "../utils/utilComponents"
+import { PageTitle, StyledButton, Centered } from "../utils/utilComponents"
 import measurements from "../styles/measurements"
 
 const Project = styled.div`
@@ -20,7 +20,7 @@ const Project = styled.div`
   }
 
   p {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 `
 
@@ -31,7 +31,8 @@ const Img = styled.img`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   button:not(:last-child) {
     margin-right: 2rem;
@@ -61,18 +62,24 @@ export const query = graphql`
 const Tag = props => {
   return (
     <Layout>
+      <Head title={props.data.contentfulProject.title} />
       <Project>
-        <PageTitle>{props.data.contentfulProject.title}</PageTitle>
+        <Centered>
+          <PageTitle>{props.data.contentfulProject.title}</PageTitle>
+        </Centered>
         <Img
           src={props.data.contentfulProject.artwork.file.url}
           alt={props.data.contentfulProject.artwork.file.fileName}
         />
-        <Head title={props.data.contentfulProject.title} />
-        {documentToReactComponents(props.data.contentfulProject.body.json)}
         <ButtonWrapper>
-          <StyledButton src={props.data.contentfulProject.downloadLink}>download</StyledButton>
-          <StyledButton src={props.data.contentfulProject.torrentLink}>torrent</StyledButton>
+          <StyledButton src={props.data.contentfulProject.downloadLink}>
+            download
+          </StyledButton>
+          <StyledButton src={props.data.contentfulProject.torrentLink}>
+            torrent
+          </StyledButton>
         </ButtonWrapper>
+        {documentToReactComponents(props.data.contentfulProject.body.json)}
       </Project>
     </Layout>
   )
