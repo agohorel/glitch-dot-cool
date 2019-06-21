@@ -41,22 +41,47 @@ const SideDrawer = props => {
       <ul style={{ height: `100%` }}>
         <Centered column>
           <StyledList drawer>
-            <GatsbyLink style={DrawerTextStyles} to="/" activeStyle={activeNavStyles}>
+            <GatsbyLink
+              style={DrawerTextStyles}
+              to="/"
+              activeStyle={activeNavStyles}
+            >
               home
             </GatsbyLink>
           </StyledList>
           <StyledList drawer>
-            <GatsbyLink style={DrawerTextStyles} to="/about/" activeStyle={activeNavStyles}>
+            <GatsbyLink
+              style={DrawerTextStyles}
+              to="/about/"
+              activeStyle={activeNavStyles}
+            >
               about
             </GatsbyLink>
           </StyledList>
           <StyledList drawer>
-            <GatsbyLink style={DrawerTextStyles} to="/feeds/" activeStyle={activeNavStyles}>
+            <GatsbyLink
+              style={DrawerTextStyles}
+              to="/projects/"
+              activeStyle={activeNavStyles}
+            >
+              projects
+            </GatsbyLink>
+          </StyledList>
+          <StyledList drawer>
+            <GatsbyLink
+              style={DrawerTextStyles}
+              to="/feeds/"
+              activeStyle={activeNavStyles}
+            >
               feeds
             </GatsbyLink>
           </StyledList>
           <StyledList drawer>
-            <GatsbyLink style={DrawerTextStyles} to="/contact/" activeStyle={activeNavStyles}>
+            <GatsbyLink
+              style={DrawerTextStyles}
+              to="/contact/"
+              activeStyle={activeNavStyles}
+            >
               contact
             </GatsbyLink>
           </StyledList>
