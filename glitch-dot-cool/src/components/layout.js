@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 67%;
   padding: 0 5rem ${measurements.footerHeight}rem 5rem;
-  transition: .2s ease-out all;
+  transition: 0.2s ease-out all;
 
   @media only screen and (max-width: 1200px) {
     max-width: 90%;
@@ -29,6 +29,11 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 900px) {
     max-width: 100%;
     padding: 0 2rem ${measurements.footerHeight}rem 2rem;
+  }
+
+  @media only screen and (max-width: 500px) {
+    max-width: 100%;
+    padding: 0 1.5rem ${measurements.footerHeight}rem 1.5rem;
   }
 `
 
