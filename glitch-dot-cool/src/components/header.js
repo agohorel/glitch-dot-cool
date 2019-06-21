@@ -60,6 +60,11 @@ const Header = props => {
             </GatsbyLink>
           </StyledList>
           <StyledList>
+            <GatsbyLink to="/projects/" activeStyle={activeNavStyles}>
+              projects
+            </GatsbyLink>
+          </StyledList>
+          <StyledList>
             <GatsbyLink to="/feeds/" activeStyle={activeNavStyles}>
               feeds
             </GatsbyLink>
