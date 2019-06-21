@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import { GatsbyLink, PageTitle, StyledButton } from "../utils/utilComponents"
+import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Post = styled.div`

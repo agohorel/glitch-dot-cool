@@ -23,7 +23,8 @@ const Centered = styled.div`
   height: 100%;
   flex-direction: ${props => (props.column ? `column` : `row`)};
   justify-content: center;
-  align-items: center;
+  align-items: left;
+  padding: 2rem;
 `
 
 const DrawerTextStyles = {
