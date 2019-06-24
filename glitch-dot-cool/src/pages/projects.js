@@ -27,13 +27,17 @@ const Textbox = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-//   justify-content: space-between;
 `
 
 const Img = styled.img`
   max-width: 7rem;
   max-height: 7rem;
   margin-right: 1rem;
+  transition: .2s ease all;
+
+  :hover {
+    filter: invert(100%);
+  }
 `
 
 const Posts = () => {
@@ -65,10 +69,13 @@ const Posts = () => {
         {data.allContentfulProject.edges.map(post => {
           return (
             <Post key={post.node.title}>
-              <Img
-                src={post.node.artwork.file.url}
-                alt={post.node.artwork.title}
-              />
+              <GatsbyLink to={`/projects/${slugify(post.node.title)}`}>
+                <Img
+                  src={post.node.artwork.file.url}
+                  alt={post.node.artwork.title}
+                />
+              </GatsbyLink>
+
               <Textbox>
                 <GatsbyLink to={`/projects/${slugify(post.node.title)}`}>
                   <h2>{post.node.title}</h2>
