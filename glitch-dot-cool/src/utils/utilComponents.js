@@ -90,8 +90,34 @@ const StyledButton = styled.button`
   }
 `
 
+const StyledLinkButton = styled.a`
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  min-width: 5rem;
+  background-color: ${colors.midgrey};
+  color: ${colors.offwhite};
+  border: none;
+  transition: 0.2s ease all;
+  text-decoration: none;
+  font-size: .8rem;
+  text-align: center;
+
+  :hover {
+    cursor: pointer;
+    background-color: ${colors.darkgrey};
+  }
+`
+
 const PageTitle = styled.h1`
   display: inline;
 `
 
-export { GatsbyLink, StyledList, StyledLink, Centered, StyledButton, PageTitle }
+export {
+  GatsbyLink,
+  StyledList,
+  StyledLink,
+  Centered,
+  StyledButton,
+  PageTitle,
+  StyledLinkButton,
+}

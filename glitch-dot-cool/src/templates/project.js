@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import { PageTitle, StyledButton, Centered } from "../utils/utilComponents"
+import { PageTitle, StyledLinkButton, Centered } from "../utils/utilComponents"
 import measurements from "../styles/measurements"
 
 const Project = styled.div`
@@ -22,6 +22,14 @@ const Project = styled.div`
   p {
     margin-bottom: 1rem;
   }
+
+  @media only screen and (max-width: 900px) {
+    max-width: 90%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    max-width: 100%;
+  }
 `
 
 const Img = styled.img`
@@ -34,7 +42,7 @@ const ButtonWrapper = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
 
-  button:not(:last-child) {
+  a:not(:last-child) {
     margin-right: 2rem;
   }
 `
@@ -65,19 +73,21 @@ const Tag = props => {
       <Head title={props.data.contentfulProject.title} />
       <Project>
         <Centered>
-          <PageTitle>{props.data.contentfulProject.title}</PageTitle>
+          <PageTitle style={{ textAlign: `center` }}>
+            {props.data.contentfulProject.title}
+          </PageTitle>
         </Centered>
         <Img
           src={props.data.contentfulProject.artwork.file.url}
           alt={props.data.contentfulProject.artwork.file.fileName}
         />
         <ButtonWrapper>
-          <StyledButton src={props.data.contentfulProject.downloadLink}>
+          <StyledLinkButton href={props.data.contentfulProject.downloadLink} target={`_blank`}>
             download
-          </StyledButton>
-          <StyledButton src={props.data.contentfulProject.torrentLink}>
+          </StyledLinkButton>
+          <StyledLinkButton href={props.data.contentfulProject.torrentLink} target={`_blank`}>
             torrent
-          </StyledButton>
+          </StyledLinkButton>
         </ButtonWrapper>
         {documentToReactComponents(props.data.contentfulProject.body.json)}
       </Project>
