@@ -8,7 +8,7 @@ import Head from "../components/head"
 import { PageTitle, StyledLinkButton, Centered } from "../utils/utilComponents"
 import measurements from "../styles/measurements"
 
-const Project = styled.div`
+const ProjectWrapper = styled.div`
   display: block;
   max-width: 67%;
   margin: 2rem auto ${measurements.footerHeight}rem auto;
@@ -67,11 +67,11 @@ export const query = graphql`
   }
 `
 
-const Tag = props => {
+const Project = props => {
   return (
     <Layout>
       <Head title={props.data.contentfulProject.title} />
-      <Project>
+      <ProjectWrapper>
         <Centered>
           <PageTitle style={{ textAlign: `center` }}>
             {props.data.contentfulProject.title}
@@ -82,17 +82,23 @@ const Tag = props => {
           alt={props.data.contentfulProject.artwork.file.fileName}
         />
         <ButtonWrapper>
-          <StyledLinkButton href={props.data.contentfulProject.downloadLink} target={`_blank`}>
+          <StyledLinkButton
+            href={props.data.contentfulProject.downloadLink}
+            target={`_blank`}
+          >
             download
           </StyledLinkButton>
-          <StyledLinkButton href={props.data.contentfulProject.torrentLink} target={`_blank`}>
+          <StyledLinkButton
+            href={props.data.contentfulProject.torrentLink}
+            target={`_blank`}
+          >
             torrent
           </StyledLinkButton>
         </ButtonWrapper>
         {documentToReactComponents(props.data.contentfulProject.body.json)}
-      </Project>
+      </ProjectWrapper>
     </Layout>
   )
 }
 
-export default Tag
+export default Project
