@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import Head from "../components/head"
 import { PageTitle, StyledLinkButton, Centered } from "../utils/utilComponents"
 import measurements from "../styles/measurements"
+import colors from "../styles/colors"
 
 const ProjectWrapper = styled.div`
   display: block;
@@ -14,8 +15,6 @@ const ProjectWrapper = styled.div`
   margin: 2rem auto ${measurements.footerHeight}rem auto;
 
   img {
-    display: block;
-    margin: 1rem auto;
     max-width: 75%;
   }
 
@@ -25,15 +24,33 @@ const ProjectWrapper = styled.div`
 
   @media only screen and (max-width: 900px) {
     max-width: 90%;
+
+    img {
+      max-width: 85%;
+    }
   }
 
   @media only screen and (max-width: 500px) {
     max-width: 100%;
+
+    img {
+      max-width: 90%;
+    }
   }
 `
 
+const DatePublished = styled.p`
+  display: inline-block;
+  font-size: .8rem;
+  margin-top: .5rem;
+  padding: .5rem;
+  background-color: ${colors.lightgrey};
+  color: ${colors.midgrey};
+`
+
 const Img = styled.img`
-  max-width: 100%;
+  display: block;
+  margin: 1rem auto;
 `
 
 const ButtonWrapper = styled.div`
@@ -72,7 +89,7 @@ const Project = props => {
     <Layout>
       <Head title={props.data.contentfulProject.title} />
       <ProjectWrapper>
-        <Centered>
+        <Centered column>
           <PageTitle style={{ textAlign: `center` }}>
             {props.data.contentfulProject.title}
           </PageTitle>
@@ -96,6 +113,9 @@ const Project = props => {
           </StyledLinkButton>
         </ButtonWrapper>
         {documentToReactComponents(props.data.contentfulProject.body.json)}
+        <DatePublished>
+          released {props.data.contentfulProject.publishedDate}
+        </DatePublished>
       </ProjectWrapper>
     </Layout>
   )
