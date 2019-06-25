@@ -51,7 +51,7 @@ export const query = graphql`
   query($project: String!) {
     contentfulProject(title: { eq: $project }) {
       title
-      releaseDate(formatString: "MMMM Do YYYY")
+      publishedDate(formatString: "MMMM Do YYYY")
       downloadLink
       torrentLink
       body {

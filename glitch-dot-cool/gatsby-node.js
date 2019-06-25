@@ -103,7 +103,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // get slug
   const projectResponse = await graphql(`
     query {
-      allContentfulProject(sort: { fields: releaseDate }) {
+      allContentfulProject(sort: { fields: publishedDate }) {
         edges {
           node {
             title

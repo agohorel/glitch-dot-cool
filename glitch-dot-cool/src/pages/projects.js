@@ -43,12 +43,12 @@ const Img = styled.img`
 const Posts = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulProject(sort: { fields: releaseDate, order: DESC }) {
+      allContentfulProject(sort: { fields: publishedDate, order: DESC }) {
         edges {
           node {
             title
             slug
-            releaseDate(formatString: "MMMM Do YYYY")
+            publishedDate(formatString: "MMMM Do YYYY")
             artwork {
               title
               file {
@@ -81,7 +81,7 @@ const Posts = () => {
                 <GatsbyLink to={`/projects/${post.node.slug}`}>
                   <h1>{post.node.title}</h1>
                 </GatsbyLink>
-                <p>{post.node.releaseDate}</p>
+                <p>{post.node.publishedDate}</p>
               </Textbox>
             </Post>
           )

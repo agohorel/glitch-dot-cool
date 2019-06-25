@@ -75,42 +75,92 @@ export default () => {
             body {
               json
             }
+            publishedDate
+          }
+        }
+      }
+      allContentfulProject(sort: { fields: publishedDate, order: DESC }) {
+        edges {
+          node {
+            artwork {
+              file {
+                url
+                fileName
+              }
+            }
+            slug
+            title
+            publishedDate
           }
         }
       }
     }
   `)
 
+  let allContent = []
+
+  data.allContentfulBlogPost.edges.forEach(post => {
+    post.type = "blogPost"
+    allContent.push(post)
+  })
+
+  data.allContentfulProject.edges.forEach(project => {
+    project.type = "project"
+    allContent.push(project)
+  })
+
+  allContent.sort((a, b) => {
+    return new Date(b.node.publishedDate) - new Date(a.node.publishedDate)
+  })
+
   return (
     <Layout>
-      <Head title="home"></Head>
-      <PostContainer>
-        {data.allContentfulBlogPost.edges.map(post => {
-          let img
-          post.node.body.json.content.some(contentItem => {
-             if (contentItem.nodeType === "embedded-asset-block") {
-               img = contentItem.data.target.fields
-             }
-             return img
-          })
+      <Head title="home" />
 
-          return (
-            <Post
-              key={post.node.slug}
-              backgroundImg={img ? img.file["en-US"].url : null}
-            >
-              <TextContainer>
-                <GatsbyLink to={`/blog/${post.node.slug}`}>
-                  <h1>{post.node.title}</h1>
-                </GatsbyLink>
-                <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
-                  <h3>
-                    by <strong>{post.node.author}</strong>
-                  </h3>
-                </GatsbyLink>
-              </TextContainer>
-            </Post>
-          )
+      <PostContainer>
+        {allContent.map(post => {
+          let img
+          if (post.type === "blogPost") {
+            post.node.body.json.content.some(contentItem => {
+              if (contentItem.nodeType === "embedded-asset-block") {
+                img = contentItem.data.target.fields
+              }
+              return img
+            })
+
+            return (
+              <Post
+                key={post.node.slug}
+                backgroundImg={img ? img.file["en-US"].url : null}
+              >
+                <TextContainer>
+                  <GatsbyLink to={`/blog/${post.node.slug}`}>
+                    <h1>{post.node.title}</h1>
+                  </GatsbyLink>
+                  <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
+                    <h3>
+                      by <strong>{post.node.author}</strong>
+                    </h3>
+                  </GatsbyLink>
+                </TextContainer>
+              </Post>
+            )
+          } else if (post.type === "project") {
+            img = post.node.artwork.file
+
+            return (
+              <Post
+                key={post.node.slug}
+                backgroundImg={img ? img.url : null}
+              >
+                <TextContainer>
+                  <GatsbyLink to={`/projects/${post.node.slug}`}>
+                    <h1>{post.node.title}</h1>
+                  </GatsbyLink>
+                </TextContainer>
+              </Post>
+            )
+          }
         })}
       </PostContainer>
     </Layout>
