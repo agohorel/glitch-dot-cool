@@ -5,7 +5,6 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import Head from "../components/head"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
-import { slugify } from "../utils/utils"
 
 const Post = styled.div`
   width: 100%;
@@ -32,6 +31,7 @@ const Textbox = styled.div`
 const Img = styled.img`
   max-width: 7rem;
   max-height: 7rem;
+  width: auto;
   margin-right: 1rem;
   transition: .2s ease all;
 
@@ -47,6 +47,7 @@ const Posts = () => {
         edges {
           node {
             title
+            slug
             releaseDate(formatString: "MMMM Do YYYY")
             artwork {
               title
@@ -69,7 +70,7 @@ const Posts = () => {
         {data.allContentfulProject.edges.map(post => {
           return (
             <Post key={post.node.title}>
-              <GatsbyLink to={`/projects/${slugify(post.node.title)}`}>
+              <GatsbyLink to={`/projects/${post.node.slug}`}>
                 <Img
                   src={post.node.artwork.file.url}
                   alt={post.node.artwork.title}
@@ -77,8 +78,8 @@ const Posts = () => {
               </GatsbyLink>
 
               <Textbox>
-                <GatsbyLink to={`/projects/${slugify(post.node.title)}`}>
-                  <h2>{post.node.title}</h2>
+                <GatsbyLink to={`/projects/${post.node.slug}`}>
+                  <h1>{post.node.title}</h1>
                 </GatsbyLink>
                 <p>{post.node.releaseDate}</p>
               </Textbox>
