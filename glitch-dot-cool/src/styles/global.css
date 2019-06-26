@@ -24,19 +24,23 @@ iframe.youtube {
 
 :root {
   overflow-y: scroll;
-  scrollbar-color:  #e6e6e6 #191919;
-  scrollbar-width: thin;
+  scrollbar-color:  #4b4b4b #191919;
 }
 
 ::-webkit-scrollbar {
-  width: 0.35rem;
-  height: 0.35rem;
-  background-image: linear-gradient(#e6e6e6, #191919 90%);
+  width: 0.45rem;
+  height: 0.45rem;
+  background-color: #191919;
 }
 
 ::-webkit-scrollbar-thumb {
-  width: 0.35rem;
-  background-color: #2b2b2b;
+  width: 0.45rem;
+  background-color: #4b4b4b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  width: 0.45rem;
+  background-color: #5b5b5b;
 }
 
 ::selection {
