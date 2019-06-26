@@ -9,7 +9,7 @@ import { activeNavStyles } from "../utils/utils"
 const StyledHeader = styled.header`
   display: flex;
   height: 30px;
-  padding: 3rem 0 1.5rem 0;
+  margin: 3rem 0 1.5rem 0;
 
   @media only screen and (max-width: 767px) {
     margin: 1.5rem 0 0.75rem 0;
