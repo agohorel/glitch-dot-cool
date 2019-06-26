@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Head from "../components/head"
 import Profile from "../components/profile"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
+import { slugify } from "../utils/utils"
 
 const Wrapper = styled.div`
   margin-top: 3rem;
@@ -58,6 +59,7 @@ export const query = graphql`
         node {
           title
           slug
+          author
           publishedDate(formatString: "MMMM Do, YYYY")
         }
       }
@@ -79,7 +81,7 @@ const Tag = props => {
               return (
                 <Post key={post.node.title}>
                   <StyledList>
-                    <GatsbyLink to={`/blog/${post.node.slug}`}>
+                    <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
                       <h3>{post.node.title}</h3>
                     </GatsbyLink>
                   </StyledList>

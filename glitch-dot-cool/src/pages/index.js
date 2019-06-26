@@ -134,7 +134,7 @@ export default () => {
                 backgroundImg={img ? img.file["en-US"].url : null}
               >
                 <TextContainer>
-                  <GatsbyLink to={`/blog/${post.node.slug}`}>
+                  <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
                     <h1>{post.node.title}</h1>
                   </GatsbyLink>
                   <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
@@ -161,6 +161,7 @@ export default () => {
               </Post>
             )
           }
+          return null
         })}
       </PostContainer>
     </Layout>

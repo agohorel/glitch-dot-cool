@@ -56,7 +56,7 @@ const Tag = props => {
           return (
             <Post key={post.node.title}>
               <StyledList>
-                <GatsbyLink to={`/blog/${post.node.slug}`}>
+                <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
                   <h2>{post.node.title}</h2>
                 </GatsbyLink>
               </StyledList>

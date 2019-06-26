@@ -28,6 +28,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            author
           }
         }
       }
@@ -37,7 +38,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   blogResponse.data.allContentfulBlogPost.edges.forEach(post => {
     createPage({
       component: blogTemplate,
-      path: `/blog/${post.node.slug}`,
+      path: `/${slugify(post.node.author)}/${post.node.slug}`,
       context: {
         slug: post.node.slug,
       },
