@@ -6,6 +6,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import Head from "../components/head"
 import { PageTitle, StyledLinkButton, Centered } from "../utils/utilComponents"
+import { renderOptions } from "../utils/utils"
 import measurements from "../styles/measurements"
 import colors from "../styles/colors"
 
@@ -20,6 +21,17 @@ const ProjectWrapper = styled.div`
 
   p {
     margin-bottom: 1rem;
+  }
+
+  code {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.8rem;
+
+    // style nested elements within code block
+    * {
+      font-family: inherit;
+      font-size: inherit;
+    }
   }
 
   @media only screen and (max-width: 900px) {
@@ -112,7 +124,7 @@ const Project = props => {
             torrent
           </StyledLinkButton>
         </ButtonWrapper>
-        {documentToReactComponents(props.data.contentfulProject.body.json)}
+        {documentToReactComponents(props.data.contentfulProject.body.json, renderOptions)}
         <DatePublished>
           released {props.data.contentfulProject.publishedDate}
         </DatePublished>
