@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   min-width: 34vw;
   padding: 2rem;
   background-color: ${colors.lightgrey};
+  hyphens: auto;
 
   @media only screen and (max-width: 900px) {
     margin: 2rem 0;
@@ -24,7 +25,7 @@ export default () => {
     <Layout>
       <Head title="about" />
       <Centered column>
-        <Wrapper>
+        <Wrapper lang={`en`}>
           <p>
             <strong>glitch[dot]cool</strong> is a group of digital creators who
             share a common interest in glitch art. we are producers, sound
