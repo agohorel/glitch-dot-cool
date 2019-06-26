@@ -9,7 +9,7 @@ const StyledBackdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${colors.lightgrey};
+  background-color: ${colors.nearblack};
   opacity: .7;
   z-index: 100;
 `
