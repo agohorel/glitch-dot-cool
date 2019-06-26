@@ -7,7 +7,11 @@ import colors from "../styles/colors"
 
 const Drawer = styled.nav`
   height: 100%;
-  background: ${colors.offwhite};
+  background-image: linear-gradient(
+    to bottom right,
+    ${colors.lightgrey},
+    ${colors.darkgrey}
+  );
   box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
@@ -27,19 +31,29 @@ const Centered = styled.div`
   padding: 2rem;
 `
 
+const Nav = styled.ul`
+  height: 100%;
+  transition: 0.15s ease transform 0.2s;
+`
+
 const DrawerTextStyles = {
   fontSize: `2rem`,
 }
 
 const SideDrawer = props => {
-  let slideOut
-  props.show
-    ? (slideOut = { transform: `translateX(0)` })
-    : (slideOut = { transform: `translateX(110%)` })
+  let slideOut, slideDown
+
+  if (props.show) {
+    slideOut = { transform: `translateX(0)` }
+    slideDown = { transform: `translateY(0)` }
+  } else {
+    slideOut = { transform: `translateX(110%)` }
+    slideDown = { transform: `translateY(-110%)` }
+  }
 
   return (
     <Drawer style={slideOut}>
-      <ul style={{ height: `100%` }}>
+      <Nav style={slideDown}>
         <Centered column>
           <StyledList drawer>
             <GatsbyLink
@@ -87,7 +101,7 @@ const SideDrawer = props => {
             </GatsbyLink>
           </StyledList>
         </Centered>
-      </ul>
+      </Nav>
     </Drawer>
   )
 }
