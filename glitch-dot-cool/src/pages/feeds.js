@@ -12,26 +12,23 @@ import {
 } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+`
+
 const Avatar = styled.img`
+  display: block;
   width: 2rem;
   border-radius: 50%;
   margin-right: 0.5rem;
-  display: inline;
   transition: 0.2s ease opacity;
 
   :hover {
     opacity: 0.5;
   }
 `
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const ListStyle = {
-  marginTop: ".5rem",
-}
 
 const Posts = () => {
   const data = useStaticQuery(graphql`
@@ -66,7 +63,7 @@ const Posts = () => {
       <ol>
         {data.allContentfulAuthor.edges.map(post => {
           return (
-            <Wrapper key={post.node.authorName} style={ListStyle}>
+            <Wrapper key={post.node.authorName}>
               <GatsbyLink to={`/${slugify(post.node.authorName)}/posts`}>
                 <Avatar
                   src={post.node.avatar.file.url}
