@@ -43,7 +43,7 @@ const Header = props => {
     <StyledHeader>
       <StyledList>
         <Link to="/">
-          <h3>{data.site.siteMetadata.title}</h3>
+          <h3 style={{fontWeight: `500`}}>{data.site.siteMetadata.title}</h3>
         </Link>
       </StyledList>
       <Spacer />
