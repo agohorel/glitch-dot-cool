@@ -8,19 +8,32 @@ import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 
 const StyledFooter = styled.footer`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
   position: fixed;
   bottom: 0;
   width: 100%;
   height: ${measurements.footerHeight}rem;
   background-color: ${colors.nearblack};
 
-  @media only screen and (max-width: 320px){
-    li {
-      font-size: .8rem;
+  li a {
+    font-size: calc(12px + 1vw);
+  }
+
+  @media only screen and (min-width: 1200px) {
+    li a {
+      font-size: 2.4rem;
     }
   }
 `
+
+const devtagStyles = {
+  fontSize: `1.2rem`,
+  color: colors.midgrey,
+}
 
 const Footer = () => {
   return (
@@ -55,21 +68,17 @@ const Footer = () => {
         </ul>
       </Centered>
 
-      <Centered>
-        <StyledList dark>
-          <p style={{ fontSize: `.6rem`, color: colors.midgrey }}>
-            site developed by{" "}
-            <a
-              style={{ color: colors.midgrey }}
-              href="https://agohorel.github.io/portfolio/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              alex gohorel
-            </a>
-          </p>
-        </StyledList>
-      </Centered>
+      <p style={devtagStyles}>
+        site developed by{" "}
+        <a
+          style={devtagStyles}
+          href="https://agohorel.github.io/portfolio/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          alex gohorel
+        </a>
+      </p>
     </StyledFooter>
   )
 }

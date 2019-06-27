@@ -13,12 +13,12 @@ import {
 import { slugify } from "../utils/utils"
 
 const Post = styled.div`
-  padding: 1rem;
+  padding: 2rem;
   background-color: #fff;
-  margin-top: 1rem;
+  margin-top: 2rem;
 
   :last-child {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 `
 

@@ -9,12 +9,12 @@ import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 const Post = styled.div`
   width: 100%;
   display: flex;
-  padding: 1rem;
+  padding: 2rem;
   background-color: #fff;
-  margin-top: 1rem;
+  margin-top: 2rem;
 
   :last-child {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   @media only screen and (max-width: 450px) {
@@ -29,10 +29,10 @@ const Textbox = styled.div`
 `
 
 const Img = styled.img`
-  max-width: 7rem;
-  max-height: 7rem;
+  max-width: 14rem;
+  max-height: 14rem;
   width: auto;
-  margin-right: 1rem;
+  margin-right: 2rem;
   transition: .2s ease all;
 
   :hover {
@@ -79,7 +79,7 @@ const Posts = () => {
 
               <Textbox>
                 <GatsbyLink to={`/projects/${post.node.slug}`}>
-                  <h1>{post.node.title}</h1>
+                  <h2>{post.node.title}</h2>
                 </GatsbyLink>
                 <p>{post.node.publishedDate}</p>
               </Textbox>

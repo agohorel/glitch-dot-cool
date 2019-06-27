@@ -9,18 +9,18 @@ import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Wrapper = styled.div`
-  margin-top: 3rem;
+  margin-top: 6rem;
   display: flex;
 
   @media only screen and (max-width: 900px) {
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 `
 
 const Posts = styled.div`
   display: inline-block;
-  padding: 2rem;
+  padding: 4rem;
   background-color: #fff;
   flex-grow: 1;
 
@@ -31,7 +31,7 @@ const Posts = styled.div`
 `
 
 const Post = styled.div`
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 `
 
 export const query = graphql`

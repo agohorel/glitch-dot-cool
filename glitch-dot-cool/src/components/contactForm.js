@@ -6,7 +6,7 @@ import colors from "../styles/colors"
 
 const StyledForm = styled.form`
   width: 75%;
-  margin-top: 3rem;
+  margin-top: 6rem;
 
   @media only screen and (min-width: 900px){
     width: 50%;
@@ -17,8 +17,8 @@ const FormInput = styled.input`
   display: block;
   border: none;
   width: 100%;
-  font-size: 1.2rem;
-  padding: 0.5rem 0;
+  font-size: 2.4rem;
+  padding: 1rem 0;
   transition: 0.2s ease all;
 
   :focus {
@@ -36,8 +36,8 @@ const FormTextArea = styled.textarea`
   display: block;
   border: none;
   width: 100%;
-  font-size: 1rem;
-  padding: 0.5rem 0;
+  font-size: 2rem;
+  padding: 1rem 0;
   transition: 0.2s ease all;
   resize: none;
 
@@ -56,7 +56,7 @@ const FormSubmit = StyledButton.withComponent("input")
 
 const FormGroup = styled.div`
   :not(:last-child) {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 `
 

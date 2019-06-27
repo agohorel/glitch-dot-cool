@@ -8,36 +8,36 @@ import { GatsbyLink } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const PostContainer = styled.div`
-  margin-top: 3rem;
+  margin-top: 6rem;
   display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
 
   :last-child {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   @media only screen and (max-width: 767px) {
-    margin-top: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   }
 
   @media only screen and (max-width: 400px) {
     margin-top: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 
-    h1 {
-      font-size: 1.5rem;
-    }
+    // h1 {
+    //   font-size: 3rem;
+    // }
 
-    h3 {
-      font-size: 1.1rem;
-    }
+    // h3 {
+    //   font-size: 2.2rem;
+    // }
   }
 `
 
 const TextContainer = styled.div`
-  padding: 1rem;
+  padding: 2rem;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
 `
@@ -46,7 +46,7 @@ const Post = styled.div`
   display: flex;
   align-items: center;
   justify-contents: center;
-  padding: 2rem;
+  padding: 4rem;
 
   background-image: ${props =>
     props.backgroundImg

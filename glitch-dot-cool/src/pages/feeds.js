@@ -15,14 +15,14 @@ import { slugify } from "../utils/utils"
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
 `
 
 const Avatar = styled.img`
   display: block;
-  width: 2rem;
+  width: 4rem;
   border-radius: 50%;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
   transition: 0.2s ease opacity;
 
   :hover {

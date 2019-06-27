@@ -12,23 +12,23 @@ import { slugify, renderOptions } from "../utils/utils"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 
 const BlogHeader = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `
 
 const BlogPost = styled.div`
   display: block;
   max-width: 67%;
-  margin: 2rem auto ${measurements.footerHeight}rem auto;
+  margin: 4rem auto ${measurements.footerHeight}rem auto;
 
   img {
     display: block;
-    margin: 1rem auto;
+    margin: 2rem auto;
     max-width: 100%;
   }
 
   code {
     font-family: "Roboto Mono", monospace;
-    font-size: 0.8rem;
+    font-size: 1.6rem;
 
     // style nested elements within code block
     * {
@@ -39,26 +39,26 @@ const BlogPost = styled.div`
 
   @media only screen and (max-width: 1200px) {
     max-width: 80%;
-    padding: 2rem 0 ${measurements.footerHeight}rem 0;
+    padding: 4rem 0 ${measurements.footerHeight}rem 0;
   }
 
   @media only screen and (max-width: 900px) {
     max-width: 100%;
-    padding: 2rem 0 ${measurements.footerHeight}rem 0;
+    padding: 4rem 0 ${measurements.footerHeight}rem 0;
   }
 `
 const BlogTags = styled.div`
-  margin-top: 2rem;
+  margin-top: 4rem;
 `
 
 const BlogTag = styled.div`
   display: inline-block;
   background-color: ${colors.lightgrey};
-  padding: 0.25rem 0.5rem;
-  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
 
   a {
-    font-size: 0.8rem;
+    font-size: 1.6rem;
     color: ${colors.darkgrey};
     transition: 0.2s ease color;
   }

@@ -13,19 +13,19 @@ import colors from "../styles/colors"
 const ProjectWrapper = styled.div`
   display: block;
   max-width: 67%;
-  margin: 2rem auto ${measurements.footerHeight}rem auto;
+  margin: 4rem auto ${measurements.footerHeight}rem auto;
 
   img {
     max-width: 75%;
   }
 
   p {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   code {
     font-family: "Roboto Mono", monospace;
-    font-size: 0.8rem;
+    font-size: 1.6rem;
 
     // style nested elements within code block
     * {
@@ -53,26 +53,26 @@ const ProjectWrapper = styled.div`
 
 const DatePublished = styled.p`
   display: inline-block;
-  font-size: .8rem;
-  margin-top: .5rem;
-  padding: .5rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  padding: 1rem;
   background-color: ${colors.lightgrey};
   color: ${colors.midgrey};
 `
 
 const Img = styled.img`
   display: block;
-  margin: 1rem auto;
+  margin: 2rem auto;
 `
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 
   a:not(:last-child) {
-    margin-right: 2rem;
+    margin-right: 4rem;
   }
 `
 

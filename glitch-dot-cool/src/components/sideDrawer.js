@@ -28,7 +28,7 @@ const Centered = styled.div`
   flex-direction: ${props => (props.column ? `column` : `row`)};
   justify-content: center;
   align-items: left;
-  padding: 2rem;
+  padding: 4rem;
 `
 
 const Nav = styled.ul`
@@ -37,7 +37,7 @@ const Nav = styled.ul`
 `
 
 const DrawerTextStyles = {
-  fontSize: `2rem`,
+  fontSize: `4rem`,
 }
 
 const SideDrawer = props => {

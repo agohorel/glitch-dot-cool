@@ -10,26 +10,26 @@ import { Centered, StyledLink } from "../utils/utilComponents"
 import colors from "../styles/colors"
 
 const ProfileImage = styled.img`
-  width: 5rem;
+  width: 10rem;
   border-radius: 50%;
   display: inline-block;
-  margin: 0 0 1rem 0;
+  margin: 0 0 2rem 0;
 `
 const ProfileCard = styled.div`
   display: inline-block;
-  padding: 2rem;
-  margin-right: 3rem;
+  padding: 4rem;
+  margin-right: 6rem;
   background-color: #fff;
   align-self: flex-start;
 
   @media only screen and (max-width: 900px) {
-    margin: 0 0 2rem 0;
+    margin: 0 0 4rem 0;
     width: 100%;
   }
 `
 
 const iconStyle = {
-    fontSize: ".8rem",
+    fontSize: "1.6rem",
     color: `${colors.midgrey}`
 }
 

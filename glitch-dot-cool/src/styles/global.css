@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700|Roboto+Mono&display=swap');
 
 *,
 *::after,
@@ -9,17 +9,37 @@
   font-family: "Roboto", sans-serif;
 }
 
+html {
+  font-size: 10px;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.34rem;
+}
+
+p, a, li, code, label {
+  font-size: 2rem;
+}
+
 body {
   background-color: #e6e6e6;
 }
 
 iframe {
   width: 100%;
-  padding: .5rem 0;
+  padding: 1rem 0;
 }
 
 iframe.youtube {
-  min-height: 20rem;
+  min-height: 40rem;
 }
 
 :root {
@@ -28,18 +48,18 @@ iframe.youtube {
 }
 
 ::-webkit-scrollbar {
-  width: 0.45rem;
-  height: 0.45rem;
+  width: 0.9rem;
+  height: 0.9rem;
   background-color: #191919;
 }
 
 ::-webkit-scrollbar-thumb {
-  width: 0.45rem;
+  width: 0.9rem;
   background-color: #4b4b4b;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  width: 0.45rem;
+  width: 0.9rem;
   background-color: #5b5b5b;
 }
 

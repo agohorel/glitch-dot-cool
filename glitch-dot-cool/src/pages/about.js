@@ -7,15 +7,15 @@ import { Centered } from "../utils/utilComponents"
 import colors from "../styles/colors"
 
 const Wrapper = styled.div`
-  margin: 6rem 2rem;
-  max-width: 31rem;
+  margin: 12rem 4rem;
+  max-width: 62rem;
   min-width: 34vw;
-  padding: 2rem;
+  padding: 4rem;
   background-color: ${colors.lightgrey};
   hyphens: auto;
 
   @media only screen and (max-width: 900px) {
-    margin: 2rem 0;
+    margin: 4rem 0;
     max-width: 100%;
   }
 `

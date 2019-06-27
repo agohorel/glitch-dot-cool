@@ -35,8 +35,8 @@ const StyledList = styled.li`
   display: inline-block;
 
   &:not(:last-child) {
-    margin-right: ${props => (props.drawer ? `0` : `1.5rem`)};
-    margin-bottom: ${props => (props.drawer ? `1.5rem` : `0`)};
+    margin-right: ${props => (props.drawer ? `0` : `3rem`)};
+    margin-bottom: ${props => (props.drawer ? `3rem` : `0`)};
   }
 
   a,
@@ -44,7 +44,7 @@ const StyledList = styled.li`
     text-decoration: none;
     color: ${props =>
       props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
-    font-size: ${props => props.drawer ? `2rem` : `inherit`}
+    font-size: ${props => props.drawer ? `4rem` : `inherit`}
     transition: 0.2s ease all;
 
     :hover {
@@ -77,8 +77,8 @@ const Centered = styled.div`
 
 const StyledButton = styled.button`
   display: inline-block;
-  padding: 0.5rem 1rem;
-  min-width: 5rem;
+  padding: 1rem 2rem;
+  min-width: 10rem;
   background-color: ${colors.midgrey};
   color: ${colors.offwhite};
   border: none;
@@ -92,14 +92,14 @@ const StyledButton = styled.button`
 
 const StyledLinkButton = styled.a`
   display: inline-block;
-  padding: 0.5rem 1rem;
-  min-width: 5rem;
+  padding: 1rem 2rem;
+  min-width: 10rem;
   background-color: ${colors.midgrey};
   color: ${colors.offwhite};
   border: none;
   transition: 0.2s ease all;
   text-decoration: none;
-  font-size: .8rem;
+  font-size: 1.6rem;
   text-align: center;
 
   :hover {
