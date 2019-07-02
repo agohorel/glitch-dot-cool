@@ -5,6 +5,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
+import DistroLinks from "../components/distroLinks"
 import { PageTitle, StyledLinkButton, Centered } from "../utils/utilComponents"
 import { renderOptions } from "../utils/utils"
 import measurements from "../styles/measurements"
@@ -83,6 +84,11 @@ export const query = graphql`
       publishedDate(formatString: "MMMM Do YYYY")
       downloadLink
       torrentLink
+      distroLinks {
+        internal {
+          content
+        }
+      }
       body {
         json
       }
@@ -97,6 +103,8 @@ export const query = graphql`
 `
 
 const Project = props => {
+  // make valid JSON from distroLinks string content
+  let parsedDistroLinks = JSON.parse(props.data.contentfulProject.distroLinks.internal.content)
   return (
     <Layout>
       <Head title={props.data.contentfulProject.title} />
@@ -125,6 +133,7 @@ const Project = props => {
           </StyledLinkButton>
         </ButtonWrapper>
         {documentToReactComponents(props.data.contentfulProject.body.json, renderOptions)}
+        <DistroLinks props={parsedDistroLinks}></DistroLinks>
         <DatePublished>
           released {props.data.contentfulProject.publishedDate}
         </DatePublished>
