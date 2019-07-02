@@ -50,7 +50,7 @@ const Profile = props => {
         {Object.keys(links).map(key => {
           return (
             <StyledLink key={key} href={`${links[key]}`} target="_blank">
-              {`${key} `}
+              {`${key.toLowerCase()} `}
               <FontAwesomeIcon icon={faExternalLinkAlt} style={iconStyle} />
             </StyledLink>
           )
