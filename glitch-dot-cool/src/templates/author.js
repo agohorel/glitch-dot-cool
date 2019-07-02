@@ -48,8 +48,9 @@ export const query = graphql`
             }
           }
           links {
-            soundcloud
-            bandcamp
+            internal {
+              content
+            }
           }
         }
       }

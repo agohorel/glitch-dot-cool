@@ -35,7 +35,7 @@ const iconStyle = {
 
 const Profile = props => {
   let myProps = props.props
-  let links = myProps.data.allContentfulAuthor.edges[0].node.links
+  let links = JSON.parse(myProps.data.allContentfulAuthor.edges[0].node.links.internal.content)
   return (
     <ProfileCard>
       <Centered column>
