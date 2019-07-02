@@ -3,8 +3,6 @@ import styled from "styled-components"
 
 import { StyledLinkButton } from "../utils/utilComponents"
 
-import colors from "../styles/colors.js"
-
 const DistroLinkWrapper = styled.div`
   margin: 2rem 0;
 
@@ -22,7 +20,6 @@ const Buttons = styled.div`
 `
 
 const DistroLinks = props => {
-  console.log(props)
   if (Object.keys(props.props).length) {
     return (
       <DistroLinkWrapper>
