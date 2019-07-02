@@ -7,7 +7,7 @@ import colors from "../styles/colors.js"
 
 const DistroLinkWrapper = styled.div`
   margin: 2rem 0;
-  
+
   h3 {
     margin-bottom: 1rem;
   }
@@ -30,7 +30,11 @@ const DistroLinks = props => {
         <Buttons>
           {Object.keys(props.props).map(link => {
             return (
-              <StyledLinkButton href={props.props[link]} target="_blank">
+              <StyledLinkButton
+                key={link}
+                href={props.props[link]}
+                target="_blank"
+              >
                 {link}
               </StyledLinkButton>
             )
