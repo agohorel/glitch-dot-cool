@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styled from "styled-components"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
@@ -15,10 +16,6 @@ const ProjectWrapper = styled.div`
   display: block;
   max-width: 67%;
   margin: 4rem auto ${measurements.footerHeight}rem auto;
-
-  img {
-    max-width: 75%;
-  }
 
   p {
     margin-bottom: 2rem;
@@ -37,18 +34,10 @@ const ProjectWrapper = styled.div`
 
   @media only screen and (max-width: 900px) {
     max-width: 90%;
-
-    img {
-      max-width: 85%;
-    }
   }
 
   @media only screen and (max-width: 500px) {
     max-width: 100%;
-
-    img {
-      max-width: 90%;
-    }
   }
 `
 
@@ -60,12 +49,6 @@ const DatePublished = styled.p`
   background-color: ${colors.lightgrey};
   color: ${colors.midgrey};
 `
-
-const Img = styled.img`
-  display: block;
-  margin: 2rem auto;
-`
-
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -93,9 +76,12 @@ export const query = graphql`
         json
       }
       artwork {
-        file {
-          fileName
-          url
+        fluid(maxWidth: 600) {
+          base64
+          src
+          srcSet
+          aspectRatio
+          sizes
         }
       }
     }
@@ -104,7 +90,9 @@ export const query = graphql`
 
 const Project = props => {
   // make valid JSON from distroLinks string content
-  let parsedDistroLinks = JSON.parse(props.data.contentfulProject.distroLinks.internal.content)
+  let parsedDistroLinks = JSON.parse(
+    props.data.contentfulProject.distroLinks.internal.content
+  )
   return (
     <Layout>
       <Head title={props.data.contentfulProject.title} />
@@ -114,10 +102,9 @@ const Project = props => {
             {props.data.contentfulProject.title}
           </PageTitle>
         </Centered>
-        <Img
-          src={props.data.contentfulProject.artwork.file.url}
-          alt={props.data.contentfulProject.artwork.file.fileName}
-        />
+        {/* <ImageWrapper> */}
+          <Image fluid={props.data.contentfulProject.artwork.fluid} />
+        {/* </ImageWrapper> */}
         <ButtonWrapper>
           <StyledLinkButton
             href={props.data.contentfulProject.downloadLink}
@@ -132,8 +119,11 @@ const Project = props => {
             torrent
           </StyledLinkButton>
         </ButtonWrapper>
-        {documentToReactComponents(props.data.contentfulProject.body.json, renderOptions)}
-        <DistroLinks props={parsedDistroLinks}></DistroLinks>
+        {documentToReactComponents(
+          props.data.contentfulProject.body.json,
+          renderOptions
+        )}
+        <DistroLinks props={parsedDistroLinks} />
         <DatePublished>
           released {props.data.contentfulProject.publishedDate}
         </DatePublished>
