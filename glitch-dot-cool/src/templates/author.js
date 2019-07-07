@@ -35,38 +35,45 @@ const Post = styled.div`
 `
 
 export const query = graphql`
-  query($author: String!) {
-    allContentfulAuthor(filter: { authorName: { eq: $author } }) {
-      edges {
-        node {
-          authorName
-          contactEmail
-          location
-          avatar {
-            file {
-              url
-            }
-          }
-          links {
-            internal {
-              content
-            }
-          }
-        }
-      }
-    }
-    allContentfulBlogPost(filter: { author: { eq: $author } }) {
-      edges {
-        node {
-          title
-          slug
-          author
-          publishedDate(formatString: "MMMM Do, YYYY")
-        }
-      }
-    }
-  }
-`
+         query($author: String!) {
+           allContentfulAuthor(filter: { authorName: { eq: $author } }) {
+             edges {
+               node {
+                 authorName
+                 contactEmail
+                 location
+                 avatar {
+                   file {
+                     url
+                   }
+                   fluid(maxWidth: 100) {
+                     base64
+                     sizes
+                     src
+                     srcSet
+                     aspectRatio
+                   }
+                 }
+                 links {
+                   internal {
+                     content
+                   }
+                 }
+               }
+             }
+           }
+           allContentfulBlogPost(filter: { author: { eq: $author } }) {
+             edges {
+               node {
+                 title
+                 slug
+                 author
+                 publishedDate(formatString: "MMMM Do, YYYY")
+               }
+             }
+           }
+         }
+       `
 
 const Tag = props => {
   return (
