@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
@@ -28,17 +29,18 @@ const Textbox = styled.div`
   flex-direction: column;
 `
 
-const Img = styled.img`
-  max-width: 14rem;
-  max-height: 14rem;
-  width: auto;
-  margin-right: 2rem;
-  transition: .2s ease all;
-
+const ImageHover = styled.div`
+transition: .2s ease filter;
   :hover {
     filter: invert(100%);
   }
 `
+
+const imgStyles = {
+  width: `14rem`,
+  marginRight: `2rem`,
+  transition: `.2s ease all`,
+}
 
 const Posts = () => {
   const data = useStaticQuery(graphql`
@@ -54,6 +56,13 @@ const Posts = () => {
               file {
                 url
                 fileName
+              }
+              fluid(maxWidth: 250) {
+                base64
+                sizes
+                src
+                srcSet
+                aspectRatio
               }
             }
           }
@@ -71,10 +80,9 @@ const Posts = () => {
           return (
             <Post key={post.node.title}>
               <GatsbyLink to={`/projects/${post.node.slug}`}>
-                <Img
-                  src={post.node.artwork.file.url}
-                  alt={post.node.artwork.title}
-                />
+                <ImageHover>
+                  <Image style={imgStyles} fluid={post.node.artwork.fluid} />
+                </ImageHover>
               </GatsbyLink>
 
               <Textbox>
