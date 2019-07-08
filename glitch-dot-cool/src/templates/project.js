@@ -76,7 +76,7 @@ export const query = graphql`
         json
       }
       artwork {
-        fluid(maxWidth: 600) {
+        fluid(maxWidth: 900) {
           base64
           src
           srcSet
@@ -102,9 +102,7 @@ const Project = props => {
             {props.data.contentfulProject.title}
           </PageTitle>
         </Centered>
-        {/* <ImageWrapper> */}
           <Image fluid={props.data.contentfulProject.artwork.fluid} />
-        {/* </ImageWrapper> */}
         <ButtonWrapper>
           <StyledLinkButton
             href={props.data.contentfulProject.downloadLink}
