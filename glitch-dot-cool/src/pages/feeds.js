@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
@@ -18,15 +19,20 @@ const Wrapper = styled.div`
   margin-top: 2rem;
 `
 
-const Avatar = styled.img`
-  display: block;
-  width: 4rem;
-  border-radius: 50%;
-  margin-right: 1rem;
-  transition: 0.2s ease opacity;
+const avatarStyles = {
+  display: `block`,
+  width: `4rem`,
+  borderRadius: `50%`,
+  marginRight: `1rem`,
+  transition: `0.2s ease opacity`,
+  hover: `opacity: `,
+}
 
-  :hover {
-    opacity: 0.5;
+const AvatarHover = styled.div`
+ * {
+    :hover {
+      opacity: .5;
+    }  
   }
 `
 
@@ -42,6 +48,13 @@ const Posts = () => {
                 url
                 fileName
               }
+              fluid(maxWidth: 75) {
+                base64
+                sizes
+                src
+                srcSet
+                aspectRatio
+              }
             }
           }
         }
@@ -51,7 +64,7 @@ const Posts = () => {
 
   return (
     <Layout>
-      <Head title="feeds"/>
+      <Head title="feeds" />
       <PageTitle>feeds</PageTitle>
 
       <GatsbyLink to={"/posts"}>
@@ -65,10 +78,9 @@ const Posts = () => {
           return (
             <Wrapper key={post.node.authorName}>
               <GatsbyLink to={`/${slugify(post.node.authorName)}/posts`}>
-                <Avatar
-                  src={post.node.avatar.file.url}
-                  alt={post.node.avatar.file.fileName}
-                />
+                <AvatarHover>
+                  <Image style={avatarStyles} fluid={post.node.avatar.fluid} />
+                </AvatarHover>
               </GatsbyLink>
 
               <StyledList>
