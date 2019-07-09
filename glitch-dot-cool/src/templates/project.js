@@ -85,10 +85,42 @@ export const query = graphql`
         }
       }
     }
+    allContentfulAsset {
+      edges {
+        node {
+          file {
+            fileName
+          }
+          fluid {
+            base64
+            sizes
+            src
+            srcSet
+            aspectRatio
+          }
+        }
+      }
+    }
   }
 `
 
 const Project = props => {
+  // setup images for use with gatsby-image
+  let projectContent = props.data.contentfulProject.body.json
+
+  projectContent.content.forEach(contentItem => {
+    if (contentItem.nodeType === "embedded-asset-block") {
+      props.data.allContentfulAsset.edges.forEach(asset => {
+        if (
+          contentItem.data.target.fields.file["en-US"].fileName ===
+          asset.node.file.fileName
+        ) {
+          contentItem.img = asset.node.fluid
+        }
+      })
+    }
+  })
+
   // make valid JSON from distroLinks string content
   let parsedDistroLinks = JSON.parse(
     props.data.contentfulProject.distroLinks.internal.content
@@ -102,7 +134,7 @@ const Project = props => {
             {props.data.contentfulProject.title}
           </PageTitle>
         </Centered>
-          <Image fluid={props.data.contentfulProject.artwork.fluid} />
+        <Image fluid={props.data.contentfulProject.artwork.fluid} />
         <ButtonWrapper>
           <StyledLinkButton
             href={props.data.contentfulProject.downloadLink}
@@ -117,10 +149,7 @@ const Project = props => {
             torrent
           </StyledLinkButton>
         </ButtonWrapper>
-        {documentToReactComponents(
-          props.data.contentfulProject.body.json,
-          renderOptions
-        )}
+        {documentToReactComponents(projectContent, renderOptions)}
         <DistroLinks props={parsedDistroLinks} />
         <DatePublished>
           released {props.data.contentfulProject.publishedDate}

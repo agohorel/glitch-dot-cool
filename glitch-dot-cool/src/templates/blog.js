@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
+import Image from "gatsby-image"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "prismjs/themes/prism-coy.css"
 
@@ -78,11 +79,39 @@ export const query = graphql`
       tags
       author
     }
+    allContentfulAsset {
+      edges {
+        node {
+          file {
+            fileName
+          }
+          fluid {
+            base64
+            sizes
+            src
+            srcSet
+            aspectRatio
+          }
+        }
+      }
+    }
   }
 `
 
 const Blog = props => {
   let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
+
+  let blogContent = props.data.contentfulBlogPost.body.json
+
+  blogContent.content.forEach(contentItem => {
+    if (contentItem.nodeType === "embedded-asset-block") {
+      props.data.allContentfulAsset.edges.forEach(asset => {
+        if (contentItem.data.target.fields.file["en-US"].fileName === asset.node.file.fileName) {
+          contentItem.img = asset.node.fluid
+        }
+      })
+    }
+  })
 
   return (
     <Layout>
@@ -104,7 +133,8 @@ const Blog = props => {
         </BlogHeader>
 
         {documentToReactComponents(
-          props.data.contentfulBlogPost.body.json,
+          // props.data.contentfulBlogPost.body.json,
+          blogContent,
           renderOptions
         )}
 

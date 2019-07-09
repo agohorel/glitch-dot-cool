@@ -3,6 +3,7 @@ import "prismjs/themes/prism-coy.css"
 import Prism from "prismjs"
 import convert from "react-attr-converter"
 import CSSJSON from "cssjson"
+import Image from "gatsby-image"
 
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
@@ -32,9 +33,7 @@ const activeNavStyles = {
 const renderOptions = {
   renderNode: {
     "embedded-asset-block": node => {
-      const alt = node.data.target.fields.title["en-US"]
-      const url = node.data.target.fields.file["en-US"].url
-      return <img alt={alt} src={url} />
+      return <Image fluid={node.img}></Image>
     },
     // setup for styling code blocks
     paragraph: node => {
