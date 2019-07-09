@@ -18,17 +18,17 @@ const Background = styled.div`
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 67%;
-  padding: 0 5rem ${measurements.footerHeight}rem 5rem;
+  padding: 0 10rem ${measurements.footerHeight}rem 10rem;
   transition: 0.2s ease-out all;
 
   @media only screen and (max-width: 1200px) {
     max-width: 90%;
-    padding: 0 2rem ${measurements.footerHeight}rem 2rem;
+    padding: 0 4rem ${measurements.footerHeight}rem 4rem;
   }
 
   @media only screen and (max-width: 900px) {
     max-width: 100%;
-    padding: 0 2rem ${measurements.footerHeight}rem 2rem;
+    padding: 0 4rem ${measurements.footerHeight}rem 4rem;
   }
 
   @media only screen and (max-width: 500px) {

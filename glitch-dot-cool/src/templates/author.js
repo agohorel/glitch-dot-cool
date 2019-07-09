@@ -6,20 +6,21 @@ import Layout from "../components/layout"
 import Head from "../components/head"
 import Profile from "../components/profile"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
+import { slugify } from "../utils/utils"
 
 const Wrapper = styled.div`
-  margin-top: 3rem;
+  margin-top: 6rem;
   display: flex;
 
   @media only screen and (max-width: 900px) {
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 `
 
 const Posts = styled.div`
   display: inline-block;
-  padding: 2rem;
+  padding: 4rem;
   background-color: #fff;
   flex-grow: 1;
 
@@ -30,40 +31,49 @@ const Posts = styled.div`
 `
 
 const Post = styled.div`
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 `
 
 export const query = graphql`
-  query($author: String!) {
-    allContentfulAuthor(filter: { authorName: { eq: $author } }) {
-      edges {
-        node {
-          authorName
-          contactEmail
-          location
-          avatar {
-            file {
-              url
-            }
-          }
-          links {
-            soundcloud
-            bandcamp
-          }
-        }
-      }
-    }
-    allContentfulBlogPost(filter: { author: { eq: $author } }) {
-      edges {
-        node {
-          title
-          slug
-          publishedDate(formatString: "MMMM Do, YYYY")
-        }
-      }
-    }
-  }
-`
+         query($author: String!) {
+           allContentfulAuthor(filter: { authorName: { eq: $author } }) {
+             edges {
+               node {
+                 authorName
+                 contactEmail
+                 location
+                 avatar {
+                   file {
+                     url
+                   }
+                   fluid(maxWidth: 100) {
+                     base64
+                     sizes
+                     src
+                     srcSet
+                     aspectRatio
+                   }
+                 }
+                 links {
+                   internal {
+                     content
+                   }
+                 }
+               }
+             }
+           }
+           allContentfulBlogPost(filter: { author: { eq: $author } }) {
+             edges {
+               node {
+                 title
+                 slug
+                 author
+                 publishedDate(formatString: "MMMM Do, YYYY")
+               }
+             }
+           }
+         }
+       `
 
 const Tag = props => {
   return (
@@ -79,7 +89,7 @@ const Tag = props => {
               return (
                 <Post key={post.node.title}>
                   <StyledList>
-                    <GatsbyLink to={`/blog/${post.node.slug}`}>
+                    <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
                       <h3>{post.node.title}</h3>
                     </GatsbyLink>
                   </StyledList>

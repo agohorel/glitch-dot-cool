@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Image from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faMapMarkerAlt,
@@ -9,48 +10,50 @@ import {
 import { Centered, StyledLink } from "../utils/utilComponents"
 import colors from "../styles/colors"
 
-const ProfileImage = styled.img`
-  width: 5rem;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 0 0 1rem 0;
-`
+const avatarStyles = {
+  width: `10rem`,
+  borderRadius: `50%`,
+  display: `inline-block`,
+  margin: `0 0 2rem 0`
+}
 const ProfileCard = styled.div`
   display: inline-block;
-  padding: 2rem;
-  margin-right: 3rem;
+  padding: 4rem;
+  margin-right: 6rem;
   background-color: #fff;
   align-self: flex-start;
 
   @media only screen and (max-width: 900px) {
-    margin: 0 0 2rem 0;
+    margin: 0 0 4rem 0;
     width: 100%;
   }
 `
 
 const iconStyle = {
-    fontSize: ".8rem",
-    color: `${colors.midgrey}`
+  fontSize: "1.6rem",
+  color: `${colors.midgrey}`,
 }
 
 const Profile = props => {
   let myProps = props.props
-  let links = myProps.data.allContentfulAuthor.edges[0].node.links
+  let links = JSON.parse(
+    myProps.data.allContentfulAuthor.edges[0].node.links.internal.content
+  )
   return (
     <ProfileCard>
       <Centered column>
-        <ProfileImage
-          src={myProps.data.allContentfulAuthor.edges[0].node.avatar.file.url}
+        <Image style={avatarStyles}
+          fluid={myProps.data.allContentfulAuthor.edges[0].node.avatar.fluid}
         />
         <h1>{myProps.pageContext.author}</h1>
         <p>
-          <FontAwesomeIcon icon={faMapMarkerAlt}  style={iconStyle}/>
+          <FontAwesomeIcon icon={faMapMarkerAlt} style={iconStyle} />
           {` ${myProps.data.allContentfulAuthor.edges[0].node.location}`}
         </p>
         {Object.keys(links).map(key => {
           return (
             <StyledLink key={key} href={`${links[key]}`} target="_blank">
-              {`${key} `}
+              {`${key.toLowerCase()} `}
               <FontAwesomeIcon icon={faExternalLinkAlt} style={iconStyle} />
             </StyledLink>
           )

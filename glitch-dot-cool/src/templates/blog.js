@@ -1,37 +1,35 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
+import Image from "gatsby-image"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "prismjs/themes/prism-coy.css"
-import Prism from "prismjs"
-import convert from "react-attr-converter"
-import CSSJSON from "cssjson"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
-import { slugify } from "../utils/utils"
+import { slugify, renderOptions } from "../utils/utils"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 
 const BlogHeader = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `
 
 const BlogPost = styled.div`
   display: block;
   max-width: 67%;
-  margin: 2rem auto ${measurements.footerHeight}rem auto;
+  margin: 4rem auto ${measurements.footerHeight}rem auto;
 
   img {
     display: block;
-    margin: 1rem auto;
+    margin: 2rem auto;
     max-width: 100%;
   }
 
   code {
     font-family: "Roboto Mono", monospace;
-    font-size: 0.8rem;
+    font-size: 1.6rem;
 
     // style nested elements within code block
     * {
@@ -42,26 +40,26 @@ const BlogPost = styled.div`
 
   @media only screen and (max-width: 1200px) {
     max-width: 80%;
-    padding: 2rem 0 ${measurements.footerHeight}rem 0;
+    padding: 4rem 0 ${measurements.footerHeight}rem 0;
   }
 
   @media only screen and (max-width: 900px) {
     max-width: 100%;
-    padding: 2rem 0 ${measurements.footerHeight}rem 0;
+    padding: 4rem 0 ${measurements.footerHeight}rem 0;
   }
 `
 const BlogTags = styled.div`
-  margin-top: 2rem;
+  margin-top: 4rem;
 `
 
 const BlogTag = styled.div`
   display: inline-block;
   background-color: ${colors.lightgrey};
-  padding: 0.25rem 0.5rem;
-  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
 
   a {
-    font-size: 0.8rem;
+    font-size: 1.6rem;
     color: ${colors.darkgrey};
     transition: 0.2s ease color;
   }
@@ -81,88 +79,39 @@ export const query = graphql`
       tags
       author
     }
+    allContentfulAsset {
+      edges {
+        node {
+          file {
+            fileName
+          }
+          fluid {
+            base64
+            sizes
+            src
+            srcSet
+            aspectRatio
+          }
+        }
+      }
+    }
   }
 `
 
 const Blog = props => {
-  // config for setting up embedded imgs
-  const options = {
-    renderNode: {
-      "embedded-asset-block": node => {
-        const alt = node.data.target.fields.title["en-US"]
-        const url = node.data.target.fields.file["en-US"].url
-        return <img alt={alt} src={url} />
-      },
-      // setup for styling code blocks
-      paragraph: node => {
-        if (typeof window !== `undefined`) {
-          setTimeout(() => {
-            Prism.highlightAll()
-          }, 200)
-        }
-
-        return node.content.map(contentItem => {
-          if (
-            contentItem.marks.length &&
-            contentItem.marks[0].type === "code"
-          ) {
-            // pull out language specified as first line of code block to set language
-            let lang = contentItem.value.split("\n")[0].trim()
-            // remove language declaration from actual code block
-            let code = contentItem.value.replace(lang, "").trim()
-            return (
-              <pre
-                className={`language-${lang}`}
-                key={`${contentItem.value.substring(0, 10)}-pre`}
-              >
-                <code
-                  className={`language-${lang}`}
-                  key={`${contentItem.value.substring(0, 10)}-codeblock`}
-                >
-                  {code}
-                </code>
-              </pre>
-            )
-          } else if (
-            contentItem.nodeType === `text` &&
-            contentItem.value.substring(0, 7).includes(`<iframe`)
-          ) {
-            if (typeof window !== `undefined`) {
-              let doc = new DOMParser().parseFromString(
-                contentItem.value,
-                `text/html`
-              )
-              let iframeAttributes =
-                doc.childNodes[0].childNodes[1].childNodes[0].attributes
-              let embed = {}
-
-              for (var i = 0; i < iframeAttributes.length; i++) {
-                var attrib = iframeAttributes[i]
-                if (attrib.name === "style") {
-                  let styleObject = CSSJSON.toJSON(attrib.value).attributes
-                  embed[convert(attrib.name)] = styleObject
-                } else {
-                  embed[convert(attrib.name)] = attrib.value
-                }
-              }
-
-              return <iframe title={embed.class} key={embed.src} {...embed} />
-            } else {
-              return null
-            }
-          } else {
-            return (
-              <p key={contentItem.value.substring(0, 10)}>
-                {contentItem.value}
-              </p>
-            )
-          }
-        })
-      },
-    },
-  }
-
   let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
+
+  let blogContent = props.data.contentfulBlogPost.body.json
+
+  blogContent.content.forEach(contentItem => {
+    if (contentItem.nodeType === "embedded-asset-block") {
+      props.data.allContentfulAsset.edges.forEach(asset => {
+        if (contentItem.data.target.fields.file["en-US"].fileName === asset.node.file.fileName) {
+          contentItem.img = asset.node.fluid
+        }
+      })
+    }
+  })
 
   return (
     <Layout>
@@ -184,8 +133,9 @@ const Blog = props => {
         </BlogHeader>
 
         {documentToReactComponents(
-          props.data.contentfulBlogPost.body.json,
-          options
+          // props.data.contentfulBlogPost.body.json,
+          blogContent,
+          renderOptions
         )}
 
         <BlogTags>

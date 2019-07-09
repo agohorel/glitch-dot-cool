@@ -9,10 +9,10 @@ import { activeNavStyles } from "../utils/utils"
 const StyledHeader = styled.header`
   display: flex;
   height: 30px;
-  margin: 3rem 0 1.5rem 0;
+  margin: 6rem 0 3rem 0;
 
   @media only screen and (max-width: 767px) {
-    margin: 1.5rem 0 0.75rem 0;
+    margin: 3rem 0 1.5rem 0;
   }
 `
 
@@ -43,7 +43,7 @@ const Header = props => {
     <StyledHeader>
       <StyledList>
         <Link to="/">
-          <h3>{data.site.siteMetadata.title}</h3>
+          <h3 style={{fontWeight: `500`}}>{data.site.siteMetadata.title}</h3>
         </Link>
       </StyledList>
       <Spacer />

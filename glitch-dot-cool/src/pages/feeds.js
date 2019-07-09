@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
@@ -12,26 +13,28 @@ import {
 } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
-const Avatar = styled.img`
-  width: 2rem;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-  display: inline;
-  transition: 0.2s ease opacity;
-
-  :hover {
-    opacity: 0.5;
-  }
-`
-
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 2rem;
 `
 
-const ListStyle = {
-  marginTop: ".5rem",
+const avatarStyles = {
+  display: `block`,
+  width: `4rem`,
+  borderRadius: `50%`,
+  marginRight: `1rem`,
+  transition: `0.2s ease opacity`,
+  hover: `opacity: `,
 }
+
+const AvatarHover = styled.div`
+ * {
+    :hover {
+      opacity: .5;
+    }  
+  }
+`
 
 const Posts = () => {
   const data = useStaticQuery(graphql`
@@ -45,6 +48,13 @@ const Posts = () => {
                 url
                 fileName
               }
+              fluid(maxWidth: 75) {
+                base64
+                sizes
+                src
+                srcSet
+                aspectRatio
+              }
             }
           }
         }
@@ -54,7 +64,7 @@ const Posts = () => {
 
   return (
     <Layout>
-      <Head title="feeds"/>
+      <Head title="feeds" />
       <PageTitle>feeds</PageTitle>
 
       <GatsbyLink to={"/posts"}>
@@ -66,12 +76,11 @@ const Posts = () => {
       <ol>
         {data.allContentfulAuthor.edges.map(post => {
           return (
-            <Wrapper key={post.node.authorName} style={ListStyle}>
+            <Wrapper key={post.node.authorName}>
               <GatsbyLink to={`/${slugify(post.node.authorName)}/posts`}>
-                <Avatar
-                  src={post.node.avatar.file.url}
-                  alt={post.node.avatar.file.fileName}
-                />
+                <AvatarHover>
+                  <Image style={avatarStyles} fluid={post.node.avatar.fluid} />
+                </AvatarHover>
               </GatsbyLink>
 
               <StyledList>

@@ -8,12 +8,12 @@ import { StyledList, GatsbyLink, StyledButton, PageTitle } from "../utils/utilCo
 import { slugify } from "../utils/utils"
 
 const Post = styled.div`
-  padding: 1rem;
+  padding: 2rem;
   background-color: #fff;
-  margin-top: 1rem;
+  margin-top: 2rem;
 
   :last-child {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 `
 
@@ -56,7 +56,7 @@ const Tag = props => {
           return (
             <Post key={post.node.title}>
               <StyledList>
-                <GatsbyLink to={`/blog/${post.node.slug}`}>
+                <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
                   <h2>{post.node.title}</h2>
                 </GatsbyLink>
               </StyledList>

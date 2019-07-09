@@ -28,6 +28,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            author
           }
         }
       }
@@ -37,7 +38,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   blogResponse.data.allContentfulBlogPost.edges.forEach(post => {
     createPage({
       component: blogTemplate,
-      path: `/blog/${post.node.slug}`,
+      path: `/${slugify(post.node.author)}/${post.node.slug}`,
       context: {
         slug: post.node.slug,
       },
@@ -103,10 +104,11 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // get slug
   const projectResponse = await graphql(`
     query {
-      allContentfulProject(sort: { fields: releaseDate }) {
+      allContentfulProject(sort: { fields: publishedDate }) {
         edges {
           node {
             title
+            slug
           }
         }
       }
@@ -116,7 +118,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   projectResponse.data.allContentfulProject.edges.forEach(project => {
       createPage({
         component: projectTemplate,
-        path: `projects/${slugify(project.node.title)}`,
+        path: `projects/${project.node.slug}`,
         context: {
           project: project.node.title,
         },
