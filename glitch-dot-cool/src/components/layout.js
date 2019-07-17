@@ -17,7 +17,7 @@ const Background = styled.div`
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: calc(2160px - (25vw));
+  max-width: calc(2160px - (50vw));
   min-width: 50vw;
   padding: 0 3vw ${measurements.footerHeight}rem 3vw;
   transition: 0.2s ease-out all;
