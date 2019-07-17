@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 const avatarStyles = {
   display: `block`,
   width: `4rem`,
+  height: `4rem`,
   borderRadius: `50%`,
   marginRight: `1rem`,
   transition: `0.2s ease opacity`,

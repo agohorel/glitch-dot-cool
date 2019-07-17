@@ -12,6 +12,7 @@ import colors from "../styles/colors"
 
 const avatarStyles = {
   width: `10rem`,
+  height: `10rem`,
   borderRadius: `50%`,
   display: `inline-block`,
   margin: `0 0 2rem 0`
