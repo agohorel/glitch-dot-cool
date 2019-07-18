@@ -23,7 +23,7 @@ const ProfileCard = styled.div`
   background-color: #fff;
   align-self: flex-start;
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 960px) {
     margin: 0 0 4rem 0;
     width: 100%;
   }
