@@ -15,6 +15,7 @@ const avatarStyles = {
   display: `inline-block`,
   margin: `0 0 2rem 0`,
 }
+
 const ProfileCard = styled.div`
   display: inline-block;
   padding: 4rem;
@@ -50,7 +51,7 @@ const Profile = props => {
         {location === null || undefined ? null : (
           <p>
             <FontAwesomeIcon icon={faMapMarkerAlt} style={iconStyle} />
-            {location}
+            {` ${location}`}
           </p>
         )}
         <ProfileLinks props={links} />
