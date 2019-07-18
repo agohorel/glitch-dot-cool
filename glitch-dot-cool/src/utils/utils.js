@@ -5,6 +5,8 @@ import convert from "react-attr-converter"
 import CSSJSON from "cssjson"
 import Image from "gatsby-image"
 
+import { StyledLink } from "../utils/utilComponents"
+
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
   const b = "aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------"
@@ -33,7 +35,7 @@ const activeNavStyles = {
 const renderOptions = {
   renderNode: {
     "embedded-asset-block": node => {
-      return <Image fluid={node.img}></Image>
+      return <Image fluid={node.img} />
     },
     // setup for styling code blocks
     paragraph: node => {
@@ -44,7 +46,23 @@ const renderOptions = {
       }
 
       return node.content.map(contentItem => {
-        if (contentItem.marks.length && contentItem.marks[0].type === "code") {
+        // render hyperlinks
+        if (contentItem.nodeType === `hyperlink`) {
+          return (
+            <StyledLink
+              style={{ textDecoration: `underline` }}
+              key={contentItem.data.uri}
+              href={contentItem.data.uri}
+              target={`_blank`}
+            >
+              {contentItem.content[0].value}
+            </StyledLink>
+          )
+          // render codeblocks
+        } else if (
+          contentItem.marks.length &&
+          contentItem.marks[0].type === "code"
+        ) {
           // pull out language specified as first line of code block to set language
           let lang = contentItem.value.split("\n")[0].trim()
           // remove language declaration from actual code block
@@ -62,6 +80,7 @@ const renderOptions = {
               </code>
             </pre>
           )
+          // render iframes
         } else if (
           contentItem.nodeType === `text` &&
           contentItem.value.substring(0, 7).includes(`<iframe`)
@@ -89,6 +108,7 @@ const renderOptions = {
           } else {
             return null
           }
+          // render standard paragraphs
         } else {
           return (
             <p key={contentItem.value.substring(0, 10)}>{contentItem.value}</p>
