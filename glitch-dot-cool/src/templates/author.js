@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   margin-top: 6rem;
   display: flex;
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 960px) {
     flex-direction: column;
     margin-top: 2rem;
   }
@@ -24,10 +24,9 @@ const Posts = styled.div`
   background-color: #fff;
   flex-grow: 1;
 
-  // @media only screen and (max-width: 900px) {
-  //   width: 100%;
-  //   flex-grow: 0;
-  // }
+  @media only screen and (max-width: 960px) {
+    margin-bottom: 3rem;
+  }
 `
 
 const Post = styled.div`
@@ -35,47 +34,47 @@ const Post = styled.div`
 `
 
 export const query = graphql`
-         query($author: String!) {
-           allContentfulAuthor(filter: { authorName: { eq: $author } }) {
-             edges {
-               node {
-                 authorName
-                 contactEmail
-                 location
-                 avatar {
-                   file {
-                     url
-                   }
-                   fluid(maxWidth: 100) {
-                     base64
-                     sizes
-                     src
-                     srcSet
-                     aspectRatio
-                   }
-                 }
-                 links {
-                   internal {
-                     content
-                   }
-                 }
-               }
-             }
-           }
-           allContentfulBlogPost(filter: { author: { eq: $author } }) {
-             edges {
-               node {
-                 title
-                 slug
-                 author
-                 publishedDate(formatString: "MMMM Do, YYYY")
-               }
-             }
-           }
-         }
-       `
+  query($author: String!) {
+    allContentfulAuthor(filter: { authorName: { eq: $author } }) {
+      edges {
+        node {
+          authorName
+          contactEmail
+          location
+          avatar {
+            file {
+              url
+            }
+            fluid(maxWidth: 100) {
+              base64
+              sizes
+              src
+              srcSet
+              aspectRatio
+            }
+          }
+          links {
+            internal {
+              content
+            }
+          }
+        }
+      }
+    }
+    allContentfulBlogPost(filter: { author: { eq: $author } }) {
+      edges {
+        node {
+          title
+          slug
+          author
+          publishedDate(formatString: "MMMM Do, YYYY")
+        }
+      }
+    }
+  }
+`
 
-const Tag = props => {
+const Author = props => {
   return (
     <Layout>
       <Head title={props.data.allContentfulAuthor.edges[0].node.authorName} />
@@ -89,7 +88,9 @@ const Tag = props => {
               return (
                 <Post key={post.node.title}>
                   <StyledList>
-                    <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
+                    <GatsbyLink
+                      to={`/${slugify(post.node.author)}/${post.node.slug}`}
+                    >
                       <h3>{post.node.title}</h3>
                     </GatsbyLink>
                   </StyledList>
@@ -104,4 +105,4 @@ const Tag = props => {
   )
 }
 
-export default Tag
+export default Author

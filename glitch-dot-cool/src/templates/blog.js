@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
-import Image from "gatsby-image"
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "prismjs/themes/prism-coy.css"
 
@@ -10,24 +10,41 @@ import Head from "../components/head"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify, renderOptions } from "../utils/utils"
-import { StyledList, GatsbyLink } from "../utils/utilComponents"
-
-const BlogHeader = styled.div`
-  margin-bottom: 2rem;
-`
+import { GatsbyLink } from "../utils/utilComponents"
 
 const BlogPost = styled.div`
   display: block;
-  max-width: 67%;
+  width: calc(2160px - (75vw));
+  max-width: 100%;
+  transition: .2s ease-out all;
+
+  @media only screen and (min-width: 1921px){
+    min-width: 600px;
+  }
+
   margin: 4rem auto ${measurements.footerHeight}rem auto;
 
-  img {
+  h1,
+  h2,
+  h3 {
+    :not(:first-child){
+      margin: 2rem 0 1rem 0;
+    }
+  }
+
+  p,
+  a {
+    margin-bottom: 1.5rem;
+  }
+
+  picture img {
     display: block;
     margin: 2rem auto;
     max-width: 100%;
   }
 
   code {
+    margin-bottom: 2rem;
     font-family: "Roboto Mono", monospace;
     font-size: 1.6rem;
 
@@ -37,17 +54,14 @@ const BlogPost = styled.div`
       font-size: inherit;
     }
   }
+`
 
-  @media only screen and (max-width: 1200px) {
-    max-width: 80%;
-    padding: 4rem 0 ${measurements.footerHeight}rem 0;
-  }
-
-  @media only screen and (max-width: 900px) {
-    max-width: 100%;
-    padding: 4rem 0 ${measurements.footerHeight}rem 0;
+const BlogHeader = styled.div`
+  p {
+    margin-bottom: 0;
   }
 `
+
 const BlogTags = styled.div`
   margin-top: 4rem;
 `
@@ -106,7 +120,10 @@ const Blog = props => {
   blogContent.content.forEach(contentItem => {
     if (contentItem.nodeType === "embedded-asset-block") {
       props.data.allContentfulAsset.edges.forEach(asset => {
-        if (contentItem.data.target.fields.file["en-US"].fileName === asset.node.file.fileName) {
+        if (
+          contentItem.data.target.fields.file["en-US"].fileName ===
+          asset.node.file.fileName
+        ) {
           contentItem.img = asset.node.fluid
         }
       })
@@ -122,21 +139,15 @@ const Blog = props => {
           <p>
             {`by `}
             <strong>
-              <StyledList>
-                <GatsbyLink to={authorSlug}>
-                  {props.data.contentfulBlogPost.author}
-                </GatsbyLink>
-              </StyledList>
+              <GatsbyLink to={authorSlug}>
+                {props.data.contentfulBlogPost.author}
+              </GatsbyLink>
             </strong>
           </p>
           <p>{props.data.contentfulBlogPost.publishedDate}</p>
         </BlogHeader>
 
-        {documentToReactComponents(
-          // props.data.contentfulBlogPost.body.json,
-          blogContent,
-          renderOptions
-        )}
+        {documentToReactComponents(blogContent, renderOptions)}
 
         <BlogTags>
           {props.data.contentfulBlogPost.tags.map(tag => {
