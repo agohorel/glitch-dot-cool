@@ -57,7 +57,7 @@ const BlogPost = styled.div`
 `
 
 const BlogHeader = styled.div`
-  p {
+  p:first-of-type {
     margin-bottom: 0;
   }
 `

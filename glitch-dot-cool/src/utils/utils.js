@@ -5,7 +5,7 @@ import convert from "react-attr-converter"
 import CSSJSON from "cssjson"
 import Image from "gatsby-image"
 
-import { StyledLink } from "../utils/utilComponents"
+import { StyledLink, BlogBody } from "../utils/utilComponents"
 
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
@@ -58,8 +58,38 @@ const renderOptions = {
               {contentItem.content[0].value}
             </StyledLink>
           )
-          // render codeblocks
         } else if (
+          // render bold text
+          contentItem.marks.length &&
+          contentItem.marks[0].type === "bold"
+        ) {
+          return (
+            <strong>
+              <BlogBody>{contentItem.value}</BlogBody>
+            </strong>
+          )
+        } else if (
+          // render italic text
+          contentItem.marks.length &&
+          contentItem.marks[0].type === "italic"
+        ) {
+          return (
+            <i>
+              <BlogBody>{contentItem.value}</BlogBody>
+            </i>
+          )
+        } else if (
+          // render underlined text
+          contentItem.marks.length &&
+          contentItem.marks[0].type === "underline"
+        ) {
+          return (
+            <u>
+              <BlogBody>{contentItem.value}</BlogBody>
+            </u>
+          )
+        } else if (
+          // render codeblocks
           contentItem.marks.length &&
           contentItem.marks[0].type === "code"
         ) {
@@ -80,8 +110,8 @@ const renderOptions = {
               </code>
             </pre>
           )
-          // render iframes
         } else if (
+          // render iframes
           contentItem.nodeType === `text` &&
           contentItem.value.substring(0, 7).includes(`<iframe`)
         ) {
@@ -111,7 +141,12 @@ const renderOptions = {
           // render standard paragraphs
         } else {
           return (
-            <p key={contentItem.value.substring(0, 10)}>{contentItem.value}</p>
+            <p
+              style={{ display: `inline` }}
+              key={contentItem.value.substring(0, 10)}
+            >
+              {contentItem.value}
+            </p>
           )
         }
       })

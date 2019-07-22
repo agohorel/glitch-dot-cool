@@ -112,6 +112,10 @@ const PageTitle = styled.h1`
   display: inline;
 `
 
+const BlogBody = styled.p`
+  display: inline;
+`
+
 export {
   GatsbyLink,
   StyledList,
@@ -120,4 +124,5 @@ export {
   StyledButton,
   PageTitle,
   StyledLinkButton,
+  BlogBody
 }
