@@ -6,7 +6,11 @@ import CSSJSON from "cssjson"
 import Image from "gatsby-image"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 
-import { StyledLink, BlogBody } from "../utils/utilComponents"
+import {
+  StyledLink,
+  BlogImageWrapper,
+  BlogImageContainer,
+} from "../utils/utilComponents"
 
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
@@ -36,7 +40,13 @@ const activeNavStyles = {
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: node => {
-      return <Image fluid={node.img} />
+      return (
+        <BlogImageWrapper>
+          <BlogImageContainer>
+            <Image fluid={node.img} />
+          </BlogImageContainer>
+        </BlogImageWrapper>
+      )
     },
     [INLINES.HYPERLINK]: link => {
       return (

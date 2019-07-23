@@ -44,7 +44,7 @@ const StyledList = styled.li`
     text-decoration: none;
     color: ${props =>
       props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
-    font-size: ${props => props.drawer ? `4rem` : `inherit`}
+    font-size: ${props => (props.drawer ? `4rem` : `inherit`)}
     transition: 0.2s ease all;
 
     :hover {
@@ -112,8 +112,15 @@ const PageTitle = styled.h1`
   display: inline;
 `
 
-const BlogBody = styled.p`
-  display: inline;
+const BlogImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+`
+
+const BlogImageContainer = styled.div`
+  width: 75%;
 `
 
 export {
@@ -124,5 +131,6 @@ export {
   StyledButton,
   PageTitle,
   StyledLinkButton,
-  BlogBody
+  BlogImageWrapper,
+  BlogImageContainer
 }
