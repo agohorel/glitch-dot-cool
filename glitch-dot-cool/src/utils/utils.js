@@ -10,6 +10,7 @@ import {
   StyledLink,
   BlogImageWrapper,
   BlogImageContainer,
+  BlogImageSubtitle,
 } from "../utils/utilComponents"
 
 const slugify = string => {
@@ -47,6 +48,9 @@ const renderOptions = {
           </BlogImageContainer>
         </BlogImageWrapper>
       )
+    },
+    [BLOCKS.HEADING_6]: text => {
+      return <BlogImageSubtitle>{text.content[0].value}</BlogImageSubtitle>
     },
     [INLINES.HYPERLINK]: link => {
       return (

@@ -123,6 +123,15 @@ const BlogImageContainer = styled.div`
   width: 75%;
 `
 
+const BlogImageSubtitle = styled.i`
+  color: ${colors.midgrey};
+  display: block;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+`
+
 export {
   GatsbyLink,
   StyledList,
@@ -132,5 +141,6 @@ export {
   PageTitle,
   StyledLinkButton,
   BlogImageWrapper,
-  BlogImageContainer
+  BlogImageContainer,
+  BlogImageSubtitle,
 }
