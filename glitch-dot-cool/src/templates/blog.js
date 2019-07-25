@@ -14,7 +14,7 @@ import { GatsbyLink } from "../utils/utilComponents"
 
 const BlogPost = styled.div`
   display: block;
-  width: calc(2160px - (75vw));
+  width: calc(1920px - (65vw));
   max-width: 100%;
   transition: .2s ease-out all;
 
@@ -35,12 +35,6 @@ const BlogPost = styled.div`
   p,
   a {
     margin-bottom: 1.5rem;
-  }
-
-  picture img {
-    display: block;
-    margin: 2rem auto;
-    max-width: 100%;
   }
 
   code {
