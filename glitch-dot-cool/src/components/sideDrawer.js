@@ -9,8 +9,8 @@ const Drawer = styled.nav`
   height: 100%;
   background-image: linear-gradient(
     to bottom right,
-    ${colors.lightgrey},
-    ${colors.darkgrey}
+    ${colors.offwhite},
+    ${colors.midgrey}
   );
   box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.2);
   position: fixed;
