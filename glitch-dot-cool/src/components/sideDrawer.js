@@ -12,7 +12,7 @@ const Drawer = styled.nav`
     ${colors.offwhite},
     ${colors.midgrey}
   );
-  box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 0px 40px rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   right: 0;
