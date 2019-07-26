@@ -109,7 +109,7 @@ const StyledLinkButton = styled.a`
 `
 
 const PageTitle = styled.h1`
-  display: inline;
+  padding-top: 4rem;
 `
 
 const BlogImageWrapper = styled.div`

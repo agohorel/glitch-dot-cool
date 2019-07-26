@@ -43,16 +43,16 @@ const Posts = () => {
       <Head title="posts" />
       <PageTitle>posts</PageTitle>
       <GatsbyLink to={"/tags"}>
-        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
-          view all tags
-        </StyledButton>
+        <StyledButton style={{ marginTop: `1rem` }}>view all tags</StyledButton>
       </GatsbyLink>
       <ol>
         {data.allContentfulBlogPost.edges.map(post => {
           return (
             <Post key={post.node.title}>
               <StyledList>
-                <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
+                <GatsbyLink
+                  to={`/${slugify(post.node.author)}/${post.node.slug}`}
+                >
                   <h2>{post.node.title}</h2>
                 </GatsbyLink>
               </StyledList>
