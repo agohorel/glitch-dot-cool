@@ -9,11 +9,11 @@ import { activeNavStyles } from "../utils/utils"
 const StyledHeader = styled.header`
   display: flex;
   height: 30px;
-  margin: 6rem 0 3rem 0;
-  transition: .2s ease-out margin;
+  padding: 6rem 0 3rem 0;
+  transition: .2s ease-out padding;
 
   @media only screen and (max-width: 767px) {
-    margin: 3rem 0 1.5rem 0;
+    padding: 3rem 0 3rem 0;
   }
 `
 

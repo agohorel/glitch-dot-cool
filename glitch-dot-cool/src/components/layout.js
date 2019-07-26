@@ -16,6 +16,7 @@ const Background = styled.div`
 `
 
 const Wrapper = styled.div`
+  min-height: calc(100vh - 4rem);
   margin: 0 auto;
   max-width: calc(2160px - (50vw));
   min-width: 50vw;

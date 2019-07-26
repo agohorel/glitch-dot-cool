@@ -5,7 +5,7 @@ const ToggleButton = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 75%;
+  height: 20px;
   width: 30px;
   background: transparent;
   border: none;
