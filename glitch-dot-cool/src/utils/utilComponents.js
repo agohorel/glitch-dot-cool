@@ -18,6 +18,36 @@ const chromaticAbberation = css`
   animation: ${chromaticAbberationAnimation} 3s linear alternate infinite;
 `
 
+const flicker = keyframes`
+    0% { opacity: 1; }
+    3% { opacity: 0; }
+    8% { opacity: .1; }
+    14% { opacity: .4; }
+    21% { opacity: 0; }
+    26% { opacity: .9; }
+    29% { opacity: .2; }
+    35% { opacity: 1; }
+    39% { opacity: 0; }
+    43% { opacity: .4; }
+    46% { opacity: .9; }
+    50% { opacity: 1; }
+    52% { opacity: .3; }
+    58% { opacity: 1; }
+    61% { opacity: 0; }
+    63% { opacity: .3; }
+    66% { opacity: .6; }
+    70% { opacity: .9; }
+    72% { opacity: 1; }
+    76% { opacity: .2; }
+    79% { opacity: 0; }
+    82% { opacity: .1; }
+    86% { opacity: .5; }
+    89% { opacity: .3; }
+    91% { opacity: 1; }
+    97% { opacity: 0; }
+    100% { opacity: .5; }
+`
+
 const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
   color: ${props =>
@@ -143,4 +173,5 @@ export {
   BlogImageWrapper,
   BlogImageContainer,
   BlogImageSubtitle,
+  flicker
 }
