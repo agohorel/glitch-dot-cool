@@ -38,6 +38,8 @@ const Nav = styled.ul`
 
 const DrawerTextStyles = {
   fontSize: `4rem`,
+  backgroundColor: `${colors.nearblack}`,
+  color: `${colors.offwhite}`
 }
 
 const SideDrawer = props => {
