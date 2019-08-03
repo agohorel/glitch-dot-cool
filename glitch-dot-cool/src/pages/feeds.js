@@ -30,10 +30,10 @@ const avatarStyles = {
 }
 
 const AvatarHover = styled.div`
- * {
+  * {
     :hover {
-      opacity: .5;
-    }  
+      opacity: 0.5;
+    }
   }
 `
 
@@ -69,7 +69,7 @@ const Posts = () => {
       <PageTitle>feeds</PageTitle>
 
       <GatsbyLink to={"/posts"}>
-        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
+        <StyledButton style={{ marginTop: `1rem` }}>
           view all posts
         </StyledButton>
       </GatsbyLink>

@@ -40,13 +40,13 @@ const Tag = props => {
       <Head title={props.pageContext.tag} />
       <PageTitle>posts tagged with "{props.pageContext.tag}"</PageTitle>
       <GatsbyLink to={"/posts"}>
-        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
+        <StyledButton style={{ marginTop: `1rem` }}>
           view all posts
         </StyledButton>
       </GatsbyLink>
       <GatsbyLink to={"/tags"}>
         <StyledButton
-          style={{ float: `right`, marginTop: `3px`, marginRight: `1rem` }}
+          style={{ marginTop: `1rem`, marginLeft: `1rem` }}
         >
           view all tags
         </StyledButton>
@@ -56,7 +56,9 @@ const Tag = props => {
           return (
             <Post key={post.node.title}>
               <StyledList>
-                <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
+                <GatsbyLink
+                  to={`/${slugify(post.node.author)}/${post.node.slug}`}
+                >
                   <h2>{post.node.title}</h2>
                 </GatsbyLink>
               </StyledList>

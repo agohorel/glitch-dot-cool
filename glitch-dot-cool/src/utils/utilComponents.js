@@ -1,22 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled, { keyframes, css } from "styled-components"
+import styled from "styled-components"
 
+import { chromaticAbberation } from "../styles/animations"
 import colors from "../styles/colors"
-
-const chromaticAbberationAnimation = keyframes`
-    0% {
-      text-shadow: 1px 0px 1px ${colors.valid}, -1px 0px 1px ${colors.invalid};
-    }
-
-    100% {
-      text-shadow: -1px 0px 2px ${colors.valid}, 1px 0px 2px ${colors.invalid};
-    }
-`
-
-const chromaticAbberation = css`
-  animation: ${chromaticAbberationAnimation} 3s linear alternate infinite;
-`
 
 const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
@@ -109,7 +96,7 @@ const StyledLinkButton = styled.a`
 `
 
 const PageTitle = styled.h1`
-  display: inline;
+  padding-top: 4rem;
 `
 
 const BlogImageWrapper = styled.div`

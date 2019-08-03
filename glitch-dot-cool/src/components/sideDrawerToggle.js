@@ -5,7 +5,7 @@ const ToggleButton = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 75%;
+  height: 20px;
   width: 30px;
   background: transparent;
   border: none;
@@ -14,7 +14,7 @@ const ToggleButton = styled.button`
   // prevent blue flash on chrome
   -webkit-tap-highlight-color: transparent;
 
-  @media only screen and (min-width: 767px){
+  @media only screen and (min-width: 767px) {
     display: none;
   }
 `
@@ -30,13 +30,13 @@ const ToggleButtonLine = styled.div`
 `
 
 const DrawerToggle = props => {
-    return (
-      <ToggleButton onClick={props.click}>
-        <ToggleButtonLine />
-        <ToggleButtonLine />
-        <ToggleButtonLine />
-      </ToggleButton>
-    )
+  return (
+    <ToggleButton onClick={props.click}>
+      <ToggleButtonLine />
+      <ToggleButtonLine />
+      <ToggleButtonLine />
+    </ToggleButton>
+  )
 }
 
 export default DrawerToggle
