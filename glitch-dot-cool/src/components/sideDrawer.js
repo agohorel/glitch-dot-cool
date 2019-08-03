@@ -9,10 +9,10 @@ const Drawer = styled.nav`
   height: 100%;
   background-image: linear-gradient(
     to bottom right,
-    ${colors.lightgrey},
-    ${colors.darkgrey}
+    ${colors.offwhite},
+    ${colors.midgrey}
   );
-  box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 0px 40px rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   right: 0;
@@ -38,6 +38,8 @@ const Nav = styled.ul`
 
 const DrawerTextStyles = {
   fontSize: `4rem`,
+  backgroundColor: `${colors.nearblack}`,
+  color: `${colors.offwhite}`
 }
 
 const SideDrawer = props => {

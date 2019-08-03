@@ -4,16 +4,17 @@ import styled from "styled-components"
 
 import DrawerToggle from "./sideDrawerToggle"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
+import { flicker, shifter } from "../styles/animations"
 import { activeNavStyles } from "../utils/utils"
 
 const StyledHeader = styled.header`
   display: flex;
   height: 30px;
-  margin: 6rem 0 3rem 0;
-  transition: .2s ease-out margin;
+  padding: 6rem 0 3rem 0;
+  transition: 0.2s ease-out padding;
 
   @media only screen and (max-width: 767px) {
-    margin: 3rem 0 1.5rem 0;
+    padding: 3rem 0 3rem 0;
   }
 `
 
@@ -25,6 +26,39 @@ const StyledNav = styled.nav`
 
 const Spacer = styled.div`
   flex: 1;
+`
+
+const TextLogoWrapper = styled.div`
+  position: absolute;
+
+  :hover {
+    h3:first-of-type {
+      clip-path: inset(50% 0% 0% 0%);
+      font-weight: 100 !important;
+      animation: ${flicker} 1s linear forwards infinite;
+    }
+
+    h3:not(:first-of-type) {
+      opacity: 1;
+      clip-path: inset(0% 0% 50% 0%);
+      font-weight: 100 !important;
+      animation: ${flicker} 2s backwards infinite,
+        ${shifter} 2s steps(13) infinite;
+    }
+  }
+`
+
+const TextLogo = styled.h3`
+  font-weight: 500;
+`
+
+const TextLogoShifted = styled.h3`
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  left: 5.5px;
+  opacity: 0;
+  pointer-events: none;
 `
 
 const Header = props => {
@@ -43,9 +77,12 @@ const Header = props => {
   return (
     <StyledHeader>
       <StyledList>
-        <Link to="/">
-          <h3 style={{fontWeight: `500`}}>{data.site.siteMetadata.title}</h3>
-        </Link>
+        <TextLogoWrapper>
+          <Link to="/">
+            <TextLogo>{data.site.siteMetadata.title}</TextLogo>
+            <TextLogoShifted>{data.site.siteMetadata.title}</TextLogoShifted>
+          </Link>
+        </TextLogoWrapper>
       </StyledList>
       <Spacer />
       <StyledNav>

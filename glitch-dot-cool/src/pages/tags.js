@@ -38,7 +38,7 @@ const Tags = () => {
       <Head title="tags" />
       <PageTitle>tags</PageTitle>
       <GatsbyLink to={"/posts"}>
-        <StyledButton style={{ float: `right`, marginTop: `3px` }}>
+        <StyledButton style={{ marginTop: `1rem` }}>
           view all posts
         </StyledButton>
       </GatsbyLink>

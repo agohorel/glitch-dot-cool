@@ -7,6 +7,7 @@ import "prismjs/themes/prism-coy.css"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
+import DistroLinks from "../components/distroLinks"
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify, renderOptions } from "../utils/utils"
@@ -92,6 +93,11 @@ export const query = graphql`
       }
       tags
       author
+      links {
+        internal {
+          content
+        }
+      }
     }
     allContentfulAsset {
       edges {
@@ -114,8 +120,8 @@ export const query = graphql`
 
 const Blog = props => {
   let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
-
   let blogContent = props.data.contentfulBlogPost.body.json
+  let parsedLinks = JSON.parse(props.data.contentfulBlogPost.links.internal.content)
 
   blogContent.content.forEach(contentItem => {
     if (contentItem.nodeType === "embedded-asset-block") {
@@ -148,6 +154,8 @@ const Blog = props => {
         </BlogHeader>
 
         {documentToReactComponents(blogContent, renderOptions)}
+
+        <DistroLinks props={parsedLinks}></DistroLinks>
 
         <BlogTags>
           {props.data.contentfulBlogPost.tags.map(tag => {

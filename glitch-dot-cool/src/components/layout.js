@@ -16,6 +16,7 @@ const Background = styled.div`
 `
 
 const Wrapper = styled.div`
+  min-height: calc(100vh - 4rem);
   margin: 0 auto;
   max-width: calc(2160px - (50vw));
   min-width: 50vw;
@@ -36,28 +37,21 @@ class Layout extends Component {
   }
 
   backdropToggleClickHandler = () => {
-    this.setState( () => {
+    this.setState(() => {
       return { sideDrawerOpen: false }
     })
   }
 
   render() {
-    let backdrop
-
-    if (this.state.sideDrawerOpen) {
-      backdrop = (
-        <Backdrop
-          backdropToggleClickHandler={this.backdropToggleClickHandler}
-        />
-      )
-    } 
-
     return (
       <Background>
         <Wrapper>
           <Header drawerToggleClickHandler={this.drawerToggleClickHandler} />
-          <SideDrawer show={this.state.sideDrawerOpen}/>
-          {backdrop}
+          <SideDrawer show={this.state.sideDrawerOpen} />
+          <Backdrop
+            show={this.state.sideDrawerOpen}
+            backdropToggleClickHandler={this.backdropToggleClickHandler}
+          />
           {this.props.children}
         </Wrapper>
         <Footer />
