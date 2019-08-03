@@ -3,7 +3,8 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import DrawerToggle from "./sideDrawerToggle"
-import { StyledList, GatsbyLink, flicker } from "../utils/utilComponents"
+import { StyledList, GatsbyLink } from "../utils/utilComponents"
+import { flicker, shifter } from "../styles/animations"
 import { activeNavStyles } from "../utils/utils"
 
 const StyledHeader = styled.header`
@@ -41,7 +42,8 @@ const TextLogoWrapper = styled.div`
       opacity: 1;
       clip-path: inset(0% 0% 50% 0%);
       font-weight: 100 !important;
-      animation: ${flicker} 2s linear backwards infinite;
+      animation: ${flicker} 2s backwards infinite,
+        ${shifter} 2s steps(13) infinite;
     }
   }
 `

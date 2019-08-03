@@ -3,7 +3,8 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import { Centered, flicker } from "../utils/utilComponents"
+import { Centered } from "../utils/utilComponents"
+import { flicker } from "../styles/animations"
 import colors from "../styles/colors"
 
 const Wrapper = styled.div`
@@ -21,7 +22,7 @@ const Wrapper = styled.div`
 `
 
 const GlitchDotCool = styled.strong`
-  animation: ${flicker} .3s backwards 1;
+  animation: ${flicker} 0.3s backwards 1;
 `
 
 export default () => {
@@ -31,9 +32,9 @@ export default () => {
       <Centered column>
         <Wrapper lang={`en`}>
           <p>
-            <GlitchDotCool>glitch[dot]cool</GlitchDotCool> is a group of digital creators who
-            share a common interest in glitch art. we are producers, sound
-            designers, programmers, and visual artists.
+            <GlitchDotCool>glitch[dot]cool</GlitchDotCool> is a group of digital
+            creators who share a common interest in glitch art. we are
+            producers, sound designers, programmers, and visual artists.
           </p>
           <br />
           <p>
