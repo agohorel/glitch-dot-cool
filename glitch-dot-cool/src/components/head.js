@@ -13,21 +13,12 @@ const displayRandomSiteTitle = () => {
     "g̶l̶i̶t̶c̶h̶[̶d̶o̶t̶]̶c̶o̶o̶l̶",
   ]
 
-  let selected = Math.floor(Math.random() * titles.length);
+  let selected = Math.floor(Math.random() * titles.length)
 
   return titles[selected]
 }
 
 const Head = ({ title }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
   return (
     // <Helmet title={`${title} | ${data.site.siteMetadata.title}`}>
     <Helmet title={`${title} | ${displayRandomSiteTitle()}`}>
