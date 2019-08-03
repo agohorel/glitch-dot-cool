@@ -44,7 +44,7 @@ const StyledList = styled.li`
     text-decoration: none;
     color: ${props =>
       props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
-    font-size: ${props => (props.drawer ? `4rem` : `inherit`)}
+    font-size: ${props => props.drawer ? `4rem` : `inherit`}
     transition: 0.2s ease all;
 
     :hover {
@@ -112,24 +112,8 @@ const PageTitle = styled.h1`
   display: inline;
 `
 
-const BlogImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem 0;
-`
-
-const BlogImageContainer = styled.div`
-  width: 75%;
-`
-
-const BlogImageSubtitle = styled.i`
-  color: ${colors.midgrey};
-  display: block;
-  font-size: 1.4rem;
-  text-align: center;
-  margin-top: -1rem;
-  margin-bottom: 2rem;
+const BlogBody = styled.p`
+  display: inline;
 `
 
 export {
@@ -140,7 +124,5 @@ export {
   StyledButton,
   PageTitle,
   StyledLinkButton,
-  BlogImageWrapper,
-  BlogImageContainer,
-  BlogImageSubtitle,
+  BlogBody
 }
