@@ -115,7 +115,13 @@ export const query = graphql`
 const Blog = props => {
   let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
   let blogContent = props.data.contentfulBlogPost.body.json
-  let parsedLinks = JSON.parse(props.data.contentfulBlogPost.links.internal.content)
+  let parsedLinks
+
+  try {
+    parsedLinks = JSON.parse(props.data.contentfulBlogPost.links.internal.content) || undefined
+  } catch(e){
+    console.log(e)
+  }
 
   blogContent.content.forEach(contentItem => {
     if (contentItem.nodeType === "embedded-asset-block") {
@@ -149,7 +155,7 @@ const Blog = props => {
 
         {documentToReactComponents(blogContent, renderOptions)}
 
-        <DistroLinks props={parsedLinks}></DistroLinks>
+        {parsedLinks !== undefined ? <DistroLinks props={parsedLinks}></DistroLinks> : null}
 
         <BlogTags>
           {props.data.contentfulBlogPost.tags.map(tag => {
