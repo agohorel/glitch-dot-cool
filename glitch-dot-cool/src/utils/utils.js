@@ -13,6 +13,9 @@ import {
   BlogImageSubtitle,
 } from "../utils/utilComponents"
 
+import VideoPlayer from "../components/videoPlayer"
+import AudioPlayer from "../components/audioPlayer"
+
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
   const b = "aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------"
@@ -41,13 +44,25 @@ const activeNavStyles = {
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: node => {
-      return (
-        <BlogImageWrapper>
-          <BlogImageContainer>
-            <Image fluid={node.img} />
-          </BlogImageContainer>
-        </BlogImageWrapper>
-      )
+      if (node.data.target.fields.file["en-US"].contentType.includes("video")) {
+        return (
+          <VideoPlayer videoSrc={node.data.target.fields.file["en-US"].url} />
+        )
+      } else if (
+        node.data.target.fields.file["en-US"].contentType.includes("audio")
+      ) {
+        return (
+          <AudioPlayer audioSrc={node.data.target.fields.file["en-US"].url} />
+        )
+      } else {
+        return (
+          <BlogImageWrapper>
+            <BlogImageContainer>
+              <Image fluid={node.img} />
+            </BlogImageContainer>
+          </BlogImageWrapper>
+        )
+      }
     },
     [BLOCKS.HEADING_6]: text => {
       return <BlogImageSubtitle>{text.content[0].value}</BlogImageSubtitle>
