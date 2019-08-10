@@ -14,6 +14,7 @@ import {
 } from "../utils/utilComponents"
 
 import VideoPlayer from "../components/videoPlayer"
+import AudioPlayer from "../components/audioPlayer"
 
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
@@ -44,7 +45,15 @@ const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: node => {
       if (node.data.target.fields.file["en-US"].contentType.includes("video")) {
-        return <VideoPlayer videoSrc={node.data.target.fields.file["en-US"].url}></VideoPlayer>
+        return (
+          <VideoPlayer videoSrc={node.data.target.fields.file["en-US"].url} />
+        )
+      } else if (
+        node.data.target.fields.file["en-US"].contentType.includes("audio")
+      ) {
+        return (
+          <AudioPlayer audioSrc={node.data.target.fields.file["en-US"].url} />
+        )
       } else {
         return (
           <BlogImageWrapper>
