@@ -27,13 +27,13 @@ const PostsContainer = styled.div`
     margin-top: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 
-    // h1 {
-    //   font-size: 3rem;
-    // }
+    h1 {
+      font-size: 3rem;
+    }
 
-    // h3 {
-    //   font-size: 2.2rem;
-    // }
+    h3 {
+      font-size: 2.2rem;
+    }
   }
 `
 
