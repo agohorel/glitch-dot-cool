@@ -92,12 +92,8 @@ export default () => {
                 url
                 fileName
               }
-              fluid {
-                base64
-                sizes
-                src
-                srcSet
-                aspectRatio
+              fluid(quality: 1, maxWidth: 600) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             slug
@@ -112,12 +108,8 @@ export default () => {
             file {
               fileName
             }
-            fluid {
-              base64
-              sizes
-              src
-              srcSet
-              aspectRatio
+            fluid(quality: 1, maxWidth: 600) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
         }

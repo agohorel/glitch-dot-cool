@@ -130,25 +130,31 @@ const Project = props => {
       <Head title={props.data.contentfulProject.title} />
       <ProjectWrapper>
         <Centered column>
-          <PageTitle style={{ textAlign: `center` }}>
+          <PageTitle style={{ textAlign: `center`, marginBottom: `1rem` }}>
             {props.data.contentfulProject.title}
           </PageTitle>
         </Centered>
         <Image fluid={props.data.contentfulProject.artwork.fluid} />
         <ButtonWrapper>
-          <StyledLinkButton
-            href={props.data.contentfulProject.downloadLink}
-            target={`_blank`}
-          >
-            download
-          </StyledLinkButton>
-          <StyledLinkButton
-            href={props.data.contentfulProject.torrentLink}
-            target={`_blank`}
-          >
-            torrent
-          </StyledLinkButton>
+          {props.data.contentfulProject.downloadLink ? (
+            <StyledLinkButton
+              href={props.data.contentfulProject.downloadLink}
+              target={`_blank`}
+            >
+              download
+            </StyledLinkButton>
+          ) : null}
+
+          {props.data.contentfulProject.torrentLink ? (
+            <StyledLinkButton
+              href={props.data.contentfulProject.torrentLink}
+              target={`_blank`}
+            >
+              torrent
+            </StyledLinkButton>
+          ) : null}
         </ButtonWrapper>
+
         {documentToReactComponents(projectContent, renderOptions)}
         <DistroLinks props={parsedDistroLinks} />
         <DatePublished>

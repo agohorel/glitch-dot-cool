@@ -14,6 +14,14 @@ exports.onCreateNode = ({ node, actions }) => {
       value: slugs,
     })
   }
+  
+  if (node.internal.type === `ContentfulAuthor`){
+    createNodeField({
+      node,
+      name: `authorNameLowerCase`,
+      value: node.authorName.toLowerCase()
+    })
+  }
 }
 
 module.exports.createPages = async ({ graphql, actions }) => {

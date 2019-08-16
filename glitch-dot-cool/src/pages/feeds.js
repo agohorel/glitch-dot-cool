@@ -44,6 +44,9 @@ const Posts = () => {
         edges {
           node {
             authorName
+            fields {
+              authorNameLowerCase
+            }
             avatar {
               file {
                 url
@@ -62,6 +65,14 @@ const Posts = () => {
       }
     }
   `)
+
+  data.allContentfulAuthor.edges.sort((a, b) => {
+    if (a.node.fields.authorNameLowerCase < b.node.fields.authorNameLowerCase)
+      return -1
+    if (a.node.fields.authorNameLowerCase > b.node.fields.authorNameLowerCase)
+      return 1
+    return 0
+  })
 
   return (
     <Layout>
