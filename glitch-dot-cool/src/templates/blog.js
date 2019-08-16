@@ -58,7 +58,7 @@ const BlogHeader = styled.div`
 `
 
 const BlogTags = styled.div`
-  margin-top: 4rem;
+  margin-top: 2rem;
 `
 
 const BlogTag = styled.div`
@@ -66,6 +66,7 @@ const BlogTag = styled.div`
   background-color: ${colors.lightgrey};
   padding: 0.5rem 1rem;
   margin-right: 1rem;
+  margin-top: 1rem;
 
   a {
     font-size: 1.6rem;
