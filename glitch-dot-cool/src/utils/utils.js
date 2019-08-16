@@ -70,7 +70,7 @@ const renderOptions = {
     [INLINES.HYPERLINK]: link => {
       return (
         <StyledLink
-          style={{ textDecoration: `underline` }}
+          style={{ textDecoration: `underline`, wordWrap: `break-word` }}
           href={link.data.uri}
           target={`_blank`}
         >
