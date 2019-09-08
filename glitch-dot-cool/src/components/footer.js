@@ -30,6 +30,12 @@ const StyledFooter = styled.footer`
   }
 `
 
+const ContactLink = styled(StyledList)`
+  @media only screen and (max-width: 375px){
+    display: none;
+  }
+`
+
 const devtagStyles = {
   fontSize: `1.2rem`,
   color: colors.midgrey,
@@ -60,11 +66,11 @@ const Footer = () => {
               feeds
             </GatsbyLink>
           </StyledList>
-          <StyledList dark footer>
+          <ContactLink dark footer>
             <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
               contact
             </GatsbyLink>
-          </StyledList>
+          </ContactLink>
         </ul>
       </Centered>
 

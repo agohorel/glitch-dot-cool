@@ -44,7 +44,6 @@ const ProjectWrapper = styled.div`
 const DatePublished = styled.p`
   display: inline-block;
   font-size: 1.6rem;
-  margin-top: 1rem;
   padding: 1rem;
   background-color: ${colors.lightgrey};
   color: ${colors.midgrey};
