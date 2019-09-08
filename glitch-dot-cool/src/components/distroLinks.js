@@ -26,18 +26,33 @@ const DistroLinks = props => {
       <DistroLinkWrapper>
         <h3>links:</h3>
         <Buttons>
-          {Object.keys(props.props).map(link => {
-            return (
-              <StyledLinkButton
-                style={{marginBottom: `1rem`}}
-                key={link}
-                href={props.props[link]}
-                target="_blank"
-              >
-                {link}
-              </StyledLinkButton>
-            )
-          })}
+          {props.props.links instanceof Array
+            ? props.props.links.map(link => {
+                return Object.keys(link).map(key => {
+                  return (
+                    <StyledLinkButton
+                      style={{ marginBottom: `1rem` }}
+                      key={key}
+                      href={link[key]}
+                      target="_blank"
+                    >
+                      {`${key}`.toLowerCase()}
+                    </StyledLinkButton>
+                  )
+                })
+              })
+            : Object.keys(props.props).map(link => {
+                return (
+                  <StyledLinkButton
+                    style={{ marginBottom: `1rem` }}
+                    key={link}
+                    href={props.props[link]}
+                    target="_blank"
+                  >
+                    {link}
+                  </StyledLinkButton>
+                )
+              })}
         </Buttons>
       </DistroLinkWrapper>
     )
