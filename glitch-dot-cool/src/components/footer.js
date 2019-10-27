@@ -5,18 +5,15 @@ import { StyledList, GatsbyLink, Centered } from "../utils/utilComponents"
 import { activeNavStyles } from "../utils/utils"
 
 import colors from "../styles/colors"
-import measurements from "../styles/measurements"
 
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1rem;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: ${measurements.footerHeight}rem;
   background-color: ${colors.nearblack};
 
   li a {
@@ -28,24 +25,34 @@ const StyledFooter = styled.footer`
       font-size: 2.4rem;
     }
   }
-`
 
-const ContactLink = styled(StyledList)`
-  @media only screen and (max-width: 375px){
-    display: none;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  @media only screen and (max-width: 385px) {
+    // hide "contact"
+    li:last-of-type {
+      display: none;
+    }
+
+    // remove margin from item preceeding now-hidden "contact"
+    li:nth-of-type(4) {
+      margin: 0;
+    }
   }
 `
 
-const devtagStyles = {
-  fontSize: `1.2rem`,
-  color: colors.midgrey,
-}
+const FooterNavList = styled.ul`
+  list-style: none;
+  padding: 0.75rem;
+`
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <Centered>
-        <ul style={{ listStyle: `none`, padding: `.75rem` }}>
+      <nav>
+        <FooterNavList>
           <StyledList dark footer>
             <GatsbyLink to="/" activeStyle={activeNavStyles}>
               home
@@ -66,25 +73,13 @@ const Footer = () => {
               feeds
             </GatsbyLink>
           </StyledList>
-          <ContactLink dark footer>
+          <StyledList dark footer>
             <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
               contact
             </GatsbyLink>
-          </ContactLink>
-        </ul>
-      </Centered>
-
-      <p style={devtagStyles}>
-        site developed by{" "}
-        <a
-          style={devtagStyles}
-          href="https://agohorel.github.io/portfolio/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          alex gohorel
-        </a>
-      </p>
+          </StyledList>
+        </FooterNavList>
+      </nav>
     </StyledFooter>
   )
 }
