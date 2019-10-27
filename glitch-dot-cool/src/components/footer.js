@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { StyledList, GatsbyLink, Centered } from "../utils/utilComponents"
+import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { activeNavStyles } from "../utils/utils"
 
 import colors from "../styles/colors"
