@@ -92,7 +92,7 @@ export default () => {
                 url
                 fileName
               }
-              fluid(quality: 50, maxWidth: 600) {
+              fluid(quality: 50, maxWidth: 400) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
@@ -108,7 +108,7 @@ export default () => {
             file {
               fileName
             }
-            fluid(quality: 1, maxWidth: 600) {
+            fluid(quality: 50, maxWidth: 400) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
