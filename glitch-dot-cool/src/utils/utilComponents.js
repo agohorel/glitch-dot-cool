@@ -89,7 +89,7 @@ const StyledLinkButton = styled.a`
   text-decoration: none;
   font-size: 1.6rem;
   text-align: center;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
   
   :hover {
     cursor: pointer;
@@ -118,7 +118,7 @@ const BlogImageWrapper = styled.div`
 `
 
 const BlogImageContainer = styled.div`
-  width: 75%;
+  width: 100%;
 `
 
 const BlogImageSubtitle = styled.i`
