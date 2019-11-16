@@ -81,17 +81,28 @@ const StyledLinkButton = styled.a`
   display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
-  background-color: ${colors.midgrey};
-  color: ${colors.offwhite};
-  border: none;
-  transition: 0.2s ease all;
+  border: 1px solid ${colors.midgrey};
+  border-radius: 3px;
+  background-color: ${colors.white};
+  color: ${colors.nearblack};
+  transition: 0.1s ease all;
   text-decoration: none;
   font-size: 1.6rem;
   text-align: center;
-
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  
   :hover {
     cursor: pointer;
-    background-color: ${colors.darkgrey};
+    transform: translateY(-2px);
+    background-color: ${colors.nearblack};
+    color: ${colors.offwhite};
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 0px 1px black;
+  }
+
+  :active {
+    transform: translateY(1px);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   }
 `
 
@@ -107,7 +118,7 @@ const BlogImageWrapper = styled.div`
 `
 
 const BlogImageContainer = styled.div`
-  width: 75%;
+  width: 100%;
 `
 
 const BlogImageSubtitle = styled.i`
@@ -117,6 +128,27 @@ const BlogImageSubtitle = styled.i`
   text-align: center;
   margin-top: -1rem;
   margin-bottom: 2rem;
+`
+
+const Card = styled.div`
+  display: flex;
+  align-items: center;
+  justify-contents: center;
+  padding: 4rem;
+  height: 100%;
+  background-image: linear-gradient(
+      217deg,
+      rgba(200, 200, 200, 0.8),
+      rgba(200, 200, 200, 0) 70.71%
+    ),
+    linear-gradient(
+      127deg,
+      rgba(127, 127, 127, 0.8),
+      rgba(127, 127, 127, 0) 70.71%
+    ),
+    linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%);
+  background-size: cover;
+  background-position: center;
 `
 
 export {
@@ -130,4 +162,5 @@ export {
   BlogImageWrapper,
   BlogImageContainer,
   BlogImageSubtitle,
+  Card,
 }

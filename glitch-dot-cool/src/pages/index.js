@@ -5,8 +5,8 @@ import BackgroundImage from "gatsby-background-image"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import { GatsbyLink } from "../utils/utilComponents"
-import { slugify } from "../utils/utils"
+import Post from "../components/Post"
+import Project from "../components/Project"
 
 const PostsContainer = styled.div`
   margin-top: 6rem;
@@ -37,33 +37,6 @@ const PostsContainer = styled.div`
   }
 `
 
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-`
-
-const Post = styled.div`
-  display: flex;
-  align-items: center;
-  justify-contents: center;
-  padding: 4rem;
-  height: 100%;
-
-  background-image: ${props =>
-    props.backgroundImg
-      ? `linear-gradient(to bottom right, rgba(255, 255, 255, .5), rgba(0, 0, 0, .5)), 
-      url(${props.backgroundImg})`
-      : `linear-gradient(217deg, rgba(200,200,200,.8), rgba(200,200,200,0) 70.71%),
-         linear-gradient(127deg, rgba(127,127,127,.8), rgba(127,127,127,0) 70.71%),
-         linear-gradient(336deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%);`};
-  background-size: cover;
-  background-position: center;
-`
-
 export default () => {
   const data = useStaticQuery(graphql`
     query {
@@ -74,6 +47,11 @@ export default () => {
         edges {
           node {
             frontPageAnnouncement
+            thumbnail {
+              fluid(quality: 50, maxWidth: 400) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
+              }
+            }
             title
             author
             slug
@@ -81,6 +59,7 @@ export default () => {
               json
             }
             publishedDate
+            id
           }
         }
       }
@@ -92,25 +71,14 @@ export default () => {
                 url
                 fileName
               }
-              fluid(quality: 1, maxWidth: 600) {
+              fluid(quality: 50, maxWidth: 400) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             slug
             title
             publishedDate
-          }
-        }
-      }
-      allContentfulAsset {
-        edges {
-          node {
-            file {
-              fileName
-            }
-            fluid(quality: 1, maxWidth: 600) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+            id
           }
         }
       }
@@ -119,27 +87,9 @@ export default () => {
 
   let allPosts = []
 
-  data.allContentfulBlogPost.edges.forEach(post => {
-    post.type = "blogPost"
-
-    post.node.body.json.content.forEach(contentItem => {
-      if (
-        contentItem.nodeType === "embedded-asset-block" &&
-        contentItem.data.target.fields.file["en-US"].contentType.includes(
-          "image"
-        )
-      ) {
-        data.allContentfulAsset.edges.forEach(asset => {
-          if (
-            contentItem.data.target.fields.file["en-US"].fileName ===
-            asset.node.file.fileName
-          ) {
-            contentItem.img = asset.node.fluid
-          }
-        })
-      }
-    })
-    allPosts.push(post)
+  data.allContentfulBlogPost.edges.forEach(blogPost => {
+    blogPost.type = "blogPost"
+    allPosts.push(blogPost)
   })
 
   data.allContentfulProject.edges.forEach(project => {
@@ -157,69 +107,23 @@ export default () => {
 
       <PostsContainer>
         {allPosts.map(post => {
-          let img
           if (post.type === "blogPost") {
-            post.node.body.json.content.some(contentItem => {
-              if (contentItem.nodeType === "embedded-asset-block") {
-                img = contentItem.img
-              }
-              return img
-            })
-            // handle posts with no images - use default gradient
-            if (!img) {
+            let { thumbnail } = post.node
+
+            if (thumbnail) {
               return (
-                <Post key={post.node.slug} backgroundImg={null}>
-                  <TextContainer>
-                    <GatsbyLink
-                      to={`/${slugify(post.node.author)}/${post.node.slug}`}
-                    >
-                      <h1>{post.node.title}</h1>
-                    </GatsbyLink>
-                    <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
-                      <h3>
-                        by <strong>{post.node.author}</strong>
-                      </h3>
-                    </GatsbyLink>
-                  </TextContainer>
-                </Post>
-              )
-            } 
-            // otherwise if post has img, use gatsby-background-image
-            else {
-              return (
-                <BackgroundImage
-                  key={post.node.slug}
-                  fluid={img ? img : undefined}
-                >
-                  <Post backgroundImg={null}>
-                    <TextContainer>
-                      <GatsbyLink
-                        to={`/${slugify(post.node.author)}/${post.node.slug}`}
-                      >
-                        <h1>{post.node.title}</h1>
-                      </GatsbyLink>
-                      <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
-                        <h3>
-                          by <strong>{post.node.author}</strong>
-                        </h3>
-                      </GatsbyLink>
-                    </TextContainer>
-                  </Post>
+                <BackgroundImage key={post.node.id} fluid={thumbnail.fluid}>
+                  <Post post={post} />
                 </BackgroundImage>
               )
+            } else {
+              return <Post key={post.node.id} post={post} />
             }
           } else if (post.type === "project") {
-            img = post.node.artwork.fluid
-
+            let img = post.node.artwork.fluid
             return (
-              <BackgroundImage key={post.node.slug} fluid={img}>
-                <Post backgroundImg={img ? img.url : null}>
-                  <TextContainer>
-                    <GatsbyLink to={`/projects/${post.node.slug}`}>
-                      <h1>{post.node.title}</h1>
-                    </GatsbyLink>
-                  </TextContainer>
-                </Post>
+              <BackgroundImage key={post.node.id} fluid={img}>
+                <Project post={post} />
               </BackgroundImage>
             )
           }

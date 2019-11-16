@@ -13,7 +13,8 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "clean": "gatsby clean",
     "clean-dev": "gatsby clean && gatsby develop -H 0.0.0.0 -p 8000",
-    "dev-lan": "gatsby develop -H 0.0.0.0 -p 8000"
+    "dev-lan": "gatsby develop -H 0.0.0.0 -p 8000",
+    "build-lan": "gatsby build && gatsby serve -H 0.0.0.0 -p 8000"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.2.0",
