@@ -10,8 +10,9 @@ import {
 
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
+import { flicker } from "../styles/animations"
 
-const LinkIcons = ({className}) => {
+const LinkIcons = ({ className }) => {
   return (
     <Fragment>
       <IconsContainer className={className}>
@@ -58,8 +59,9 @@ const IconsContainer = styled.div`
     color: black;
   }
 
-  a:hover {
-    color: ${colors.darkgrey};
+  a:hover svg {
+    color: ${colors.lightgrey};
+    animation: ${flicker} 0.2s forwards;
   }
 
   a:not(:last-of-type) {
@@ -72,8 +74,12 @@ const Icon = styled(FontAwesomeIcon)`
 `
 
 const FooterLinks = styled(LinkIcons)`
+  svg {
+    color: ${colors.midgrey};
+  }
+
   @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
     display: none;
   }
 `
-export {LinkIcons, FooterLinks}
+export { LinkIcons, FooterLinks }
