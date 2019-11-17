@@ -3,6 +3,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import BackgroundImage from "gatsby-background-image"
 
+
+import measurements from "../styles/measurements"
 import Layout from "../components/layout"
 import Head from "../components/head"
 import Post from "../components/Post"
@@ -18,7 +20,7 @@ const PostsContainer = styled.div`
     margin-bottom: 2rem;
   }
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
     margin-top: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   }

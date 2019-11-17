@@ -1,3 +1,5 @@
 export default {
-  footerHeight: 5,
+  footerHeight: 7,
+  footerHeightMobile: 5,
+  breakpointMobileNav: 767
 }

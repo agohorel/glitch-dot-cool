@@ -12,13 +12,25 @@ import {
 } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
+const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+
 const Tag = styled.div`
+  display: inline-block;
+  width: calc(50% - 1rem);
   padding: 1rem;
   background-color: #fff;
   margin-top: 2rem;
 
   :last-child {
     margin-bottom: 2rem;
+  }
+
+  @media only screen and (max-width: 550px) {
+    width: 100%;
   }
 `
 
@@ -42,7 +54,7 @@ const Tags = () => {
           view all posts
         </StyledButton>
       </GatsbyLink>
-      <ol>
+      <TagContainer>
         {data.allContentfulBlogPost.group.map(tag => {
           return (
             <Tag key={tag.fieldValue}>
@@ -54,7 +66,7 @@ const Tags = () => {
             </Tag>
           )
         })}
-      </ol>
+      </TagContainer>
     </Layout>
   )
 }

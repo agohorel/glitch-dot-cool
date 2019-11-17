@@ -1,10 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 
+import { FooterLinks } from "./LinkIcons"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { activeNavStyles } from "../utils/utils"
 
 import colors from "../styles/colors"
+import measurements from "../styles/measurements"
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -14,6 +16,7 @@ const StyledFooter = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: ${measurements.footerHeight}rem;
   background-color: ${colors.nearblack};
 
   li a {
@@ -26,11 +29,16 @@ const StyledFooter = styled.footer`
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
     padding: 1rem;
+    height: auto;
+
+    ul {
+      padding: 0;
+    }
   }
 
-  @media only screen and (max-width: 385px) {
+  @media only screen and (max-width: 395px) {
     // hide "contact"
     li:last-of-type {
       display: none;
@@ -80,6 +88,7 @@ const Footer = () => {
           </StyledList>
         </FooterNavList>
       </nav>
+      <FooterLinks />
     </StyledFooter>
   )
 }

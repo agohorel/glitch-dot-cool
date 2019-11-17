@@ -2,10 +2,12 @@ import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
+
 import DrawerToggle from "./sideDrawerToggle"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { flicker, shifter } from "../styles/animations"
 import { activeNavStyles } from "../utils/utils"
+import measurements from "../styles/measurements"
 
 const StyledHeader = styled.header`
   display: flex;
@@ -13,13 +15,13 @@ const StyledHeader = styled.header`
   padding: 6rem 0 3rem 0;
   transition: 0.2s ease-out padding;
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
     padding: 3rem 0 3rem 0;
   }
 `
 
 const StyledNav = styled.nav`
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
     display: none;
   }
 `

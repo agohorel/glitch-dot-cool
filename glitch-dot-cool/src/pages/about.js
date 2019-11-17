@@ -32,9 +32,9 @@ export default () => {
       <Centered column>
         <Wrapper lang={`en`}>
           <p>
-            <GlitchDotCool>glitch[dot]cool</GlitchDotCool> is a group of digital
-            creators who share a common interest in glitch art. we are
-            producers, sound designers, programmers, and visual artists.
+            <GlitchDotCool>glitch[dot]cool</GlitchDotCool> is a group of
+            producers, sound designers, programmers, and visual artists orbiting
+            the glitch aesthetic.
           </p>
           <br />
           <p>

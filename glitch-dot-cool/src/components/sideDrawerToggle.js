@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
+import measurements from "../styles/measurements";
+
 const ToggleButton = styled.button`
   display: flex;
   flex-direction: column;
@@ -14,7 +16,7 @@ const ToggleButton = styled.button`
   // prevent blue flash on chrome
   -webkit-tap-highlight-color: transparent;
 
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: ${measurements.breakpointMobileNav+1}px) {
     display: none;
   }
 `
