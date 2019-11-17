@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { activeNavStyles } from "../utils/utils"
 import colors from "../styles/colors"
+import { LinkIcons } from "./LinkIcons"
 
 const Drawer = styled.nav`
   height: 100%;
@@ -39,7 +40,7 @@ const Nav = styled.ul`
 const DrawerTextStyles = {
   fontSize: `4rem`,
   backgroundColor: `${colors.nearblack}`,
-  color: `${colors.offwhite}`
+  color: `${colors.offwhite}`,
 }
 
 const SideDrawer = props => {
@@ -102,6 +103,7 @@ const SideDrawer = props => {
               contact
             </GatsbyLink>
           </StyledList>
+          <LinkIcons />
         </Centered>
       </Nav>
     </Drawer>

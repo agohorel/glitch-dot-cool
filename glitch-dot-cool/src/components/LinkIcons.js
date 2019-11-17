@@ -11,10 +11,10 @@ import {
 import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 
-export const FooterIcons = () => {
+const LinkIcons = ({className}) => {
   return (
     <Fragment>
-      <IconsContainer>
+      <IconsContainer className={className}>
         <a
           href="https://glitchdotcool.bandcamp.com/"
           target="_blank"
@@ -65,12 +65,15 @@ const IconsContainer = styled.div`
   a:not(:last-of-type) {
     margin-right: 2rem;
   }
-
-  @media only screen and (max-width: ${measurements.breakpointMobileNav}px){
-      display: none;
-  }
 `
 
 const Icon = styled(FontAwesomeIcon)`
   font-size: 2rem;
 `
+
+const FooterLinks = styled(LinkIcons)`
+  @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
+    display: none;
+  }
+`
+export {LinkIcons, FooterLinks}

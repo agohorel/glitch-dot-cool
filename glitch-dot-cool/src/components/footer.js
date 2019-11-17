@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { FooterIcons } from "./FooterIcons"
+import { FooterLinks } from "./LinkIcons"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { activeNavStyles } from "../utils/utils"
 
@@ -81,7 +81,7 @@ const Footer = () => {
           </StyledList>
         </FooterNavList>
       </nav>
-      <FooterIcons />
+      <FooterLinks />
     </StyledFooter>
   )
 }
