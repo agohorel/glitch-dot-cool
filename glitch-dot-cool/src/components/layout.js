@@ -22,6 +22,10 @@ const Wrapper = styled.div`
   min-width: 50vw;
   padding: 0 3vw ${measurements.footerHeight}rem 3vw;
   transition: 0.2s ease-out all;
+
+  @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
+    padding: 0 3vw ${measurements.footerHeightMobile}rem 3vw;
+  }
 `
 
 class Layout extends Component {
