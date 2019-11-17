@@ -12,7 +12,7 @@ const Drawer = styled.nav`
     ${colors.offwhite},
     ${colors.midgrey}
   );
-  box-shadow: -2px 0px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: -15px 0px 20px rgba(0, 0, 0, 0.45);
   position: fixed;
   top: 0;
   right: 0;
@@ -43,19 +43,19 @@ const DrawerTextStyles = {
 }
 
 const SideDrawer = props => {
-  let slideOut, slideDown
+  let slideOut, foldOut
 
   if (props.show) {
     slideOut = { transform: `translateX(0)` }
-    slideDown = { transform: `translateY(0)` }
+    foldOut = { transform: `rotate3d(1, 1, 1, 0)` }
   } else {
     slideOut = { transform: `translateX(110%)` }
-    slideDown = { transform: `translateY(-110%)` }
+    foldOut = { transform: `rotate3d(0, 1, 0, -90deg)` }
   }
 
   return (
     <Drawer style={slideOut}>
-      <Nav style={slideDown}>
+      <Nav style={foldOut}>
         <Centered column>
           <StyledList drawer>
             <GatsbyLink
