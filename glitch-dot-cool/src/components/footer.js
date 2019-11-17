@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
+import { FooterIcons } from "./FooterIcons"
 import { StyledList, GatsbyLink } from "../utils/utilComponents"
 import { activeNavStyles } from "../utils/utils"
 
@@ -30,7 +31,7 @@ const StyledFooter = styled.footer`
     padding: 1rem;
   }
 
-  @media only screen and (max-width: 385px) {
+  @media only screen and (max-width: 395px) {
     // hide "contact"
     li:last-of-type {
       display: none;
@@ -80,6 +81,7 @@ const Footer = () => {
           </StyledList>
         </FooterNavList>
       </nav>
+      <FooterIcons />
     </StyledFooter>
   )
 }
