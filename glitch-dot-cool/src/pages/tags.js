@@ -4,13 +4,9 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import {
-  GatsbyLink,
-  StyledList,
-  StyledButton,
-  PageTitle,
-} from "../utils/utilComponents"
+import { GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
+import colors from "../styles/colors"
 
 const TagContainer = styled.div`
   display: flex;
@@ -18,7 +14,7 @@ const TagContainer = styled.div`
   justify-content: space-between;
 `
 
-const Tag = styled.div`
+const Tag = styled(GatsbyLink)`
   display: inline-block;
   width: calc(50% - 1rem);
   padding: 1rem;
@@ -27,6 +23,10 @@ const Tag = styled.div`
 
   :last-child {
     margin-bottom: 2rem;
+  }
+
+  &:hover {
+    background-color: ${colors.lightgrey};
   }
 
   @media only screen and (max-width: 550px) {
@@ -57,12 +57,8 @@ const Tags = () => {
       <TagContainer>
         {data.allContentfulBlogPost.group.map(tag => {
           return (
-            <Tag key={tag.fieldValue}>
-              <StyledList>
-                <GatsbyLink to={`/tags/${slugify(tag.fieldValue)}`}>
-                  <h2>{tag.fieldValue}</h2>
-                </GatsbyLink>
-              </StyledList>
+            <Tag to={`/tags/${slugify(tag.fieldValue)}`} key={tag.fieldValue}>
+              <h2>{tag.fieldValue}</h2>
             </Tag>
           )
         })}
