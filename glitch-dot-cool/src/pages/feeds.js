@@ -5,35 +5,52 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import {
-  GatsbyLink,
-  StyledList,
-  StyledButton,
-  PageTitle,
-} from "../utils/utilComponents"
+import { GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
+import colors from "../styles/colors"
 
-const Wrapper = styled.div`
+const CardWrapper = styled.div`
   display: flex;
-  align-items: center;
-  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `
 
-const avatarStyles = {
-  display: `block`,
-  width: `4rem`,
-  height: `4rem`,
-  borderRadius: `50%`,
-  marginRight: `1rem`,
-  transition: `0.2s ease opacity`,
-  hover: `opacity: `,
-}
+const MemberCard = styled(GatsbyLink)`
+  display: flex;
+  width: calc(50% - 1rem);
+  align-items: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: ${colors.white};
 
-const AvatarHover = styled.div`
-  * {
-    :hover {
-      opacity: 0.5;
-    }
+  h2 {
+    display: inline-block;
+  }
+
+  &:last-child {
+    margin-bottom: 2rem;
+  }
+
+  &:hover {
+    background-color: ${colors.lightgrey};
+  }
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+`
+
+const Avatar = styled(Image)`
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  transition: 0.2s ease-out opacity;
+
+  &:hover {
+    opacity: 0.5;
   }
 `
 
@@ -85,25 +102,20 @@ const Posts = () => {
         </StyledButton>
       </GatsbyLink>
 
-      <ol>
+      <CardWrapper>
         {data.allContentfulAuthor.edges.map(post => {
           return (
-            <Wrapper key={post.node.authorName}>
-              <GatsbyLink to={`/${slugify(post.node.authorName)}/posts`}>
-                <AvatarHover>
-                  <Image style={avatarStyles} fluid={post.node.avatar.fluid} />
-                </AvatarHover>
-              </GatsbyLink>
+            <MemberCard
+              key={post.node.authorName}
+              to={`/${slugify(post.node.authorName)}/posts`}
+            >
+              <Avatar fluid={post.node.avatar.fluid} />
 
-              <StyledList>
-                <GatsbyLink to={`/${slugify(post.node.authorName)}/posts`}>
-                  <h2>{post.node.authorName}</h2>
-                </GatsbyLink>
-              </StyledList>
-            </Wrapper>
+              <h2>{post.node.authorName}</h2>
+            </MemberCard>
           )
         })}
-      </ol>
+      </CardWrapper>
     </Layout>
   )
 }
