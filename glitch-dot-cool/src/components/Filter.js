@@ -24,6 +24,7 @@ const FormWrapper = styled.div`
   padding: 1rem;
   background-color: ${colors.white};
   align-items: center;
+  margin-top: 1.5rem;
 `
 
 const Form = styled.form`
@@ -40,6 +41,8 @@ const Label = styled.label`
 const Input = styled.input`
   border: none;
   padding: 3px;
+  width: 33%;
+  min-width: 150px;
   background-color: ${colors.lightgrey};
   color: ${colors.darkgrey};
 `
