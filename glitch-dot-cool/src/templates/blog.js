@@ -17,9 +17,9 @@ const BlogPost = styled.div`
   display: block;
   width: calc(1920px - (65vw));
   max-width: 100%;
-  transition: .2s ease-out all;
+  transition: 0.2s ease-out all;
 
-  @media only screen and (min-width: 1921px){
+  @media only screen and (min-width: 1921px) {
     min-width: 600px;
   }
 
@@ -28,7 +28,7 @@ const BlogPost = styled.div`
   h1,
   h2,
   h3 {
-    :not(:first-child){
+    :not(:first-child) {
       margin: 2rem 0 1rem 0;
     }
   }
@@ -118,10 +118,10 @@ const Blog = props => {
   let blogContent = props.data.contentfulBlogPost.body.json
   let parsedLinks
 
-  try {
-    parsedLinks = JSON.parse(props.data.contentfulBlogPost.links.internal.content) || undefined
-  } catch(e){
-    console.log(e)
+  if (props.data.contentfulBlogPost.links) {
+    parsedLinks = JSON.parse(
+      props.data.contentfulBlogPost.links.internal.content
+    )
   }
 
   blogContent.content.forEach(contentItem => {
@@ -156,7 +156,7 @@ const Blog = props => {
 
         {documentToReactComponents(blogContent, renderOptions)}
 
-        {parsedLinks !== undefined ? <DistroLinks props={parsedLinks}></DistroLinks> : null}
+        {parsedLinks !== undefined ? <DistroLinks props={parsedLinks} /> : null}
 
         <BlogTags>
           {props.data.contentfulBlogPost.tags.map(tag => {
