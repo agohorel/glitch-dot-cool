@@ -1,12 +1,9 @@
 import React from "react"
 
-const CodeBlock = ({ text, lang, code }) => {
+const CodeBlock = ({ lang, code }) => {
   return (
-    <pre className={`language-${lang}`} key={`${text.substring(0, 10)}-pre`}>
-      <code
-        className={`language-${lang}`}
-        key={`${text.substring(0, 10)}-codeblock`}
-      >
+    <pre className={`language-${lang}`}>
+      <code className={`language-${lang}`} key={code.substring(0, 50)}>
         {code}
       </code>
     </pre>
