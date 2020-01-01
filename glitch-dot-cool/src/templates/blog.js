@@ -49,6 +49,14 @@ const BlogPost = styled.div`
       font-size: inherit;
     }
   }
+
+  @media (max-width: 950px) {
+    ol,
+    ul,
+    li {
+      margin-left: 10px;
+    }
+  }
 `
 
 const BlogHeader = styled.div`
@@ -101,11 +109,7 @@ export const query = graphql`
             fileName
           }
           fluid {
-            base64
-            sizes
-            src
-            srcSet
-            aspectRatio
+            ...GatsbyContentfulFluid
           }
         }
       }
