@@ -61,7 +61,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulBlogPost(filter: { author: { eq: $author } }) {
+    allContentfulBlogPost(
+      filter: { author: { eq: $author } }
+      sort: { fields: publishedDate, order: DESC }
+    ) {
       edges {
         node {
           title
