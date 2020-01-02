@@ -69,11 +69,7 @@ const Posts = () => {
                 fileName
               }
               fluid(maxWidth: 75) {
-                base64
-                sizes
-                src
-                srcSet
-                aspectRatio
+                ...GatsbyContentfulFluid
               }
             }
           }
