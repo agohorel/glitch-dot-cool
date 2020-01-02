@@ -15,6 +15,7 @@ import {
 
 import VideoPlayer from "../components/videoPlayer"
 import AudioPlayer from "../components/audioPlayer"
+import CodeBlock from "../components/CodeBlock"
 
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"
@@ -113,17 +114,7 @@ const renderOptions = {
         // remove language declaration from actual code block
         let code = text.replace(lang, "").trim()
         return (
-          <pre
-            className={`language-${lang}`}
-            key={`${text.substring(0, 10)}-pre`}
-          >
-            <code
-              className={`language-${lang}`}
-              key={`${text.substring(0, 10)}-codeblock`}
-            >
-              {code}
-            </code>
-          </pre>
+          <CodeBlock lang={lang} code={code} key={code.substring(0, 100)} />
         )
       }
     },

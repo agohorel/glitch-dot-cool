@@ -27,16 +27,15 @@ const MemberCard = styled(GatsbyLink)`
     display: inline-block;
   }
 
-  &:last-child {
-    margin-bottom: 2rem;
-  }
-
   &:hover {
     background-color: ${colors.lightgrey};
   }
 
   @media (max-width: 1000px) {
     width: 100%;
+    &:last-child {
+      margin-bottom: 2rem;
+    }
   }
 `
 
@@ -70,11 +69,7 @@ const Posts = () => {
                 fileName
               }
               fluid(maxWidth: 75) {
-                base64
-                sizes
-                src
-                srcSet
-                aspectRatio
+                ...GatsbyContentfulFluid
               }
             }
           }

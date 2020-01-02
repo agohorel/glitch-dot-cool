@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import Head from "../components/head"
 import { Filter } from "../components/Filter"
-import { GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
+import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 import colors from "../styles/colors"
 
