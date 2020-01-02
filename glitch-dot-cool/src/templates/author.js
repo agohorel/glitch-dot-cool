@@ -5,33 +5,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import Head from "../components/head"
 import Profile from "../components/profile"
-import { StyledList, GatsbyLink } from "../utils/utilComponents"
-import { slugify } from "../utils/utils"
-
-const Wrapper = styled.div`
-  margin-top: 6rem;
-  display: flex;
-
-  @media only screen and (max-width: 960px) {
-    flex-direction: column;
-    margin-top: 2rem;
-  }
-`
-
-const Posts = styled.div`
-  display: inline-block;
-  padding: 4rem;
-  background-color: #fff;
-  flex-grow: 1;
-
-  @media only screen and (max-width: 960px) {
-    margin-bottom: 3rem;
-  }
-`
-
-const Post = styled.div`
-  margin-top: 0.5rem;
-`
+import PostCard from "../components/PostCard"
 
 export const query = graphql`
   query($author: String!) {
@@ -46,11 +20,7 @@ export const query = graphql`
               url
             }
             fluid(maxWidth: 100) {
-              base64
-              sizes
-              src
-              srcSet
-              aspectRatio
+              ...GatsbyContentfulFluid
             }
           }
           links {
@@ -86,22 +56,9 @@ const Author = props => {
 
         <Posts>
           <h1>posts:</h1>
-          <ol>
-            {props.data.allContentfulBlogPost.edges.map(post => {
-              return (
-                <Post key={post.node.title}>
-                  <StyledList>
-                    <GatsbyLink
-                      to={`/${slugify(post.node.author)}/${post.node.slug}`}
-                    >
-                      <h3>{post.node.title}</h3>
-                    </GatsbyLink>
-                  </StyledList>
-                  <p>{post.node.publishedDate}</p>
-                </Post>
-              )
-            })}
-          </ol>
+          {props.data.allContentfulBlogPost.edges.map(post => {
+            return <PostCard post={post} key={post.node.slug} />
+          })}
         </Posts>
       </Wrapper>
     </Layout>
@@ -109,3 +66,24 @@ const Author = props => {
 }
 
 export default Author
+
+const Wrapper = styled.div`
+  margin-top: 6rem;
+  display: flex;
+
+  @media only screen and (max-width: 960px) {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+`
+
+const Posts = styled.div`
+  display: inline-block;
+  padding: 4rem;
+  background-color: #fff;
+  flex-grow: 1;
+
+  @media only screen and (max-width: 960px) {
+    margin-bottom: 3rem;
+  }
+`
