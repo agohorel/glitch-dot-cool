@@ -23,7 +23,7 @@ export default PostCard
 const Post = styled.div`
   padding: 1rem;
   background-color: ${colors.offwhite};
-  margin: 2rem 0rem;
+  margin-top: 2rem;
 
   :hover {
     background-color: ${colors.lightgrey};
