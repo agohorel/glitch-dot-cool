@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import { chromaticAbberation } from "../styles/animations"
 import colors from "../styles/colors"
+import measurements from "../styles/measurements"
 
 const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
@@ -152,7 +153,7 @@ const Card = styled.div`
 `
 
 const ProfileWrapper = styled.div`
-  margin-top: 6rem;
+  margin: 6rem 0 ${measurements.footerHeight}rem 0;
   display: flex;
 
   @media only screen and (max-width: 960px) {
