@@ -123,12 +123,40 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
   // create new pages
   authors.data.allContentfulAuthor.edges.forEach(author => {
-    console.log(author.node.authorName)
     createPage({
       component: galleryTemplate,
       path: `${slugify(author.node.authorName)}/gallery`,
       context: {
         author: author.node.authorName,
+      },
+    })
+  })
+
+  // MAKE GALLERY DETAIL PAGES
+  const galleryDetailTemplate = path.resolve("src/templates/galleryDetail.js")
+  // get slug
+  const allGalleryImgs = await graphql(`
+    query {
+      allContentfulGalleryItem {
+        edges {
+          node {
+            contentful_id
+            title
+            author
+          }
+        }
+      }
+    }
+  `)
+  // create new pages
+  allGalleryImgs.data.allContentfulGalleryItem.edges.forEach(img => {
+    createPage({
+      component: galleryDetailTemplate,
+      path: `${slugify(img.node.author)}/gallery/${slugify(img.node.title)}`,
+      context: {
+        title: img.node.title,
+        id: img.node.contentful_id,
+        author: img.node.author,
       },
     })
   })
