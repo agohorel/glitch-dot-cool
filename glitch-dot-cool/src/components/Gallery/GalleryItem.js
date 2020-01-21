@@ -1,13 +1,15 @@
 import React from "react"
+import { Link } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 
+import { slugify } from "../../utils/utils"
+
 const GalleryItem = ({ img }) => {
   return (
-    <GalleryThumbnail
-      fluid={img.image.fluid}
-      alt={img.description}
-    />
+    <Link to={`/${slugify(img.author)}/gallery/${slugify(img.title)}`}>
+      <GalleryThumbnail fluid={img.image.fluid} alt={img.description} />
+    </Link>
   )
 }
 
@@ -18,4 +20,8 @@ const GalleryThumbnail = styled(Image)`
   height: 100%;
   object-fit: cover;
   object-position: center;
+
+  :hover {
+    opacity: 0.8;
+  }
 `
