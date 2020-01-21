@@ -5,16 +5,11 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
 import { StyledLink, Centered } from "../utils/utilComponents"
 import colors from "../styles/colors"
 
-const iconStyle = {
-  fontSize: "1.6rem",
-  color: `${colors.midgrey}`,
-}
-
-const ProfileLinks = links => {
+const ProfileLinks = ({ links }) => {
   return (
     <Centered column>
-      {links.props.links instanceof Array
-        ? links.props.links.map(link => {
+      {links.links instanceof Array
+        ? links.links.map(link => {
             return Object.keys(link).map(key => {
               return (
                 <StyledLink key={key} href={link[key]} target="_blank">
@@ -24,13 +19,9 @@ const ProfileLinks = links => {
               )
             })
           })
-        : Object.keys(links.props).map(key => {
+        : Object.keys(links).map(key => {
             return (
-              <StyledLink
-                key={key}
-                href={`${links.props[key]}`}
-                target="_blank"
-              >
+              <StyledLink key={key} href={`${links[key]}`} target="_blank">
                 {`${key.toLowerCase()} `}
                 <FontAwesomeIcon icon={faExternalLinkAlt} style={iconStyle} />
               </StyledLink>
@@ -41,3 +32,8 @@ const ProfileLinks = links => {
 }
 
 export default ProfileLinks
+
+const iconStyle = {
+  fontSize: "1.6rem",
+  color: `${colors.midgrey}`,
+}
