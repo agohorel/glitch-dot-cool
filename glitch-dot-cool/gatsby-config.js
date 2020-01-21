@@ -14,13 +14,13 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_2_ID,
-        accessToken: process.env.CONTENTFUL_SPACE_2_ACCESS_TOKEN,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-contentful`,
+    //   options: {
+    //     spaceId: process.env.CONTENTFUL_SPACE_2_ID,
+    //     accessToken: process.env.CONTENTFUL_SPACE_2_ACCESS_TOKEN,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
