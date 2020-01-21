@@ -3,8 +3,9 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import Profile from "../components/profile"
+import Profile from "../components/Profile/profile"
 import GalleryContainer from "../components/Gallery/GalleryContainer"
+import ProfileNav from "../components/Profile/ProfileNav"
 import { ProfileWrapper } from "../utils/utilComponents"
 
 const Gallery = ({ data: { contentfulAuthor, allContentfulGalleryItem } }) => {
@@ -13,7 +14,9 @@ const Gallery = ({ data: { contentfulAuthor, allContentfulGalleryItem } }) => {
       <Head title={`${contentfulAuthor.authorName}'s gallery`} />
       <ProfileWrapper>
         <Profile profileData={contentfulAuthor} />
-        <GalleryContainer galleryItems={allContentfulGalleryItem} />
+        <ProfileNav profileData={contentfulAuthor}>
+          <GalleryContainer galleryItems={allContentfulGalleryItem} />
+        </ProfileNav>
       </ProfileWrapper>
     </Layout>
   )

@@ -4,7 +4,8 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import Profile from "../components/profile"
+import Profile from "../components/Profile/profile"
+import ProfileNav from "../components/Profile/ProfileNav"
 import { StyledList, GatsbyLink, ProfileWrapper } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
@@ -15,25 +16,22 @@ const Author = ({ data: { contentfulAuthor, allContentfulBlogPost } }) => {
       <ProfileWrapper>
         <Profile profileData={contentfulAuthor} />
 
-        <Posts>
-          <h1>posts:</h1>
-          <ol>
-            {allContentfulBlogPost.edges.map(post => {
-              return (
-                <Post key={post.node.title}>
-                  <StyledList>
-                    <GatsbyLink
-                      to={`/${slugify(post.node.author)}/${post.node.slug}`}
-                    >
-                      <h3>{post.node.title}</h3>
-                    </GatsbyLink>
-                  </StyledList>
-                  <p>{post.node.publishedDate}</p>
-                </Post>
-              )
-            })}
-          </ol>
-        </Posts>
+        <ProfileNav profileData={contentfulAuthor}>
+          {allContentfulBlogPost.edges.map(post => {
+            return (
+              <Post key={post.node.title}>
+                <StyledList>
+                  <GatsbyLink
+                    to={`/${slugify(post.node.author)}/${post.node.slug}`}
+                  >
+                    <h3>{post.node.title}</h3>
+                  </GatsbyLink>
+                </StyledList>
+                <p>{post.node.publishedDate}</p>
+              </Post>
+            )
+          })}
+        </ProfileNav>
       </ProfileWrapper>
     </Layout>
   )
