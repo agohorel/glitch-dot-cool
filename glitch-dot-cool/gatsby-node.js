@@ -14,12 +14,12 @@ exports.onCreateNode = ({ node, actions }) => {
       value: slugs,
     })
   }
-  
-  if (node.internal.type === `ContentfulAuthor`){
+
+  if (node.internal.type === `ContentfulAuthor`) {
     createNodeField({
       node,
       name: `authorNameLowerCase`,
-      value: node.authorName.toLowerCase()
+      value: node.authorName.toLowerCase(),
     })
   }
 }
@@ -107,6 +107,32 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // MAKE GALLERY PAGES
+  const galleryTemplate = path.resolve("src/templates/gallery.js")
+  // get slug
+  const authors = await graphql(`
+    query {
+      allContentfulAuthor {
+        edges {
+          node {
+            authorName
+          }
+        }
+      }
+    }
+  `)
+  // create new pages
+  authors.data.allContentfulAuthor.edges.forEach(author => {
+    console.log(author.node.authorName)
+    createPage({
+      component: galleryTemplate,
+      path: `${slugify(author.node.authorName)}/gallery`,
+      context: {
+        author: author.node.authorName,
+      },
+    })
+  })
+
   // MAKE PROJECTS pages
   const projectTemplate = path.resolve("src/templates/project.js")
   // get slug
@@ -124,13 +150,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
   // create new pages
   projectResponse.data.allContentfulProject.edges.forEach(project => {
-      createPage({
-        component: projectTemplate,
-        path: `projects/${project.node.slug}`,
-        context: {
-          project: project.node.title,
-        },
-      })
+    createPage({
+      component: projectTemplate,
+      path: `projects/${project.node.slug}`,
+      context: {
+        project: project.node.title,
+      },
+    })
   })
 }
 
