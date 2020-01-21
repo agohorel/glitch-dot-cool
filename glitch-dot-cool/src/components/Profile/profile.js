@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons"
 
 import ProfileLinks from "./profileLinks"
-import { Centered } from "../utils/utilComponents"
-import colors from "../styles/colors"
+import { Centered } from "../../utils/utilComponents"
+import colors from "../../styles/colors"
 
 const avatarStyles = {
   width: `10rem`,
