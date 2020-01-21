@@ -1,15 +1,11 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
-import {
-  GatsbyLink,
-  StyledList,
-  PageTitle,
-  StyledButton,
-} from "../utils/utilComponents"
+import { GatsbyLink, PageTitle } from "../utils/utilComponents"
+import { Filter } from "../components/Filter"
 import { slugify } from "../utils/utils"
 
 const Post = styled.div`
@@ -38,35 +34,35 @@ const Posts = () => {
     }
   `)
 
+  const [filterTerm, setFilterTerm] = useState("")
+  const [filterResult, setfilterResult] = useState([])
+
+  useEffect(() => {
+    const result = data.allContentfulBlogPost.edges.filter(post =>
+      post.node.title.toLowerCase().includes(filterTerm.toLowerCase())
+    )
+    setfilterResult(result)
+  }, [filterTerm])
+
   return (
     <Layout>
       <Head title="posts" />
       <PageTitle>posts</PageTitle>
-      <GatsbyLink to={"/tags"}>
-        <StyledButton style={{ marginTop: `1rem` }}>view all tags</StyledButton>
-      </GatsbyLink>
-      <ol>
-        {data.allContentfulBlogPost.edges.map(post => {
-          return (
-            <Post key={post.node.title}>
-              <StyledList>
-                <GatsbyLink
-                  to={`/${slugify(post.node.author)}/${post.node.slug}`}
-                >
-                  <h2>{post.node.title}</h2>
-                </GatsbyLink>
-              </StyledList>
-              <p>{post.node.publishedDate}</p>
-              <StyledList>
-                {`by `}
-                <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
-                  <strong>{post.node.author}</strong>
-                </GatsbyLink>
-              </StyledList>
-            </Post>
-          )
-        })}
-      </ol>
+      <Filter setFilterTerm={setFilterTerm} path="/tags" />
+      {filterResult.map(post => {
+        return (
+          <Post key={post.node.title}>
+            <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
+              <h2>{post.node.title}</h2>
+            </GatsbyLink>
+            <p>{post.node.publishedDate}</p>
+            {`by `}
+            <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
+              <strong>{post.node.author}</strong>
+            </GatsbyLink>
+          </Post>
+        )
+      })}
     </Layout>
   )
 }
