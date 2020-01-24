@@ -1,9 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
 import Profile from "../components/Profile/profile"
+import GalleryDetailImage from "../components/Gallery/GalleryDetailImage"
 import GalleryDetails from "../components/Gallery/GalleryDetails"
 import { ProfileWrapper } from "../utils/utilComponents"
 
@@ -14,8 +16,11 @@ const GalleryDetail = ({
     <Layout>
       <Head title={`${contentfulAuthor.authorName}'s gallery`} />
       <ProfileWrapper>
-        <Profile profileData={contentfulAuthor} />
-        <GalleryDetails img={allContentfulGalleryItem.edges[0]} />
+        <LeftColumn>
+          <Profile profileData={contentfulAuthor} />
+          <GalleryDetails img={allContentfulGalleryItem.edges[0]} />
+        </LeftColumn>
+        <GalleryDetailImage img={allContentfulGalleryItem.edges[0]} />
       </ProfileWrapper>
     </Layout>
   )
@@ -65,3 +70,8 @@ export const query = graphql`
 `
 
 export default GalleryDetail
+
+const LeftColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`
