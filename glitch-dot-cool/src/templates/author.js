@@ -9,14 +9,19 @@ import ProfileNav from "../components/Profile/ProfileNav"
 import { StyledList, GatsbyLink, ProfileWrapper } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
-const Author = ({ data: { contentfulAuthor, allContentfulBlogPost } }) => {
+const Author = ({
+  data: { contentfulAuthor, allContentfulBlogPost, allContentfulGalleryItem },
+}) => {
   return (
     <Layout>
       <Head title={contentfulAuthor.authorName} />
       <ProfileWrapper>
         <Profile profileData={contentfulAuthor} />
 
-        <ProfileNav profileData={contentfulAuthor}>
+        <ProfileNav
+          profileData={contentfulAuthor}
+          galleryItems={allContentfulGalleryItem}
+        >
           {allContentfulBlogPost.edges.map(post => {
             return (
               <Post key={post.node.title}>
@@ -70,6 +75,21 @@ export const query = graphql`
           slug
           author
           publishedDate(formatString: "MMMM Do, YYYY")
+        }
+      }
+    }
+    allContentfulGalleryItem(filter: { author: { eq: $author } }) {
+      edges {
+        node {
+          description
+          id
+          title
+          author
+          image {
+            fluid(quality: 75, maxWidth: 800) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
         }
       }
     }

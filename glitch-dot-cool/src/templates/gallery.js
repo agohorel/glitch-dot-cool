@@ -14,7 +14,10 @@ const Gallery = ({ data: { contentfulAuthor, allContentfulGalleryItem } }) => {
       <Head title={`${contentfulAuthor.authorName}'s gallery`} />
       <ProfileWrapper>
         <Profile profileData={contentfulAuthor} />
-        <ProfileNav profileData={contentfulAuthor}>
+        <ProfileNav
+          profileData={contentfulAuthor}
+          galleryItems={allContentfulGalleryItem}
+        >
           <GalleryContainer galleryItems={allContentfulGalleryItem} />
         </ProfileNav>
       </ProfileWrapper>

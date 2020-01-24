@@ -7,15 +7,22 @@ import colors from "../../styles/colors"
 
 const ProfileNav = props => {
   const { authorName } = props.profileData
+  const { galleryItems } = props
+  console.log(galleryItems)
   return (
     <Posts>
       <SubNav>
         <GatsbyLink to={`/${authorName}/posts`} activeStyle={activeNavStyles}>
           <h1>posts</h1>
         </GatsbyLink>
-        <GatsbyLink to={`/${authorName}/gallery`} activeStyle={activeNavStyles}>
-          <h1>gallery</h1>
-        </GatsbyLink>
+        {galleryItems.edges.length ? (
+          <GatsbyLink
+            to={`/${authorName}/gallery`}
+            activeStyle={activeNavStyles}
+          >
+            <h1>gallery</h1>
+          </GatsbyLink>
+        ) : null}
       </SubNav>
       {props.children}
     </Posts>
@@ -40,7 +47,7 @@ const SubNav = styled.nav`
 
   h1 {
     margin: 0 2rem 2rem 0;
-    padding: .25rem .5rem;
+    padding: 0.25rem 0.5rem;
     background-color: ${colors.lightgrey};
   }
 `
