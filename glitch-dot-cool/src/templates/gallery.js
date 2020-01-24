@@ -58,7 +58,7 @@ export const query = graphql`
           title
           author
           image {
-            fluid(quality: 75, maxWidth: 800) {
+            fluid(quality: 75, maxWidth: 400) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
