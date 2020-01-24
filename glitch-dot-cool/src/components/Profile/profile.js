@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons"
 
 import ProfileLinks from "./profileLinks"
-import { Centered } from "../utils/utilComponents"
-import colors from "../styles/colors"
+import { Centered } from "../../utils/utilComponents"
+import colors from "../../styles/colors"
 
 const avatarStyles = {
   width: `10rem`,
@@ -38,28 +38,22 @@ const iconStyle = {
   color: `${colors.midgrey}`,
 }
 
-const Profile = props => {
-  let myProps = props.props
-  let links = JSON.parse(
-    myProps.data.allContentfulAuthor.edges[0].node.links.internal.content
-  )
-  let location = myProps.data.allContentfulAuthor.edges[0].node.location
+const Profile = ({ profileData }) => {
+  const { authorName, contactEmail, location, avatar, links } = profileData
+  const parsedLinks = JSON.parse(links.internal.content)
   return (
     <ProfileCard>
       <Centered column>
-        <Image
-          style={avatarStyles}
-          fluid={myProps.data.allContentfulAuthor.edges[0].node.avatar.fluid}
-        />
-        <h1>{myProps.pageContext.author}</h1>
+        <Image style={avatarStyles} fluid={avatar.fluid} />
+        <h1>{authorName}</h1>
         {location === null || undefined ? null : (
           <p>
             <FontAwesomeIcon icon={faMapMarkerAlt} style={iconStyle} />
             {` ${location}`}
           </p>
         )}
-        <ProfileLinks props={links} />
-        <p>{myProps.data.allContentfulAuthor.edges[0].node.contactEmail}</p>
+        <ProfileLinks links={parsedLinks} />
+        <p>{contactEmail}</p>
       </Centered>
     </ProfileCard>
   )

@@ -14,12 +14,12 @@ exports.onCreateNode = ({ node, actions }) => {
       value: slugs,
     })
   }
-  
-  if (node.internal.type === `ContentfulAuthor`){
+
+  if (node.internal.type === `ContentfulAuthor`) {
     createNodeField({
       node,
       name: `authorNameLowerCase`,
-      value: node.authorName.toLowerCase()
+      value: node.authorName.toLowerCase(),
     })
   }
 }
@@ -107,6 +107,60 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // MAKE GALLERY PAGES
+  const galleryTemplate = path.resolve("src/templates/gallery.js")
+  // get slug
+  const authors = await graphql(`
+    query {
+      allContentfulAuthor {
+        edges {
+          node {
+            authorName
+          }
+        }
+      }
+    }
+  `)
+  // create new pages
+  authors.data.allContentfulAuthor.edges.forEach(author => {
+    createPage({
+      component: galleryTemplate,
+      path: `${slugify(author.node.authorName)}/gallery`,
+      context: {
+        author: author.node.authorName,
+      },
+    })
+  })
+
+  // MAKE GALLERY DETAIL PAGES
+  const galleryDetailTemplate = path.resolve("src/templates/galleryDetail.js")
+  // get slug
+  const allGalleryImgs = await graphql(`
+    query {
+      allContentfulGalleryItem {
+        edges {
+          node {
+            contentful_id
+            title
+            author
+          }
+        }
+      }
+    }
+  `)
+  // create new pages
+  allGalleryImgs.data.allContentfulGalleryItem.edges.forEach(img => {
+    createPage({
+      component: galleryDetailTemplate,
+      path: `${slugify(img.node.author)}/gallery/${slugify(img.node.title)}`,
+      context: {
+        title: img.node.title,
+        id: img.node.contentful_id,
+        author: img.node.author,
+      },
+    })
+  })
+
   // MAKE PROJECTS pages
   const projectTemplate = path.resolve("src/templates/project.js")
   // get slug
@@ -124,13 +178,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
   // create new pages
   projectResponse.data.allContentfulProject.edges.forEach(project => {
-      createPage({
-        component: projectTemplate,
-        path: `projects/${project.node.slug}`,
-        context: {
-          project: project.node.title,
-        },
-      })
+    createPage({
+      component: projectTemplate,
+      path: `projects/${project.node.slug}`,
+      context: {
+        project: project.node.title,
+      },
+    })
   })
 }
 
