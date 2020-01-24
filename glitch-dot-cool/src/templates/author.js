@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Head from "../components/head"
 import Profile from "../components/Profile/profile"
 import ProfileNav from "../components/Profile/ProfileNav"
+import PostCard from "../components/PostCard";
 import { StyledList, GatsbyLink, ProfileWrapper } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
@@ -23,18 +24,19 @@ const Author = ({
           galleryItems={allContentfulGalleryItem}
         >
           {allContentfulBlogPost.edges.map(post => {
-            return (
-              <Post key={post.node.title}>
-                <StyledList>
-                  <GatsbyLink
-                    to={`/${slugify(post.node.author)}/${post.node.slug}`}
-                  >
-                    <h3>{post.node.title}</h3>
-                  </GatsbyLink>
-                </StyledList>
-                <p>{post.node.publishedDate}</p>
-              </Post>
-            )
+            return <PostCard post={post} key={post.node.slug} />
+            // return (
+            //   <Post key={post.node.title}>
+            //     <StyledList>
+            //       <GatsbyLink
+            //         to={`/${slugify(post.node.author)}/${post.node.slug}`}
+            //       >
+            //         <h3>{post.node.title}</h3>
+            //       </GatsbyLink>
+            //     </StyledList>
+            //     <p>{post.node.publishedDate}</p>
+            //   </Post>
+            // )
           })}
         </ProfileNav>
       </ProfileWrapper>
@@ -68,7 +70,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulBlogPost(filter: { author: { eq: $author } }) {
+    allContentfulBlogPost(
+      filter: { author: { eq: $author } }
+      sort: { fields: publishedDate, order: DESC }
+    ) {
       edges {
         node {
           title
