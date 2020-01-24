@@ -10,7 +10,6 @@ const GalleryItem = ({ img }) => {
     <Link to={`/${slugify(img.author)}/gallery/${slugify(img.title)}`}>
       <GalleryThumbnail
         sizes={{ ...img.image.fluid, aspectRatio: 1 / 1 }}
-        // fluid={img.image.fluid}
         alt={img.title}
       />
     </Link>

@@ -21,4 +21,12 @@ const GalleryWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 2rem;
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 `

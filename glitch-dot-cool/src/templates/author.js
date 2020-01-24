@@ -6,9 +6,8 @@ import Layout from "../components/layout"
 import Head from "../components/head"
 import Profile from "../components/Profile/profile"
 import ProfileNav from "../components/Profile/ProfileNav"
-import PostCard from "../components/PostCard";
-import { StyledList, GatsbyLink, ProfileWrapper } from "../utils/utilComponents"
-import { slugify } from "../utils/utils"
+import PostCard from "../components/PostCard"
+import { ProfileWrapper } from "../utils/utilComponents"
 
 const Author = ({
   data: { contentfulAuthor, allContentfulBlogPost, allContentfulGalleryItem },
@@ -25,18 +24,6 @@ const Author = ({
         >
           {allContentfulBlogPost.edges.map(post => {
             return <PostCard post={post} key={post.node.slug} />
-            // return (
-            //   <Post key={post.node.title}>
-            //     <StyledList>
-            //       <GatsbyLink
-            //         to={`/${slugify(post.node.author)}/${post.node.slug}`}
-            //       >
-            //         <h3>{post.node.title}</h3>
-            //       </GatsbyLink>
-            //     </StyledList>
-            //     <p>{post.node.publishedDate}</p>
-            //   </Post>
-            // )
           })}
         </ProfileNav>
       </ProfileWrapper>

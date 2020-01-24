@@ -8,7 +8,6 @@ import colors from "../../styles/colors"
 const ProfileNav = props => {
   const { authorName } = props.profileData
   const { galleryItems } = props
-  console.log(galleryItems)
   return (
     <Posts>
       <SubNav>
@@ -49,5 +48,13 @@ const SubNav = styled.nav`
     margin: 0 2rem 2rem 0;
     padding: 0.25rem 0.5rem;
     background-color: ${colors.lightgrey};
+  }
+
+  @media (max-width: 370px) {
+    flex-direction: column;
+
+    h1 {
+      margin: 0 0 2rem 0;
+    }
   }
 `
