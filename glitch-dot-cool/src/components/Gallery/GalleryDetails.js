@@ -1,23 +1,21 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import colors from "../../styles/colors"
 import { StyledButton } from "../../utils/utilComponents"
+import { slugify } from "../../utils/utils"
 
 const GalleryDetails = ({ img: { node } }) => {
-  const { title, description } = node
-
-  const goBack = () => {
-    if (typeof window !== `undefined`) {
-      window.history.back()
-    }
-  }
+  const { title, description, author } = node
 
   return (
     <DetailsContainer>
       <h3>{title}</h3>
       <Description>{description}</Description>
-      <BackButton onClick={goBack}>back</BackButton>
+      <Link to={`/${slugify(author)}/gallery`}>
+        <BackButton>back</BackButton>
+      </Link>
     </DetailsContainer>
   )
 }
@@ -51,6 +49,7 @@ const BackButton = styled(StyledButton)`
   background-color: ${colors.lightgrey};
   color: ${colors.midgrey};
   margin-top: 2rem;
+  width: 100%;
 
   :hover {
     color: ${colors.white};
