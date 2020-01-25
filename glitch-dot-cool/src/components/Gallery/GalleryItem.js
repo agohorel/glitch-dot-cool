@@ -22,7 +22,7 @@ export default GalleryItem
 
 const GalleryThumbnail = styled(Image)`
   width: 100%;
-  transition: 0.3s ease-out all;
+  transition: 0.2s ease-out all;
 
   :hover {
     opacity: 0.7;
