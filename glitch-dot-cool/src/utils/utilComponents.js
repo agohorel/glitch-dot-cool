@@ -59,8 +59,8 @@ const StyledLink = styled.a`
 const Centered = styled.div`
   display: flex;
   flex-direction: ${props => (props.column ? `column` : `row`)};
-  justify-content: center;
-  align-items: center;
+  justify-content: ${props => (props.start ? `flex-start` : `center`)};
+  align-items: ${props => (props.start ? `flex-start` : `center`)};
 `
 
 const StyledButton = styled.button`

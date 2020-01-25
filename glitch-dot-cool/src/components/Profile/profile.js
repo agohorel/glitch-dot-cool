@@ -2,19 +2,11 @@ import React from "react"
 import styled from "styled-components"
 import Image from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons"
+import { faMapMarkerAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
 import ProfileLinks from "./profileLinks"
-import { Centered } from "../../utils/utilComponents"
+import { Centered, GatsbyLink } from "../../utils/utilComponents"
 import colors from "../../styles/colors"
-
-const avatarStyles = {
-  width: `10rem`,
-  height: `10rem`,
-  borderRadius: `50%`,
-  display: `inline-block`,
-  margin: `0 0 2rem 0`,
-}
 
 const ProfileCard = styled.div`
   display: inline-block;
@@ -44,8 +36,15 @@ const Profile = ({ profileData }) => {
   return (
     <ProfileCard>
       <Centered column>
-        <Image style={avatarStyles} fluid={avatar.fluid} />
-        <h1>{authorName}</h1>
+        <GatsbyLink to={`${authorName}/posts`}>
+          <Avatar fluid={avatar.fluid} />
+        </GatsbyLink>
+        <GatsbyLink to={`${authorName}/posts`}>
+          <h1>{authorName}</h1>
+        </GatsbyLink>
+        <p style={{ whiteSpace: "nowrap" }}>
+          <FontAwesomeIcon icon={faEnvelope} style={iconStyle} /> {contactEmail}
+        </p>
         {location === null || undefined ? null : (
           <p>
             <FontAwesomeIcon icon={faMapMarkerAlt} style={iconStyle} />
@@ -53,10 +52,21 @@ const Profile = ({ profileData }) => {
           </p>
         )}
         <ProfileLinks links={parsedLinks} />
-        <p>{contactEmail}</p>
       </Centered>
     </ProfileCard>
   )
 }
 
 export default Profile
+
+const Avatar = styled(Image)`
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin: 0 0 2rem 0;
+
+  :hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+`
