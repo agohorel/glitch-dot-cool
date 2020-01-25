@@ -8,10 +8,12 @@ import { slugify } from "../../utils/utils"
 const GalleryItem = ({ img }) => {
   return (
     <Link to={`/${slugify(img.author)}/gallery/${slugify(img.title)}`}>
-      <GalleryThumbnail
-        sizes={{ ...img.image.fluid, aspectRatio: 1 / 1 }}
-        alt={img.title}
-      />
+      <ThumbnailContainer>
+        <GalleryThumbnail
+          sizes={{ ...img.image.fluid, aspectRatio: 1 / 1 }}
+          alt={img.title}
+        />
+      </ThumbnailContainer>
     </Link>
   )
 }
@@ -20,11 +22,20 @@ export default GalleryItem
 
 const GalleryThumbnail = styled(Image)`
   width: 100%;
-  object-fit: cover;
-  object-position: center;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
+  transition: 0.3s ease-out all;
 
   :hover {
-    opacity: 0.8;
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+`
+
+const ThumbnailContainer = styled.div`
+  overflow: hidden;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.2s ease-out all;
+
+  :hover {
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
   }
 `
