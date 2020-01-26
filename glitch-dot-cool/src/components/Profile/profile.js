@@ -36,10 +36,10 @@ const Profile = ({ profileData }) => {
   return (
     <ProfileCard>
       <Centered column>
-        <GatsbyLink to={`${authorName}/posts`}>
+        <GatsbyLink to={`/${authorName}/posts`}>
           <Avatar fluid={avatar.fluid} />
         </GatsbyLink>
-        <GatsbyLink to={`${authorName}/posts`}>
+        <GatsbyLink to={`/${authorName}/posts`}>
           <h1>{authorName}</h1>
         </GatsbyLink>
         <p style={{ whiteSpace: "nowrap" }}>
