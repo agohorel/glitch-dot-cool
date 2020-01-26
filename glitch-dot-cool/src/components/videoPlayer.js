@@ -5,6 +5,7 @@ const VideoWrapper = styled.div`
   video {
     width: 100%;
     height: auto;
+    margin-bottom: 1.5rem;
   }
 `
 
