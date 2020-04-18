@@ -79,7 +79,9 @@ const StyledButton = styled.button`
 `
 
 const StyledLinkButton = styled.a`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1rem 2rem;
   min-width: 10rem;
   border: 1px solid ${colors.midgrey};
