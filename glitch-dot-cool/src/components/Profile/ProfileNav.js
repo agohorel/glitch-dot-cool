@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
 import colors from "../../styles/colors"
+import { slugify } from "../../utils/utils"
 
 const ProfileNav = props => {
   const { authorName } = props.profileData
@@ -11,12 +12,15 @@ const ProfileNav = props => {
   return (
     <Posts>
       <SubNav>
-        <GatsbyLink to={`/${authorName}/posts`} activeStyle={activeNavStyles}>
+        <GatsbyLink
+          to={`/${slugify(authorName)}/posts`}
+          activeStyle={activeNavStyles}
+        >
           <h1>posts</h1>
         </GatsbyLink>
         {galleryItems.edges.length ? (
           <GatsbyLink
-            to={`/${authorName}/gallery`}
+            to={`/${slugify(authorName)}/gallery`}
             activeStyle={activeNavStyles}
           >
             <h1>gallery</h1>

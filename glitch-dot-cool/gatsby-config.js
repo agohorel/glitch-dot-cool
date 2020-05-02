@@ -15,6 +15,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID_2,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_2,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
@@ -30,7 +37,7 @@ module.exports = {
         background_color: `#191919`,
         theme_color: `#e6e6e6`,
         display: `standalone`,
-        icon: `src/images/icon.png`
+        icon: `src/images/icon.png`,
       },
     },
     `gatsby-plugin-offline`,
