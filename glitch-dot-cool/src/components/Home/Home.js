@@ -4,9 +4,9 @@ import BackgroundImage from "gatsby-background-image"
 
 import measurements from "../../styles/measurements"
 import Layout from "../layout"
-import Head from "../head"
-import Post from "../Post"
-import Project from "../Project"
+import Head from "../Layout/head"
+import Post from "../Posts/Post"
+import Project from "../Projects/Project"
 
 const Home = ({ posts }) => {
   return (

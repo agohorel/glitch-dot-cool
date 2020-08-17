@@ -1,22 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 
-import { GatsbyLink, Card } from "../utils/utilComponents"
-import { slugify } from "../utils/utils"
+import { GatsbyLink, Card } from "../../utils/utilComponents"
 
 const Post = ({ post }) => {
-  const { author, slug, title } = post.node
+  const { slug, title } = post.node
 
   return (
     <Card>
       <TextContainer>
-        <GatsbyLink to={`/${slugify(author)}/${slug}`}>
+        <GatsbyLink to={`/projects/${slug}`}>
           <h1>{title}</h1>
-        </GatsbyLink>
-        <GatsbyLink to={`/${slugify(author)}/posts`}>
-          <h3>
-            by <strong>{author}</strong>
-          </h3>
         </GatsbyLink>
       </TextContainer>
     </Card>

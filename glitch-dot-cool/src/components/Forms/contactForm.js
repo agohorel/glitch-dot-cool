@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Centered, StyledButton, PageTitle } from "../utils/utilComponents"
-import colors from "../styles/colors"
+import { Centered, StyledButton, PageTitle } from "../../utils/utilComponents"
+import colors from "../../styles/colors"
 
 const StyledForm = styled.form`
   width: 75%;

@@ -13,9 +13,9 @@ import {
   BlogImageSubtitle,
 } from "../utils/utilComponents"
 
-import VideoPlayer from "../components/videoPlayer"
-import AudioPlayer from "../components/audioPlayer"
-import CodeBlock from "../components/CodeBlock"
+import VideoPlayer from "../components/Layout/videoPlayer"
+import AudioPlayer from "../components/Layout/audioPlayer"
+import CodeBlock from "../components/Layout/CodeBlock"
 
 const slugify = string => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;"

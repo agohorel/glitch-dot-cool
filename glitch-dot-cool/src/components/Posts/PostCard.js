@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 
-import { GatsbyLink } from "../utils/utilComponents"
-import { slugify } from "../utils/utils"
+import { GatsbyLink } from "../../utils/utilComponents"
+import { slugify } from "../../utils/utils"
 
-import colors from "../styles/colors"
+import colors from "../../styles/colors"
 
 const PostCard = ({ post }) => {
   return (

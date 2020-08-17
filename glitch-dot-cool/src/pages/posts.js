@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
-import Head from "../components/head"
+import Head from "../components/Layout/head"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { Filter } from "../components/Filter"
 import { slugify } from "../utils/utils"

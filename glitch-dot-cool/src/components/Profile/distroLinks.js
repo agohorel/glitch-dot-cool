@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { StyledLinkButton } from "../utils/utilComponents"
+import { StyledLinkButton } from "../../utils/utilComponents"
 
 const DistroLinkWrapper = styled.div`
   margin: 2rem 0 1rem 0;

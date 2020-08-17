@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
-import Head from "../components/head"
+import Head from "../components/Layout/head"
 import { Filter } from "../components/Filter"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
@@ -65,7 +65,8 @@ const Tag = styled(GatsbyLink)`
   background-color: #fff;
 
   :hover {
-    background-color: ${colors.lightgrey};
+    background-color: ${colors.darkgrey};
+    color: ${colors.offwhite};
   }
 
   @media only screen and (max-width: 550px) {
