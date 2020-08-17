@@ -9,30 +9,10 @@ import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 import colors from "../styles/colors"
 
-const TagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-`
-
-const Tag = styled(GatsbyLink)`
-  display: inline-block;
-  width: calc(50% - 1rem);
-  padding: 1rem;
-  background-color: #fff;
-  margin-top: 2rem;
-
-  &:hover {
-    background-color: ${colors.lightgrey};
-  }
-
-  @media only screen and (max-width: 550px) {
-    width: 100%;
-  }
-`
-
 const Tags = () => {
+  const [filterTerm, setFilterTerm] = useState("")
+  const [filterResult, setfilterResult] = useState([])
+
   const data = useStaticQuery(graphql`
     query {
       allContentfulBlogPost {
@@ -42,9 +22,6 @@ const Tags = () => {
       }
     }
   `)
-
-  const [filterTerm, setFilterTerm] = useState("")
-  const [filterResult, setfilterResult] = useState([])
 
   useEffect(() => {
     const result = data.allContentfulBlogPost.group.filter(tag =>
@@ -72,3 +49,26 @@ const Tags = () => {
 }
 
 export default Tags
+
+const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+`
+
+const Tag = styled(GatsbyLink)`
+  display: inline-block;
+  width: calc(50% - 1rem);
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: #fff;
+
+  :hover {
+    background-color: ${colors.lightgrey};
+  }
+
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
+`
