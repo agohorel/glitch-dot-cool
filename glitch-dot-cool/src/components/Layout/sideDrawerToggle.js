@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import measurements from "../styles/measurements";
+import measurements from "../../styles/measurements";
 
 const ToggleButton = styled.button`
   display: flex;

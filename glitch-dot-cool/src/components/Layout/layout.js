@@ -1,15 +1,14 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 
-import { Header } from "../components/header"
-import Footer from "../components/footer"
-import Backdrop from "../components/backdrop"
-import SideDrawer from "../components/sideDrawer"
+import { Header } from "./header"
+import Footer from "./footer"
+import Backdrop from "./backdrop"
+import SideDrawer from "./sideDrawer"
 
-// eslint-disable-next-line
-import styles from "../styles/global.css"
-import colors from "../styles/colors"
-import measurements from "../styles/measurements"
+import "../../styles/global.css"
+import colors from "../../styles/colors"
+import measurements from "../../styles/measurements"
 
 const Background = styled.div`
   background-color: ${colors.offwhite};

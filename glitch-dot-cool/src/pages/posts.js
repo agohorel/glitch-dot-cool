@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout/layout"
 import Head from "../components/Layout/head"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
-import { Filter } from "../components/Filter"
+import { Filter } from "../components/Forms/Filter"
 import { slugify } from "../utils/utils"
 
 const Posts = () => {

@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 
-import { StyledList, GatsbyLink } from "../utils/utilComponents"
-import { activeNavStyles } from "../utils/utils"
-import colors from "../styles/colors"
+import { StyledList, GatsbyLink } from "../../utils/utilComponents"
+import { activeNavStyles } from "../../utils/utils"
+import colors from "../../styles/colors"
 import { LinkIcons } from "./LinkIcons"
 
 const Drawer = styled.nav`
@@ -88,10 +88,10 @@ const SideDrawer = props => {
           <StyledList drawer>
             <GatsbyLink
               style={DrawerTextStyles}
-              to="/feeds/"
+              to="/members/"
               activeStyle={activeNavStyles}
             >
-              feeds
+              members
             </GatsbyLink>
           </StyledList>
           <StyledList drawer>

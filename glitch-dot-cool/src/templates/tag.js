@@ -2,9 +2,14 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
-import { StyledList, GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
+import {
+  StyledList,
+  GatsbyLink,
+  StyledButton,
+  PageTitle,
+} from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 
 const Post = styled.div`
@@ -34,7 +39,6 @@ export const query = graphql`
 `
 
 const Tag = props => {
-
   return (
     <Layout>
       <Head title={props.pageContext.tag} />
@@ -45,9 +49,7 @@ const Tag = props => {
         </StyledButton>
       </GatsbyLink>
       <GatsbyLink to={"/tags"}>
-        <StyledButton
-          style={{ marginTop: `1rem`, marginLeft: `1rem` }}
-        >
+        <StyledButton style={{ marginTop: `1rem`, marginLeft: `1rem` }}>
           view all tags
         </StyledButton>
       </GatsbyLink>

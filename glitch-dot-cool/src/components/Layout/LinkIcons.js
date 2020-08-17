@@ -8,9 +8,9 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons"
 
-import colors from "../styles/colors"
-import measurements from "../styles/measurements"
-import { flicker } from "../styles/animations"
+import colors from "../../styles/colors"
+import measurements from "../../styles/measurements"
+import { flicker } from "../../styles/animations"
 
 const LinkIcons = ({ className }) => {
   return (

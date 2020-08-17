@@ -3,10 +3,10 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import DrawerToggle from "./sideDrawerToggle"
-import { StyledList, GatsbyLink } from "../utils/utilComponents"
-import { flicker, shifter } from "../styles/animations"
-import { activeNavStyles } from "../utils/utils"
-import measurements from "../styles/measurements"
+import { StyledList, GatsbyLink } from "../../utils/utilComponents"
+import { flicker, shifter } from "../../styles/animations"
+import { activeNavStyles } from "../../utils/utils"
+import measurements from "../../styles/measurements"
 
 const Header = props => {
   return (
@@ -32,8 +32,8 @@ const Header = props => {
           projects
         </GatsbyLink>
 
-        <GatsbyLink to="/feeds/" activeStyle={activeNavStyles}>
-          feeds
+        <GatsbyLink to="/members/" activeStyle={activeNavStyles}>
+          members
         </GatsbyLink>
 
         <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>

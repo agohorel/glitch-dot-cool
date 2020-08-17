@@ -1,14 +1,14 @@
 import React from "react"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
-import ContactForm from "../components/contactForm"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
+import ContactForm from "../components/Forms/contactForm"
 
 export default () => {
-    return (
-        <Layout>
-            <Head title="contact"/>
-            <ContactForm></ContactForm>
-        </Layout>
-    )
+  return (
+    <Layout>
+      <Head title="contact" />
+      <ContactForm></ContactForm>
+    </Layout>
+  )
 }

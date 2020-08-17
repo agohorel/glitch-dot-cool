@@ -3,7 +3,7 @@ import styled from "styled-components"
 import BackgroundImage from "gatsby-background-image"
 
 import measurements from "../../styles/measurements"
-import Layout from "../layout"
+import Layout from "../Layout/layout"
 import Head from "../Layout/head"
 import Post from "../Posts/Post"
 import Project from "../Projects/Project"

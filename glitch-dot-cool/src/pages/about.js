@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import { Centered } from "../utils/utilComponents"
 import { flicker } from "../styles/animations"
 import colors from "../styles/colors"

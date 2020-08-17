@@ -2,11 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import Profile from "../components/Profile/profile"
 import ProfileNav from "../components/Profile/ProfileNav"
-import PostCard from "../components/PostCard"
+import PostCard from "../components/Posts/PostCard"
 import { ProfileWrapper } from "../utils/utilComponents"
 
 const Author = ({

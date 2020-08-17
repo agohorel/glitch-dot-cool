@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import Profile from "../components/Profile/profile"
 import GalleryContainer from "../components/Gallery/GalleryContainer"
 import ProfileNav from "../components/Profile/ProfileNav"

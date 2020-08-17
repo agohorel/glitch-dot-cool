@@ -2,11 +2,50 @@ import React from "react"
 import styled from "styled-components"
 
 import { FooterLinks } from "./LinkIcons"
-import { StyledList, GatsbyLink } from "../utils/utilComponents"
-import { activeNavStyles } from "../utils/utils"
+import { StyledList, GatsbyLink } from "../../utils/utilComponents"
+import { activeNavStyles } from "../../utils/utils"
 
-import colors from "../styles/colors"
-import measurements from "../styles/measurements"
+import colors from "../../styles/colors"
+import measurements from "../../styles/measurements"
+
+const Footer = () => {
+  return (
+    <StyledFooter>
+      <nav>
+        <FooterNavList>
+          <StyledList dark footer>
+            <GatsbyLink to="/" activeStyle={activeNavStyles}>
+              home
+            </GatsbyLink>
+          </StyledList>
+          <StyledList dark footer>
+            <GatsbyLink to="/about/" activeStyle={activeNavStyles}>
+              about
+            </GatsbyLink>
+          </StyledList>
+          <StyledList dark footer>
+            <GatsbyLink to="/projects/" activeStyle={activeNavStyles}>
+              projects
+            </GatsbyLink>
+          </StyledList>
+          <StyledList dark footer>
+            <GatsbyLink to="/members/" activeStyle={activeNavStyles}>
+              members
+            </GatsbyLink>
+          </StyledList>
+          <StyledList dark footer>
+            <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
+              contact
+            </GatsbyLink>
+          </StyledList>
+        </FooterNavList>
+      </nav>
+      <FooterLinks />
+    </StyledFooter>
+  )
+}
+
+export default Footer
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -55,42 +94,3 @@ const FooterNavList = styled.ul`
   list-style: none;
   padding: 0.75rem;
 `
-
-const Footer = () => {
-  return (
-    <StyledFooter>
-      <nav>
-        <FooterNavList>
-          <StyledList dark footer>
-            <GatsbyLink to="/" activeStyle={activeNavStyles}>
-              home
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/about/" activeStyle={activeNavStyles}>
-              about
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/projects/" activeStyle={activeNavStyles}>
-              projects
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/feeds/" activeStyle={activeNavStyles}>
-              feeds
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
-              contact
-            </GatsbyLink>
-          </StyledList>
-        </FooterNavList>
-      </nav>
-      <FooterLinks />
-    </StyledFooter>
-  )
-}
-
-export default Footer

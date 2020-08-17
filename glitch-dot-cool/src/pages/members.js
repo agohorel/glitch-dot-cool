@@ -3,8 +3,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import { GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 import colors from "../styles/colors"
@@ -88,8 +88,8 @@ const Posts = () => {
 
   return (
     <Layout>
-      <Head title="feeds" />
-      <PageTitle>feeds</PageTitle>
+      <Head title="members" />
+      <PageTitle>members</PageTitle>
 
       <GatsbyLink to={"/posts"}>
         <StyledButton style={{ marginTop: `1rem` }}>

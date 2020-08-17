@@ -3,8 +3,8 @@ import styled from "styled-components"
 import Image from "gatsby-image"
 
 import colors from "../../styles/colors"
-import Layout from "../layout"
-import Head from "../head"
+import Layout from "../Layout/layout"
+import Head from "../Layout/head"
 import { GatsbyLink, PageTitle } from "../../utils/utilComponents"
 
 const ProjectsList = ({ projects }) => {
