@@ -7,7 +7,6 @@ import Head from "../components/Layout/head"
 import { Filter } from "../components/Forms/Filter"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
-import colors from "../styles/colors"
 
 const Tags = () => {
   const [filterTerm, setFilterTerm] = useState("")
@@ -65,8 +64,8 @@ const Tag = styled(GatsbyLink)`
   background-color: #fff;
 
   :hover {
-    background-color: ${colors.darkgrey};
-    color: ${colors.offwhite};
+    background-color: ${props => props.theme.colors.scale_2};
+    color: ${props => props.theme.colors.scale_5};
   }
 
   @media only screen and (max-width: 550px) {

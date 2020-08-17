@@ -8,7 +8,6 @@ import "prismjs/themes/prism-coy.css"
 import Layout from "../components/Layout/layout"
 import Head from "../components/Layout/head"
 import DistroLinks from "../components/Profile/distroLinks"
-import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 import { slugify, renderOptions } from "../utils/utils"
 import { GatsbyLink } from "../utils/utilComponents"
@@ -71,19 +70,19 @@ const BlogTags = styled.div`
 
 const BlogTag = styled.div`
   display: inline-block;
-  background-color: ${colors.lightgrey};
+  background-color: ${props => props.theme.colors.scale_4};
   padding: 0.5rem 1rem;
   margin-right: 1rem;
   margin-top: 1rem;
 
   a {
     font-size: 1.6rem;
-    color: ${colors.darkgrey};
+    color: ${props => props.theme.colors.scale_2};
     transition: 0.2s ease color;
   }
 
   a:hover {
-    color: ${colors.offwhite};
+    color: ${props => props.theme.colors.scale_5};
   }
 `
 export const query = graphql`

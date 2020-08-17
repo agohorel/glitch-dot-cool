@@ -36,11 +36,7 @@ export const query = graphql`
           url
         }
         fluid(maxWidth: 100) {
-          base64
-          sizes
-          src
-          srcSet
-          aspectRatio
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       links {

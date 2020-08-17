@@ -8,7 +8,6 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons"
 
-import colors from "../../styles/colors"
 import measurements from "../../styles/measurements"
 import { flicker } from "../../styles/animations"
 
@@ -60,7 +59,7 @@ const IconsContainer = styled.div`
   }
 
   a:hover svg {
-    color: ${colors.lightgrey};
+    color: ${props => props.theme.colors.scale_4};
     animation: ${flicker} 0.2s forwards;
   }
 
@@ -75,7 +74,7 @@ const Icon = styled(FontAwesomeIcon)`
 
 const FooterLinks = styled(LinkIcons)`
   svg {
-    color: ${colors.midgrey};
+    color: ${props => props.theme.colors.scale_3};
   }
 
   @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {

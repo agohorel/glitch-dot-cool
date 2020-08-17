@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
 
 import { StyledLink, Centered } from "../../utils/utilComponents"
-import colors from "../../styles/colors"
 
 const ProfileLinks = ({ links }) => {
   return (
@@ -50,7 +49,7 @@ export default ProfileLinks
 
 const Icon = styled(FontAwesomeIcon)`
   font-size: 1.6rem;
-  color: ${colors.midgrey};
+  color: ${props => props.theme.colors.scale_3};
   margin-right: 0.25rem;
 `
 
@@ -60,7 +59,7 @@ const ProfileLink = styled(StyledLink)`
   padding: 0.25rem;
 
   :hover {
-    background-color: ${colors.lightgrey};
+    background-color: ${props => props.theme.colors.scale_4};
 
     svg path {
       fill: black;

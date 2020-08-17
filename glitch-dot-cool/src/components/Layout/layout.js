@@ -7,7 +7,6 @@ import Backdrop from "./backdrop"
 import SideDrawer from "./sideDrawer"
 
 import "../../styles/global.css"
-import colors from "../../styles/colors"
 import measurements from "../../styles/measurements"
 
 const Layout = ({ children }) => {
@@ -37,7 +36,7 @@ const Layout = ({ children }) => {
 export default Layout
 
 const Background = styled.div`
-  background-color: ${colors.offwhite};
+  background-color: ${props => props.theme.colors.scale_5};
 `
 
 const Wrapper = styled.div`

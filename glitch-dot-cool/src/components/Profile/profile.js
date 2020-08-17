@@ -6,7 +6,6 @@ import { faMapMarkerAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
 import ProfileLinks from "./profileLinks"
 import { Centered, GatsbyLink } from "../../utils/utilComponents"
-import colors from "../../styles/colors"
 
 const ProfileCard = styled.div`
   display: inline-block;
@@ -27,7 +26,7 @@ const ProfileCard = styled.div`
 
 const iconStyle = {
   fontSize: "1.6rem",
-  color: `${colors.midgrey}`,
+  color: `${props => props.theme.colors.scale_3}`,
 }
 
 const Profile = ({ profileData }) => {

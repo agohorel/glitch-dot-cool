@@ -7,7 +7,6 @@ import Layout from "../components/Layout/layout"
 import Head from "../components/Layout/head"
 import { GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
-import colors from "../styles/colors"
 
 const Members = () => {
   const data = useStaticQuery(graphql`
@@ -85,15 +84,15 @@ const MemberCard = styled(GatsbyLink)`
   align-items: center;
   margin-top: 2rem;
   padding: 2rem;
-  background-color: ${colors.white};
+  background-color: ${props => props.theme.colors.scale_6};
 
   h2 {
     display: inline-block;
   }
 
   &:hover {
-    background-color: ${colors.darkgrey};
-    color: ${colors.offwhite};
+    background-color: ${props => props.theme.colors.scale_2};
+    color: ${props => props.theme.colors.scale_5};
   }
 
   @media (max-width: 1000px) {

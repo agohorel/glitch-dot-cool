@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 import { GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
-import colors from "../../styles/colors"
 
 const ProfileNav = props => {
   const { authorName } = props.profileData
@@ -47,7 +46,7 @@ const SubNav = styled.nav`
   h1 {
     margin: 0 2rem 2rem 0;
     padding: 0.25rem 0.5rem;
-    background-color: ${colors.lightgrey};
+    background-color: ${props => props.theme.colors.scale_4};
   }
 
   @media (max-width: 370px) {

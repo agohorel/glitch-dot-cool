@@ -5,7 +5,6 @@ import { FooterLinks } from "./LinkIcons"
 import { StyledList, GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
 
-import colors from "../../styles/colors"
 import measurements from "../../styles/measurements"
 
 const Footer = () => {
@@ -56,7 +55,7 @@ const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
   height: ${measurements.footerHeight}rem;
-  background-color: ${colors.nearblack};
+  background-color: ${props => props.theme.colors.scale_1};
 
   li a {
     font-size: calc(12px + 1vw);

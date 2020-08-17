@@ -3,18 +3,17 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import { chromaticAbberation } from "../styles/animations"
-import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 
 const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
   color: ${props =>
-    props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+    props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
   transition: 0.2s ease all;
 
   :hover {
     color: ${props =>
-      props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
+      props.dark ? props.theme.colors.scale_3 : props.theme.colors.scale_2};
     ${chromaticAbberation}
   }
 `
@@ -31,13 +30,13 @@ const StyledList = styled.li`
   a:visited {
     text-decoration: none;
     color: ${props =>
-      props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+      props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
     font-size: ${props => (props.drawer ? `4rem` : `inherit`)}
     transition: 0.2s ease all;
 
     :hover {
       color: ${props =>
-        props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
+        props.dark ? props.theme.colors.scale_3 : props.theme.colors.scale_2};
       ${chromaticAbberation}
     }
   }
@@ -46,12 +45,12 @@ const StyledList = styled.li`
 const StyledLink = styled.a`
   text-decoration: none;
   color: ${props =>
-    props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+    props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
   transition: 0.2s ease all;
 
   :hover {
     color: ${props =>
-      props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
+      props.dark ? props.theme.colors.scale_3 : props.theme.colors.scale_2};
     ${chromaticAbberation}
   }
 `
@@ -67,14 +66,14 @@ const StyledButton = styled.button`
   display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
-  background-color: ${colors.midgrey};
-  color: ${colors.offwhite};
+  background-color: ${props => props.theme.colors.scale_3};
+  color: ${props => props.theme.colors.scale_5};
   border: none;
   transition: 0.2s ease all;
 
   :hover {
     cursor: pointer;
-    background-color: ${colors.darkgrey};
+    background-color: ${props => props.theme.colors.scale_2};
   }
 `
 
@@ -82,10 +81,10 @@ const StyledLinkButton = styled.a`
   display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
-  border: 1px solid ${colors.midgrey};
+  border: 1px solid ${props => props.theme.colors.scale_3};
   border-radius: 3px;
-  background-color: ${colors.white};
-  color: ${colors.nearblack};
+  background-color: ${props => props.theme.colors.scale_6};
+  color: ${props => props.theme.colors.scale_1};
   transition: 0.1s ease all;
   text-decoration: none;
   font-size: 1.6rem;
@@ -95,8 +94,8 @@ const StyledLinkButton = styled.a`
   :hover {
     cursor: pointer;
     transform: translateY(-2px);
-    background-color: ${colors.nearblack};
-    color: ${colors.offwhite};
+    background-color: ${props => props.theme.colors.scale_1};
+    color: ${props => props.theme.colors.scale_5};
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
     text-shadow: 0px 0px 1px black;
   }
@@ -123,7 +122,7 @@ const BlogImageContainer = styled.div`
 `
 
 const BlogImageSubtitle = styled.i`
-  color: ${colors.midgrey};
+  color: ${props => props.theme.colors.scale_3};
   display: block;
   font-size: 1.4rem;
   text-align: center;

@@ -1,7 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-import colors from "../../styles/colors"
+const Backdrop = ({ show, exitNav }) => {
+  return <StyledBackdrop show={show} onClick={exitNav} />
+}
+
+export default Backdrop
 
 const StyledBackdrop = styled.div`
   position: fixed;
@@ -9,26 +13,9 @@ const StyledBackdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${colors.nearblack};
+  background-color: ${props => props.theme.colors.scale_1};
+  opacity: ${props => (props.show ? "0.7" : "0")};
+  pointer-events: ${props => (props.show ? "all" : "none")};
+  transition: 0.2s ease-out all;
   z-index: 100;
 `
-
-const Backdrop = ({ show, exitNav }) => {
-  let backdropVisibility = {
-    opacity: `0`,
-    pointerEvents: `none`,
-    transition: `.2s ease-out all`,
-  }
-
-  if (show) {
-    backdropVisibility.opacity = `.7`
-    backdropVisibility.pointerEvents = `all`
-  } else {
-    backdropVisibility.opacity = `0`
-    backdropVisibility.pointerEvents = `none`
-  }
-
-  return <StyledBackdrop style={backdropVisibility} onClick={exitNav} />
-}
-
-export default Backdrop

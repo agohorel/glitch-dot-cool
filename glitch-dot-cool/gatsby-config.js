@@ -30,7 +30,7 @@ module.exports = {
         background_color: `#191919`,
         theme_color: `#e6e6e6`,
         display: `standalone`,
-        icon: `src/images/icon.png`
+        icon: `src/images/icon.png`,
       },
     },
     `gatsby-plugin-offline`,
@@ -38,5 +38,12 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-styled-components-dark-mode`,
+      options: {
+        light: require(`${__dirname}/src/styles/theme.js`).lightTheme,
+        dark: require(`${__dirname}/src/styles/theme.js`).darkTheme,
+      },
+    },
   ],
 }

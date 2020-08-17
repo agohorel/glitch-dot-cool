@@ -5,7 +5,6 @@ import Layout from "../components/Layout/layout"
 import Head from "../components/Layout/head"
 import { Centered } from "../utils/utilComponents"
 import { flicker } from "../styles/animations"
-import colors from "../styles/colors"
 
 export default () => {
   return (
@@ -34,7 +33,7 @@ const Wrapper = styled.div`
   max-width: 62rem;
   min-width: 45vw;
   padding: 4rem;
-  background-color: ${colors.white};
+  background-color: ${props => props.theme.colors.scale_6};
   hyphens: auto;
 
   @media only screen and (max-width: 900px) {

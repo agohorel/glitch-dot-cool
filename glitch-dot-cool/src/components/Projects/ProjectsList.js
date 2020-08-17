@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import Image from "gatsby-image"
 
-import colors from "../../styles/colors"
 import Layout from "../Layout/layout"
 import Head from "../Layout/head"
 import { GatsbyLink, PageTitle } from "../../utils/utilComponents"
@@ -47,8 +46,8 @@ const Post = styled.div`
   }
 
   :hover {
-    background: ${colors.darkgrey};
-    color: ${colors.offwhite};
+    background: ${props => props.theme.colors.scale_2};
+    color: ${props => props.theme.colors.scale_5};
   }
 
   @media only screen and (max-width: 450px) {

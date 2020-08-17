@@ -3,15 +3,14 @@ import styled from "styled-components"
 
 import { StyledList, GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
-import colors from "../../styles/colors"
 import { LinkIcons } from "./LinkIcons"
 
 const Drawer = styled.nav`
   height: 100%;
   background-image: linear-gradient(
     to bottom right,
-    ${colors.offwhite},
-    ${colors.midgrey}
+    ${props => props.theme.colors.scale_5},
+    ${props => props.theme.colors.scale_4}
   );
   box-shadow: -15px 0px 20px rgba(0, 0, 0, 0.45);
   position: fixed;
@@ -39,8 +38,8 @@ const Nav = styled.ul`
 
 const DrawerTextStyles = {
   fontSize: `4rem`,
-  backgroundColor: `${colors.nearblack}`,
-  color: `${colors.offwhite}`,
+  backgroundColor: `${props => props.theme.colors.scale_1}`,
+  color: `${props => props.theme.colors.scale_5}`,
 }
 
 const SideDrawer = props => {

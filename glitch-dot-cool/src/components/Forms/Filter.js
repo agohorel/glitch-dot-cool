@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 
 import { GatsbyLink, StyledButton } from "../../utils/utilComponents"
-import colors from "../../styles/colors"
 
 export const Filter = ({ setFilterTerm, path }) => {
   return (
@@ -22,7 +21,7 @@ const FormWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-  background-color: ${colors.white};
+  background-color: ${props => props.theme.colors.scale_6};
   align-items: center;
   margin-top: 1.5rem;
 `
@@ -35,7 +34,7 @@ const Form = styled.form`
 
 const Label = styled.label`
   font-size: 1.2rem;
-  color: ${colors.darkgrey};
+  color: ${props => props.theme.colors.scale_2};
 `
 
 const Input = styled.input`
@@ -43,6 +42,6 @@ const Input = styled.input`
   padding: 3px;
   width: 33%;
   min-width: 150px;
-  background-color: ${colors.lightgrey};
-  color: ${colors.darkgrey};
+  background-color: ${props => props.theme.colors.scale_4};
+  color: ${props => props.theme.colors.scale_2};
 `
