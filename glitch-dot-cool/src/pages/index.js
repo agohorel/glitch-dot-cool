@@ -13,7 +13,6 @@ export default () => {
       ) {
         edges {
           node {
-            frontPageAnnouncement
             thumbnail {
               fluid(quality: 50, maxWidth: 400) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
@@ -22,9 +21,6 @@ export default () => {
             title
             author
             slug
-            body {
-              json
-            }
             publishedDate
             id
           }
