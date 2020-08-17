@@ -121,4 +121,24 @@ const renderOptions = {
   },
 }
 
-export { slugify, activeNavStyles, renderOptions }
+const mergePostsAndSortByDate = (posts, projects) => {
+  const allPosts = []
+
+  posts.edges.forEach(blogPost => {
+    blogPost.type = "blogPost"
+    allPosts.push(blogPost)
+  })
+
+  projects.edges.forEach(project => {
+    project.type = "project"
+    allPosts.push(project)
+  })
+
+  allPosts.sort((a, b) => {
+    return new Date(b.node.publishedDate) - new Date(a.node.publishedDate)
+  })
+
+  return allPosts
+}
+
+export { slugify, activeNavStyles, renderOptions, mergePostsAndSortByDate }
