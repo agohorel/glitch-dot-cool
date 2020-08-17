@@ -8,7 +8,7 @@ import { flicker, shifter } from "../../styles/animations"
 import { activeNavStyles } from "../../utils/utils"
 import measurements from "../../styles/measurements"
 
-const Header = props => {
+const Header = ({ toggleNav }) => {
   return (
     <StyledHeader>
       <StyledList>
@@ -40,7 +40,7 @@ const Header = props => {
           contact
         </GatsbyLink>
       </StyledNav>
-      <DrawerToggle click={props.drawerToggleClickHandler} />
+      <DrawerToggle click={toggleNav} />
     </StyledHeader>
   )
 }

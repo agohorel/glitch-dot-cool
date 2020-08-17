@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 import { Header } from "./header"
@@ -9,6 +9,32 @@ import SideDrawer from "./sideDrawer"
 import "../../styles/global.css"
 import colors from "../../styles/colors"
 import measurements from "../../styles/measurements"
+
+const Layout = ({ children }) => {
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
+
+  const toggleNav = () => {
+    setSideDrawerOpen(!sideDrawerOpen)
+  }
+
+  const exitNav = () => {
+    setSideDrawerOpen(false)
+  }
+
+  return (
+    <Background>
+      <Wrapper>
+        <Header toggleNav={toggleNav} />
+        <SideDrawer show={sideDrawerOpen} />
+        <Backdrop show={sideDrawerOpen} exitNav={exitNav} />
+        {children}
+      </Wrapper>
+      <Footer />
+    </Background>
+  )
+}
+
+export default Layout
 
 const Background = styled.div`
   background-color: ${colors.offwhite};
@@ -26,41 +52,3 @@ const Wrapper = styled.div`
     padding: 0 3vw ${measurements.footerHeightMobile}rem 3vw;
   }
 `
-
-class Layout extends Component {
-  state = {
-    sideDrawerOpen: false,
-    backdropVisible: false,
-  }
-
-  drawerToggleClickHandler = () => {
-    this.setState(prevState => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen }
-    })
-  }
-
-  backdropToggleClickHandler = () => {
-    this.setState(() => {
-      return { sideDrawerOpen: false }
-    })
-  }
-
-  render() {
-    return (
-      <Background>
-        <Wrapper>
-          <Header drawerToggleClickHandler={this.drawerToggleClickHandler} />
-          <SideDrawer show={this.state.sideDrawerOpen} />
-          <Backdrop
-            show={this.state.sideDrawerOpen}
-            backdropToggleClickHandler={this.backdropToggleClickHandler}
-          />
-          {this.props.children}
-        </Wrapper>
-        <Footer />
-      </Background>
-    )
-  }
-}
-
-export default Layout

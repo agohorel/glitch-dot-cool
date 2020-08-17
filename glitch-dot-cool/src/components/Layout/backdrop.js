@@ -13,14 +13,14 @@ const StyledBackdrop = styled.div`
   z-index: 100;
 `
 
-const Backdrop = props => {
+const Backdrop = ({ show, exitNav }) => {
   let backdropVisibility = {
     opacity: `0`,
     pointerEvents: `none`,
     transition: `.2s ease-out all`,
   }
 
-  if (props.show) {
+  if (show) {
     backdropVisibility.opacity = `.7`
     backdropVisibility.pointerEvents = `all`
   } else {
@@ -28,12 +28,7 @@ const Backdrop = props => {
     backdropVisibility.pointerEvents = `none`
   }
 
-  return (
-    <StyledBackdrop
-      style={backdropVisibility}
-      onClick={props.backdropToggleClickHandler}
-    />
-  )
+  return <StyledBackdrop style={backdropVisibility} onClick={exitNav} />
 }
 
 export default Backdrop
