@@ -9,7 +9,7 @@ import { GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
 import colors from "../styles/colors"
 
-const Posts = () => {
+const Members = () => {
   const data = useStaticQuery(graphql`
     query {
       allContentfulAuthor {
@@ -71,7 +71,7 @@ const Posts = () => {
   )
 }
 
-export default Posts
+export default Members
 
 const CardWrapper = styled.div`
   display: flex;
