@@ -35,10 +35,10 @@ const ProjectsList = ({ projects }) => {
 export default ProjectsList
 
 const Post = styled.div`
+  background-color: ${props => props.theme.colors.scale_6};
   width: 100%;
   display: flex;
   padding: 2rem;
-  background-color: #fff;
   margin-top: 2rem;
 
   :last-child {

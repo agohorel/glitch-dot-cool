@@ -67,13 +67,14 @@ const StyledButton = styled.button`
   padding: 1rem 2rem;
   min-width: 10rem;
   background-color: ${props => props.theme.colors.scale_3};
-  color: ${props => props.theme.colors.scale_5};
+  color: ${props => props.theme.colors.scale_1};
   border: none;
   transition: 0.2s ease all;
 
   :hover {
     cursor: pointer;
     background-color: ${props => props.theme.colors.scale_2};
+    color: ${props => props.theme.colors.scale_6};
   }
 `
 
@@ -108,6 +109,7 @@ const StyledLinkButton = styled.a`
 
 const PageTitle = styled.h1`
   padding-top: 4rem;
+  color: ${props => props.theme.colors.scale_1};
 `
 
 const BlogImageWrapper = styled.div`
@@ -147,6 +149,7 @@ const Card = styled.div`
       rgba(127, 127, 127, 0) 70.71%
     ),
     linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%);
+  background-image: ${props => props.theme.colors.card_gradient}
   background-size: cover;
   background-position: center;
 `

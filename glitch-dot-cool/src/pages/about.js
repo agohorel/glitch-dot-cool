@@ -35,6 +35,7 @@ const Wrapper = styled.div`
   padding: 4rem;
   background-color: ${props => props.theme.colors.scale_6};
   hyphens: auto;
+  color: ${props => props.theme.colors.scale_1};
 
   @media only screen and (max-width: 900px) {
     margin: 4rem 0;

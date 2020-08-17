@@ -1,7 +1,7 @@
 const lightTheme = {
   colors: {
-    scale_0: "#000",    
-    scale_1: "#191919",
+    scale_0: "#000",
+    scale_1: "#212121",
     scale_2: "#2b2b2b",
     scale_3: "#4b4b4b",
     scale_4: "#c4c4c4",
@@ -9,6 +9,18 @@ const lightTheme = {
     scale_6: "#fff",
     invalid: "#ba1a1a",
     valid: "#0ca3d6",
+    card_overlay: "rgba(255, 255, 255, 0.5)",
+    card_gradient: `linear-gradient(
+      217deg,
+      rgba(200, 200, 200, 0.8),
+      rgba(200, 200, 200, 0) 70.71%
+    ),
+    linear-gradient(
+      127deg,
+      rgba(127, 127, 127, 0.8),
+      rgba(127, 127, 127, 0) 70.71%
+    ),
+    linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%);`,
   },
 }
 
@@ -17,12 +29,24 @@ const darkTheme = {
   colors: {
     ...lightTheme.colors,
     scale_6: "#000",
-    scale_5: "#191919",
+    scale_5: "#212121",
     scale_4: "#2b2b2b",
     scale_3: "#4b4b4b",
     scale_2: "#c4c4c4",
     scale_1: "#e6e6e6",
     scale_0: "#fff",
+    card_overlay: "rgba(0, 0, 0, 0.45)",
+    card_gradient: `linear-gradient(
+      217deg,
+      rgba(55, 55, 55, 0.8),
+      rgba(55, 55, 55, 0) 70.71%
+    ),
+    linear-gradient(
+      127deg,
+      rgba(127, 127, 127, 0.8),
+      rgba(127, 127, 127, 0) 70.71%
+    ),
+    linear-gradient(336deg, rgba(200, 200, 200, 0.8), rgba(200, 200, 200, 0) 70.71%);`,
   },
 }
 

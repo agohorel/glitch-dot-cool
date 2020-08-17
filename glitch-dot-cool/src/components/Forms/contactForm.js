@@ -37,18 +37,29 @@ const StyledForm = styled.form`
   width: 75%;
   margin-top: 6rem;
 
+  label {
+    color: ${props => props.theme.colors.scale_1};
+  }
+
+  input,
+  textarea {
+    display: block;
+    padding: 1rem 1rem;
+    border: none;
+    color: ${props => props.theme.colors.scale_1};
+    transition: 0.2s ease all;
+  }
+
   @media only screen and (min-width: 900px) {
     width: 50%;
   }
 `
 
 const FormInput = styled.input`
-  display: block;
-  border: none;
   width: 100%;
+  background-color: ${props => props.theme.colors.scale_6};
+  border: none;
   font-size: 2.4rem;
-  padding: 1rem 0;
-  transition: 0.2s ease all;
 
   :focus {
     outline: none;
@@ -62,12 +73,9 @@ const FormInput = styled.input`
 `
 
 const FormTextArea = styled.textarea`
-  display: block;
-  border: none;
   width: 100%;
+  background-color: ${props => props.theme.colors.scale_6};
   font-size: 2rem;
-  padding: 1rem 0;
-  transition: 0.2s ease all;
   resize: none;
 
   :focus {
