@@ -15,8 +15,8 @@ const ProjectsList = ({ projects }) => {
 
       {projects.map(post => {
         return (
-          <GatsbyLink to={`/projects/${post.node.slug}`}>
-            <Post key={post.node.title}>
+          <GatsbyLink key={post.node.title} to={`/projects/${post.node.slug}`}>
+            <Post>
               <ImageHover>
                 <Image style={imgStyles} fluid={post.node.artwork.fluid} />
               </ImageHover>
