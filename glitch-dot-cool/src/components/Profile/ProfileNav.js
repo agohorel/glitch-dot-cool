@@ -32,7 +32,7 @@ export default ProfileNav
 const Posts = styled.div`
   display: inline-block;
   padding: 4rem;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.scale_6};
   flex-grow: 1;
 
   @media only screen and (max-width: 960px) {

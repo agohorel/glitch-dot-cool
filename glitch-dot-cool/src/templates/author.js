@@ -87,18 +87,3 @@ export const query = graphql`
     }
   }
 `
-
-const Posts = styled.div`
-  display: inline-block;
-  padding: 4rem;
-  background-color: #fff;
-  flex-grow: 1;
-
-  @media only screen and (max-width: 960px) {
-    margin-bottom: 3rem;
-  }
-`
-
-const Post = styled.div`
-  margin-top: 0.5rem;
-`

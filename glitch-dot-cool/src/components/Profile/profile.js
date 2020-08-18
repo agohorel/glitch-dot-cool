@@ -7,28 +7,6 @@ import { faMapMarkerAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import ProfileLinks from "./profileLinks"
 import { Centered, GatsbyLink } from "../../utils/utilComponents"
 
-const ProfileCard = styled.div`
-  display: inline-block;
-  padding: 4rem;
-  margin-right: 6rem;
-  background-color: #fff;
-  align-self: flex-start;
-
-  h1 {
-    white-space: nowrap;
-  }
-
-  @media only screen and (max-width: 960px) {
-    margin: 0 0 4rem 0;
-    width: 100%;
-  }
-`
-
-const iconStyle = {
-  fontSize: "1.6rem",
-  color: `${props => props.theme.colors.scale_3}`,
-}
-
 const Profile = ({ profileData }) => {
   const { authorName, contactEmail, location, avatar, links } = profileData
   const parsedLinks = JSON.parse(links.internal.content)
@@ -69,3 +47,25 @@ const Avatar = styled(Image)`
     cursor: pointer;
   }
 `
+
+const ProfileCard = styled.div`
+  display: inline-block;
+  padding: 4rem;
+  margin-right: 6rem;
+  background-color: ${props => props.theme.colors.scale_6};
+  align-self: flex-start;
+
+  h1 {
+    white-space: nowrap;
+  }
+
+  @media only screen and (max-width: 960px) {
+    margin: 0 0 4rem 0;
+    width: 100%;
+  }
+`
+
+const iconStyle = {
+  fontSize: "1.6rem",
+  color: `${props => props.theme.colors.scale_3}`,
+}
