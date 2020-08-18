@@ -3,7 +3,9 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import DrawerToggle from "./sideDrawerToggle"
+import ThemeToggle from "./themeToggle"
 import { StyledList, GatsbyLink } from "../../utils/utilComponents"
+
 import { flicker, shifter } from "../../styles/animations"
 import { activeNavStyles } from "../../utils/utils"
 import measurements from "../../styles/measurements"
@@ -19,6 +21,7 @@ const Header = ({ toggleNav }) => {
           </Link>
         </TextLogoWrapper>
       </StyledList>
+      <Spacer />
       <StyledNav>
         <GatsbyLink to="/" activeStyle={activeNavStyles}>
           home
@@ -40,7 +43,10 @@ const Header = ({ toggleNav }) => {
           contact
         </GatsbyLink>
       </StyledNav>
-      <DrawerToggle click={toggleNav} />
+      <Controls>
+        <ThemeToggle></ThemeToggle>
+        <DrawerToggle click={toggleNav} />
+      </Controls>
     </StyledHeader>
   )
 }
@@ -100,4 +106,12 @@ const TextLogoShifted = styled.h3`
   left: 5.5px;
   opacity: 0;
   pointer-events: none;
+`
+
+const Controls = styled.div`
+  display: flex;
+`
+
+const Spacer = styled.div`
+  flex-grow: 1;
 `
