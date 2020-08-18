@@ -92,7 +92,10 @@ const MemberCard = styled(GatsbyLink)`
 
   &:hover {
     background-color: ${props => props.theme.colors.scale_2};
-    color: ${props => props.theme.colors.scale_5};
+
+    h2 {
+      color: ${props => props.theme.colors.scale_5};
+    }
   }
 
   @media (max-width: 1000px) {
