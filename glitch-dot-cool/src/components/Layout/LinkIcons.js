@@ -74,6 +74,7 @@ const Icon = styled(FontAwesomeIcon)`
 
 const FooterLinks = styled(LinkIcons)`
   svg {
+    margin-bottom: 1rem;
     color: ${props => props.theme.colors.scale_3};
   }
 
