@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 
 import { Header } from "./header"
+import { GlobalStyles } from "../../styles/globalStyles"
 import Footer from "./footer"
 import Backdrop from "./backdrop"
 import SideDrawer from "./sideDrawer"
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
 
   return (
     <Background>
+      <GlobalStyles></GlobalStyles>
       <Wrapper>
         <Header toggleNav={toggleNav} />
         <SideDrawer show={sideDrawerOpen} />

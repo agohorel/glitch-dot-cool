@@ -38,15 +38,15 @@ const darkTheme = {
     card_overlay: "rgba(0, 0, 0, 0.45)",
     card_gradient: `linear-gradient(
       217deg,
-      rgba(55, 55, 55, 0.8),
-      rgba(55, 55, 55, 0) 70.71%
+      rgba(25, 25, 25, 0.8),
+      rgba(25, 25, 25, 0) 70.71%
     ),
     linear-gradient(
       127deg,
-      rgba(127, 127, 127, 0.8),
-      rgba(127, 127, 127, 0) 70.71%
+      rgba(75, 75, 75, 0.8),
+      rgba(75, 75, 75, 0) 70.71%
     ),
-    linear-gradient(336deg, rgba(200, 200, 200, 0.8), rgba(200, 200, 200, 0) 70.71%);`,
+    linear-gradient(336deg, rgba(50, 50, 50, 0.8), rgba(50, 50, 50, 0) 70.71%);`,
   },
 }
 
