@@ -39,6 +39,7 @@ export default Layout
 
 const Background = styled.div`
   background-color: ${props => props.theme.colors.scale_5};
+  transition: 0.6s ease-in-out background-color;
 `
 
 const Wrapper = styled.div`
