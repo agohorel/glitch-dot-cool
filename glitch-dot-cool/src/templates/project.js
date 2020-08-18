@@ -66,6 +66,7 @@ export const query = graphql`
       publishedDate(formatString: "MMMM Do YYYY")
       downloadLink
       torrentLink
+      previewLink
       distroLinks {
         internal {
           content
@@ -152,6 +153,15 @@ const Project = props => {
               torrent
             </StyledLinkButton>
           ) : null}
+
+          {props.data.contentfulProject.torrentLink && (
+            <StyledLinkButton
+              href={props.data.contentfulProject.previewLink}
+              target={`_blank`}
+            >
+              3D visualizer
+            </StyledLinkButton>
+          )}
         </ButtonWrapper>
 
         {documentToReactComponents(projectContent, renderOptions)}

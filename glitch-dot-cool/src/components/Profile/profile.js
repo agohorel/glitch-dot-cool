@@ -7,6 +7,7 @@ import { faMapMarkerAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import ProfileLinks from "./profileLinks"
 import { Centered, GatsbyLink } from "../../utils/utilComponents"
 import colors from "../../styles/colors"
+import { slugify } from "../../utils/utils"
 
 const ProfileCard = styled.div`
   display: inline-block;
@@ -36,10 +37,10 @@ const Profile = ({ profileData }) => {
   return (
     <ProfileCard>
       <Centered column>
-        <GatsbyLink to={`/${authorName}/posts`}>
+        <GatsbyLink to={`/${slugify(authorName)}/posts`}>
           <Avatar fluid={avatar.fluid} />
         </GatsbyLink>
-        <GatsbyLink to={`/${authorName}/posts`}>
+        <GatsbyLink to={`/${slugify(authorName)}/posts`}>
           <h1>{authorName}</h1>
         </GatsbyLink>
         <p style={{ whiteSpace: "nowrap" }}>
