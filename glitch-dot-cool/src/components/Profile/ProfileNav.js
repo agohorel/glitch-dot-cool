@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import { GatsbyLink } from "../../utils/utilComponents"
-import { activeNavStyles } from "../../utils/utils"
+import { activeNavStyles, slugify } from "../../utils/utils"
 
 const ProfileNav = props => {
   const { authorName } = props.profileData

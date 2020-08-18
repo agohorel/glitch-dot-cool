@@ -6,6 +6,7 @@ import { faMapMarkerAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
 import ProfileLinks from "./profileLinks"
 import { Centered, GatsbyLink } from "../../utils/utilComponents"
+import { slugify } from "../../utils/utils"
 
 const Profile = ({ profileData }) => {
   const { authorName, contactEmail, location, avatar, links } = profileData
