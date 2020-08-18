@@ -47,7 +47,11 @@ const Post = styled.div`
 
   :hover {
     background: ${props => props.theme.colors.scale_2};
-    color: ${props => props.theme.colors.scale_5};
+
+    h2,
+    p {
+      color: ${props => props.theme.colors.scale_4};
+    }
   }
 
   @media only screen and (max-width: 450px) {
