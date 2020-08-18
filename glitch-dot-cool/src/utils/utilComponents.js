@@ -63,8 +63,8 @@ export const StyledButton = styled.button`
   display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
-  background-color: ${props => props.theme.colors.scale_3};
-  color: ${props => props.theme.colors.scale_1};
+  background-color: ${props => props.theme.colors.scale_4};
+  color: ${props => props.theme.colors.scale_0};
   border: none;
   transition: 0.2s ease all;
 
