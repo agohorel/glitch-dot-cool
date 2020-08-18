@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { chromaticAbberation } from "../styles/animations"
 import measurements from "../styles/measurements"
 
-const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
+export const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
   color: ${props =>
     props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
@@ -18,7 +18,7 @@ const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   }
 `
 
-const StyledList = styled.li`
+export const StyledList = styled.li`
   display: inline-block;
 
   &:not(:last-child) {
@@ -42,7 +42,7 @@ const StyledList = styled.li`
   }
 `
 
-const StyledLink = styled.a`
+export const StyledLink = styled.a`
   text-decoration: none;
   color: ${props =>
     props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
@@ -55,14 +55,14 @@ const StyledLink = styled.a`
   }
 `
 
-const Centered = styled.div`
+export const Centered = styled.div`
   display: flex;
   flex-direction: ${props => (props.column ? `column` : `row`)};
   justify-content: ${props => (props.start ? `flex-start` : `center`)};
   align-items: ${props => (props.start ? `flex-start` : `center`)};
 `
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
@@ -78,7 +78,7 @@ const StyledButton = styled.button`
   }
 `
 
-const StyledLinkButton = styled.a`
+export const StyledLinkButton = styled.a`
   display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
@@ -107,24 +107,24 @@ const StyledLinkButton = styled.a`
   }
 `
 
-const PageTitle = styled.h1`
+export const PageTitle = styled.h1`
   padding-top: 4rem;
   color: ${props => props.theme.colors.scale_1};
 `
 
-const BlogImageWrapper = styled.div`
+export const BlogImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 2rem 0;
 `
 
-const BlogImageContainer = styled.div`
+export const BlogImageContainer = styled.div`
   width: 100%;
 `
 
-const BlogImageSubtitle = styled.i`
-  color: ${props => props.theme.colors.scale_3};
+export const BlogImageSubtitle = styled.i`
+  color: ${props => props.theme.colors.scale_2};
   display: block;
   font-size: 1.4rem;
   text-align: center;
@@ -132,7 +132,7 @@ const BlogImageSubtitle = styled.i`
   margin-bottom: 2rem;
 `
 
-const Card = styled.div`
+export const Card = styled.div`
   display: flex;
   align-items: center;
   justify-contents: center;
@@ -154,7 +154,7 @@ const Card = styled.div`
   background-position: center;
 `
 
-const ProfileWrapper = styled.div`
+export const ProfileWrapper = styled.div`
   margin: 6rem 0 ${measurements.footerHeight}rem 0;
   display: flex;
 
@@ -163,18 +163,3 @@ const ProfileWrapper = styled.div`
     margin-top: 2rem;
   }
 `
-
-export {
-  GatsbyLink,
-  StyledList,
-  StyledLink,
-  Centered,
-  StyledButton,
-  PageTitle,
-  StyledLinkButton,
-  BlogImageWrapper,
-  BlogImageContainer,
-  BlogImageSubtitle,
-  Card,
-  ProfileWrapper,
-}
