@@ -7,36 +7,33 @@ import measurements from "../styles/measurements"
 
 export const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
+  transition: 0.2s ease all;
   color: ${props =>
     props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
-  transition: 0.2s ease all;
 
   :hover {
-    color: ${props =>
-      props.dark ? props.theme.colors.scale_3 : props.theme.colors.scale_2};
+    color: ${props => props.theme.colors.footer_text_hover};
     ${chromaticAbberation}
   }
 `
 
 export const StyledList = styled.li`
   display: inline-block;
-
+  
   &:not(:last-child) {
     margin-right: ${props => (props.drawer ? `0` : `3rem`)};
     margin-bottom: ${props => (props.drawer ? `3rem` : `0`)};
   }
-
+  
   a,
   a:visited {
     text-decoration: none;
-    color: ${props =>
-      props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
+    color: ${props => props.theme.colors.footer_text_hover};
     font-size: ${props => (props.drawer ? `4rem` : `inherit`)}
     transition: 0.2s ease all;
-
-    :hover {
-      color: ${props =>
-        props.dark ? props.theme.colors.scale_3 : props.theme.colors.scale_2};
+    
+    :hover {      
+      color: ${props => props.theme.colors.footer_text_hover};
       ${chromaticAbberation}
     }
   }

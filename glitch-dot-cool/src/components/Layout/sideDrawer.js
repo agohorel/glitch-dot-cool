@@ -1,9 +1,79 @@
 import React from "react"
 import styled from "styled-components"
 
-import { StyledList, GatsbyLink } from "../../utils/utilComponents"
+import { GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
 import { LinkIcons } from "./LinkIcons"
+
+const DrawerTextStyles = {
+  fontSize: `4rem`,
+  backgroundColor: `${props => props.theme.colors.scale_1}`,
+  color: `${props => props.theme.colors.scale_5}`,
+}
+
+const SideDrawer = props => {
+  let slideOut, foldOut
+
+  if (props.show) {
+    slideOut = { transform: `translateX(0)` }
+    foldOut = { transform: `rotate3d(1, 1, 1, 0)` }
+  } else {
+    slideOut = { transform: `translateX(110%)` }
+    foldOut = { transform: `rotate3d(0, 1, 0, -90deg)` }
+  }
+
+  return (
+    <Drawer style={slideOut}>
+      <Nav style={foldOut}>
+        <Centered column>
+          <GatsbyLink
+            style={DrawerTextStyles}
+            to="/"
+            activeStyle={activeNavStyles}
+          >
+            home
+          </GatsbyLink>
+
+          <GatsbyLink
+            style={DrawerTextStyles}
+            to="/about/"
+            activeStyle={activeNavStyles}
+          >
+            about
+          </GatsbyLink>
+
+          <GatsbyLink
+            style={DrawerTextStyles}
+            to="/projects/"
+            activeStyle={activeNavStyles}
+          >
+            projects
+          </GatsbyLink>
+
+          <GatsbyLink
+            style={DrawerTextStyles}
+            to="/members/"
+            activeStyle={activeNavStyles}
+          >
+            members
+          </GatsbyLink>
+
+          <GatsbyLink
+            style={DrawerTextStyles}
+            to="/contact/"
+            activeStyle={activeNavStyles}
+          >
+            contact
+          </GatsbyLink>
+
+          <NavLinkIcons />
+        </Centered>
+      </Nav>
+    </Drawer>
+  )
+}
+
+export default SideDrawer
 
 const Drawer = styled.nav`
   height: 100%;
@@ -29,84 +99,26 @@ const Centered = styled.div`
   justify-content: center;
   align-items: left;
   padding: 4rem;
+
+  a {
+    margin-bottom: 2rem;
+  }
 `
 
-const Nav = styled.ul`
+const Nav = styled.div`
   height: 100%;
   transition: 0.15s ease transform 0.2s;
+  margin-bottom: 2rem;
 `
 
-const DrawerTextStyles = {
-  fontSize: `4rem`,
-  backgroundColor: `${props => props.theme.colors.scale_1}`,
-  color: `${props => props.theme.colors.scale_5}`,
-}
+const NavLinkIcons = styled(LinkIcons)`
+  position: absolute;
+  bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  width: 78%;
 
-const SideDrawer = props => {
-  let slideOut, foldOut
-
-  if (props.show) {
-    slideOut = { transform: `translateX(0)` }
-    foldOut = { transform: `rotate3d(1, 1, 1, 0)` }
-  } else {
-    slideOut = { transform: `translateX(110%)` }
-    foldOut = { transform: `rotate3d(0, 1, 0, -90deg)` }
+  a {
+    margin: 0;
   }
-
-  return (
-    <Drawer style={slideOut}>
-      <Nav style={foldOut}>
-        <Centered column>
-          <StyledList drawer>
-            <GatsbyLink
-              style={DrawerTextStyles}
-              to="/"
-              activeStyle={activeNavStyles}
-            >
-              home
-            </GatsbyLink>
-          </StyledList>
-          <StyledList drawer>
-            <GatsbyLink
-              style={DrawerTextStyles}
-              to="/about/"
-              activeStyle={activeNavStyles}
-            >
-              about
-            </GatsbyLink>
-          </StyledList>
-          <StyledList drawer>
-            <GatsbyLink
-              style={DrawerTextStyles}
-              to="/projects/"
-              activeStyle={activeNavStyles}
-            >
-              projects
-            </GatsbyLink>
-          </StyledList>
-          <StyledList drawer>
-            <GatsbyLink
-              style={DrawerTextStyles}
-              to="/members/"
-              activeStyle={activeNavStyles}
-            >
-              members
-            </GatsbyLink>
-          </StyledList>
-          <StyledList drawer>
-            <GatsbyLink
-              style={DrawerTextStyles}
-              to="/contact/"
-              activeStyle={activeNavStyles}
-            >
-              contact
-            </GatsbyLink>
-          </StyledList>
-          <LinkIcons />
-        </Centered>
-      </Nav>
-    </Drawer>
-  )
-}
-
-export default SideDrawer
+`

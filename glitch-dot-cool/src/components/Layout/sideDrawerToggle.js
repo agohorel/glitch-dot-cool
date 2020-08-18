@@ -1,7 +1,19 @@
 import React from "react"
 import styled from "styled-components"
 
-import measurements from "../../styles/measurements";
+import measurements from "../../styles/measurements"
+
+const DrawerToggle = props => {
+  return (
+    <ToggleButton onClick={props.click}>
+      <ToggleButtonLine />
+      <ToggleButtonLine />
+      <ToggleButtonLine />
+    </ToggleButton>
+  )
+}
+
+export default DrawerToggle
 
 const ToggleButton = styled.button`
   display: flex;
@@ -16,7 +28,8 @@ const ToggleButton = styled.button`
   // prevent blue flash on chrome
   -webkit-tap-highlight-color: transparent;
 
-  @media only screen and (min-width: ${measurements.breakpointMobileNav+1}px) {
+  @media only screen and (min-width: ${measurements.breakpointMobileNav +
+      1}px) {
     display: none;
   }
 `
@@ -24,21 +37,9 @@ const ToggleButton = styled.button`
 const ToggleButtonLine = styled.div`
   height: 2px;
   width: 30px;
-  background: black;
+  background: ${props => props.theme.colors.scale_0};
 
   :focus {
     outline: none;
   }
 `
-
-const DrawerToggle = props => {
-  return (
-    <ToggleButton onClick={props.click}>
-      <ToggleButtonLine />
-      <ToggleButtonLine />
-      <ToggleButtonLine />
-    </ToggleButton>
-  )
-}
-
-export default DrawerToggle

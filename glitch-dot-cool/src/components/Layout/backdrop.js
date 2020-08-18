@@ -13,7 +13,7 @@ const StyledBackdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.colors.scale_1};
+  background-color: #000;
   opacity: ${props => (props.show ? "0.7" : "0")};
   pointer-events: ${props => (props.show ? "all" : "none")};
   transition: 0.2s ease-out all;

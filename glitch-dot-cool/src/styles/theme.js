@@ -9,6 +9,9 @@ const lightTheme = {
     scale_6: "#fff",
     invalid: "#ba1a1a",
     valid: "#0ca3d6",
+    footer: "#212121",
+    footer_text: "#e6e6e6",
+    footer_text_hover: "#c4c4c4",
     card_overlay: "rgba(255, 255, 255, 0.5)",
     card_gradient: `linear-gradient(
       217deg,
@@ -35,6 +38,9 @@ const darkTheme = {
     scale_2: "#c4c4c4",
     scale_1: "#e6e6e6",
     scale_0: "#fff",
+    footer: "#2b2b2b",
+    footer_text: "#e6e6e6",
+    footer_text_hover: "#c4c4c4",
     card_overlay: "rgba(0, 0, 0, 0.45)",
     card_gradient: `linear-gradient(
       217deg,

@@ -6,39 +6,32 @@ import { StyledList, GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
 
 import measurements from "../../styles/measurements"
+import { chromaticAbberation } from "../../styles/animations"
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <nav>
-        <FooterNavList>
-          <StyledList dark footer>
-            <GatsbyLink to="/" activeStyle={activeNavStyles}>
-              home
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/about/" activeStyle={activeNavStyles}>
-              about
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/projects/" activeStyle={activeNavStyles}>
-              projects
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/members/" activeStyle={activeNavStyles}>
-              members
-            </GatsbyLink>
-          </StyledList>
-          <StyledList dark footer>
-            <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
-              contact
-            </GatsbyLink>
-          </StyledList>
-        </FooterNavList>
-      </nav>
+      <Nav>
+        <GatsbyLink to="/" activeStyle={activeNavStyles}>
+          home
+        </GatsbyLink>
+
+        <GatsbyLink to="/about/" activeStyle={activeNavStyles}>
+          about
+        </GatsbyLink>
+
+        <GatsbyLink to="/projects/" activeStyle={activeNavStyles}>
+          projects
+        </GatsbyLink>
+
+        <GatsbyLink to="/members/" activeStyle={activeNavStyles}>
+          members
+        </GatsbyLink>
+
+        <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
+          contact
+        </GatsbyLink>
+      </Nav>
       <FooterLinks />
     </StyledFooter>
   )
@@ -55,14 +48,14 @@ const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
   height: ${measurements.footerHeight}rem;
-  background-color: ${props => props.theme.colors.scale_1};
+  background-color: ${props => props.theme.colors.footer};
 
-  li a {
+  a {
     font-size: calc(12px + 1vw);
   }
 
   @media only screen and (min-width: 1200px) {
-    li a {
+    a {
       font-size: 2.4rem;
     }
   }
@@ -70,26 +63,37 @@ const StyledFooter = styled.footer`
   @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {
     padding: 1rem;
     height: auto;
+  }
+`
 
-    ul {
-      padding: 0;
-    }
+const Nav = styled.nav`
+  padding: 0.75rem;
+
+  a:not(:last-child) {
+    margin-right: 3rem;
+  }
+
+  a,
+  a:visited {
+    transition: 0.2s ease all;
+    color: ${props => props.theme.colors.footer_text};
   }
 
   @media only screen and (max-width: 395px) {
     // hide "contact"
-    li:last-of-type {
+    a:last-of-type {
       display: none;
     }
 
     // remove margin from item preceeding now-hidden "contact"
-    li:nth-of-type(4) {
+    a:nth-child(4) {
       margin: 0;
     }
   }
-`
 
-const FooterNavList = styled.ul`
-  list-style: none;
-  padding: 0.75rem;
+  @media (max-width: 300px) {
+    a:not(:nth-child(4)) {
+      margin-right: 2rem;
+    }
+  }
 `

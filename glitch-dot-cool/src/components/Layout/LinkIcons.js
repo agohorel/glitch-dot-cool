@@ -54,12 +54,12 @@ const IconsContainer = styled.div`
   margin-bottom: 1rem;
 
   a {
-    font-decoration: none;
-    color: black;
+    text-decoration: none;
+    color: ${props => props.theme.colors.scale_1};
   }
 
   a:hover svg {
-    color: ${props => props.theme.colors.scale_4};
+    color: ${props => props.theme.colors.scale_5};
     animation: ${flicker} 0.2s forwards;
   }
 
