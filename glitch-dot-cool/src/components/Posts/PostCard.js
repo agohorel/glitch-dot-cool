@@ -24,6 +24,6 @@ const Post = styled.div`
   margin: 2rem 0rem;
 
   :hover {
-    background-color: ${props => props.theme.colors_4};
+    background-color: ${props => props.theme.colors.scale_4};
   }
 `
