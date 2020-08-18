@@ -1,10 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { GatsbyLink } from "../utils/utilComponents"
-import { slugify } from "../utils/utils"
-
-import colors from "../styles/colors"
+import { GatsbyLink } from "../../utils/utilComponents"
+import { slugify } from "../../utils/utils"
 
 const PostCard = ({ post }) => {
   return (
@@ -22,10 +20,10 @@ export default PostCard
 
 const Post = styled.div`
   padding: 1rem;
-  background-color: ${colors.offwhite};
+  background-color: ${props => props.theme.colors.scale_5};
   margin: 2rem 0rem;
 
   :hover {
-    background-color: ${colors.lightgrey};
+    background-color: ${props => props.theme.colors.scale_4};
   }
 `

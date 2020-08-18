@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { GatsbyLink, Card } from "../utils/utilComponents"
+import { GatsbyLink, Card } from "../../utils/utilComponents"
 
 const Post = ({ post }) => {
   const { slug, title } = post.node
@@ -25,5 +25,5 @@ const TextContainer = styled.div`
   justify-content: center;
   padding: 2rem;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: ${props => props.theme.colors.card_overlay};
 `

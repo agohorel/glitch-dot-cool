@@ -4,105 +4,12 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styled from "styled-components"
 import Image from "gatsby-image"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
-import DistroLinks from "../components/distroLinks"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
+import DistroLinks from "../components/Profile/distroLinks"
 import { PageTitle, StyledLinkButton, Centered } from "../utils/utilComponents"
 import { renderOptions } from "../utils/utils"
 import measurements from "../styles/measurements"
-import colors from "../styles/colors"
-
-const ProjectWrapper = styled.div`
-  display: block;
-  max-width: 67%;
-  margin: 4rem auto ${measurements.footerHeight}rem auto;
-
-  p {
-    margin-bottom: 2rem;
-  }
-
-  code {
-    font-family: "Roboto Mono", monospace;
-    font-size: 1.6rem;
-
-    // style nested elements within code block
-    * {
-      font-family: inherit;
-      font-size: inherit;
-    }
-  }
-
-  @media only screen and (max-width: 900px) {
-    max-width: 90%;
-  }
-
-  @media only screen and (max-width: 500px) {
-    max-width: 100%;
-  }
-`
-
-const DatePublished = styled.p`
-  display: inline-block;
-  font-size: 1.6rem;
-  padding: 1rem;
-  background-color: ${colors.lightgrey};
-  color: ${colors.midgrey};
-`
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-
-  a:not(:last-child) {
-    margin-right: 4rem;
-  }
-`
-
-export const query = graphql`
-  query($project: String!) {
-    contentfulProject(title: { eq: $project }) {
-      title
-      publishedDate(formatString: "MMMM Do YYYY")
-      downloadLink
-      torrentLink
-      previewLink
-      distroLinks {
-        internal {
-          content
-        }
-      }
-      body {
-        json
-      }
-      artwork {
-        fluid(maxWidth: 900) {
-          base64
-          src
-          srcSet
-          aspectRatio
-          sizes
-        }
-      }
-    }
-    allContentfulAsset {
-      edges {
-        node {
-          file {
-            fileName
-          }
-          fluid {
-            base64
-            sizes
-            src
-            srcSet
-            aspectRatio
-          }
-        }
-      }
-    }
-  }
-`
 
 const Project = props => {
   // setup images for use with gatsby-image
@@ -175,3 +82,86 @@ const Project = props => {
 }
 
 export default Project
+
+export const query = graphql`
+  query($project: String!) {
+    contentfulProject(title: { eq: $project }) {
+      title
+      publishedDate(formatString: "MMMM Do YYYY")
+      downloadLink
+      torrentLink
+      distroLinks {
+        internal {
+          content
+        }
+      }
+      body {
+        json
+      }
+      artwork {
+        fluid(maxWidth: 900) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+      }
+    }
+    allContentfulAsset {
+      edges {
+        node {
+          file {
+            fileName
+          }
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+      }
+    }
+  }
+`
+
+const ProjectWrapper = styled.div`
+  display: block;
+  max-width: 67%;
+  margin: 4rem auto ${measurements.footerHeight}rem auto;
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  code {
+    font-family: "Roboto Mono", monospace;
+    font-size: 1.6rem;
+
+    // style nested elements within code block
+    * {
+      font-family: inherit;
+      font-size: inherit;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    max-width: 90%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    max-width: 100%;
+  }
+`
+
+const DatePublished = styled.p`
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 1rem;
+  background-color: ${props => props.theme.colors.scale_4};
+  color: ${props => props.theme.colors.scale_3};
+`
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  a:not(:last-child) {
+    margin-right: 4rem;
+  }
+`

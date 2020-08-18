@@ -3,8 +3,6 @@ import styled from "styled-components"
 
 import { GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
-import colors from "../../styles/colors"
-import { slugify } from "../../utils/utils"
 
 const ProfileNav = props => {
   const { authorName } = props.profileData
@@ -37,7 +35,7 @@ export default ProfileNav
 const Posts = styled.div`
   display: inline-block;
   padding: 4rem;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.scale_6};
   flex-grow: 1;
 
   @media only screen and (max-width: 960px) {
@@ -51,7 +49,7 @@ const SubNav = styled.nav`
   h1 {
     margin: 0 2rem 2rem 0;
     padding: 0.25rem 0.5rem;
-    background-color: ${colors.lightgrey};
+    background-color: ${props => props.theme.colors.scale_4};
   }
 
   @media (max-width: 370px) {

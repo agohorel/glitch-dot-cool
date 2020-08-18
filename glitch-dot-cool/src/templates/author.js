@@ -2,11 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import Profile from "../components/Profile/profile"
 import ProfileNav from "../components/Profile/ProfileNav"
-import PostCard from "../components/PostCard"
+import PostCard from "../components/Posts/PostCard"
 import { ProfileWrapper } from "../utils/utilComponents"
 
 const Author = ({
@@ -86,19 +86,4 @@ export const query = graphql`
       }
     }
   }
-`
-
-const Posts = styled.div`
-  display: inline-block;
-  padding: 4rem;
-  background-color: #fff;
-  flex-grow: 1;
-
-  @media only screen and (max-width: 960px) {
-    margin-bottom: 3rem;
-  }
-`
-
-const Post = styled.div`
-  margin-top: 0.5rem;
 `

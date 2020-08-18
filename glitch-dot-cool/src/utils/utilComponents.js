@@ -3,91 +3,86 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import { chromaticAbberation } from "../styles/animations"
-import colors from "../styles/colors"
 import measurements from "../styles/measurements"
 
-const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
+export const GatsbyLink = styled(props => <Link to={props.to} {...props} />)`
   text-decoration: none;
-  color: ${props =>
-    props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
   transition: 0.2s ease all;
+  color: ${props =>
+    props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
 
   :hover {
-    color: ${props =>
-      props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
+    color: ${props => props.theme.colors.footer_text_hover};
     ${chromaticAbberation}
   }
 `
 
-const StyledList = styled.li`
+export const StyledList = styled.li`
   display: inline-block;
-
+  
   &:not(:last-child) {
     margin-right: ${props => (props.drawer ? `0` : `3rem`)};
     margin-bottom: ${props => (props.drawer ? `3rem` : `0`)};
   }
-
+  
   a,
   a:visited {
     text-decoration: none;
-    color: ${props =>
-      props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+    color: ${props => props.theme.colors.footer_text_hover};
     font-size: ${props => (props.drawer ? `4rem` : `inherit`)}
     transition: 0.2s ease all;
-
-    :hover {
-      color: ${props =>
-        props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
+    
+    :hover {      
+      color: ${props => props.theme.colors.footer_text_hover};
       ${chromaticAbberation}
     }
   }
 `
 
-const StyledLink = styled.a`
+export const StyledLink = styled.a`
   text-decoration: none;
   color: ${props =>
-    props.dark ? `${colors.offwhite}` : `${colors.nearblack}`};
+    props.dark ? props.theme.colors.scale_5 : props.theme.colors.scale_1};
   transition: 0.2s ease all;
 
   :hover {
     color: ${props =>
-      props.dark ? `${colors.midgrey}` : `${colors.darkgrey}`};
+      props.dark ? props.theme.colors.scale_3 : props.theme.colors.scale_2};
     ${chromaticAbberation}
   }
 `
 
-const Centered = styled.div`
+export const Centered = styled.div`
   display: flex;
   flex-direction: ${props => (props.column ? `column` : `row`)};
   justify-content: ${props => (props.start ? `flex-start` : `center`)};
   align-items: ${props => (props.start ? `flex-start` : `center`)};
 `
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
-  background-color: ${colors.midgrey};
-  color: ${colors.offwhite};
+  background-color: ${props => props.theme.colors.scale_4};
+  color: ${props => props.theme.colors.scale_0};
   border: none;
   transition: 0.2s ease all;
 
   :hover {
     cursor: pointer;
-    background-color: ${colors.darkgrey};
+    background-color: ${props => props.theme.colors.scale_2};
+    color: ${props => props.theme.colors.scale_6};
   }
 `
 
-const StyledLinkButton = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const StyledLinkButton = styled.a`
+  display: inline-block;
   padding: 1rem 2rem;
   min-width: 10rem;
-  border: 1px solid ${colors.midgrey};
+  border: 1px solid ${props => props.theme.colors.scale_3};
   border-radius: 3px;
-  background-color: ${colors.white};
-  color: ${colors.nearblack};
+  background-color: ${props => props.theme.colors.scale_6};
+  color: ${props => props.theme.colors.scale_1};
   transition: 0.1s ease all;
   text-decoration: none;
   font-size: 1.6rem;
@@ -97,8 +92,8 @@ const StyledLinkButton = styled.a`
   :hover {
     cursor: pointer;
     transform: translateY(-2px);
-    background-color: ${colors.nearblack};
-    color: ${colors.offwhite};
+    background-color: ${props => props.theme.colors.scale_1};
+    color: ${props => props.theme.colors.scale_5};
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
     text-shadow: 0px 0px 1px black;
   }
@@ -109,23 +104,24 @@ const StyledLinkButton = styled.a`
   }
 `
 
-const PageTitle = styled.h1`
+export const PageTitle = styled.h1`
   padding-top: 4rem;
+  color: ${props => props.theme.colors.scale_1};
 `
 
-const BlogImageWrapper = styled.div`
+export const BlogImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 2rem 0;
 `
 
-const BlogImageContainer = styled.div`
+export const BlogImageContainer = styled.div`
   width: 100%;
 `
 
-const BlogImageSubtitle = styled.i`
-  color: ${colors.midgrey};
+export const BlogImageSubtitle = styled.i`
+  color: ${props => props.theme.colors.scale_2};
   display: block;
   font-size: 1.4rem;
   text-align: center;
@@ -133,7 +129,7 @@ const BlogImageSubtitle = styled.i`
   margin-bottom: 2rem;
 `
 
-const Card = styled.div`
+export const Card = styled.div`
   display: flex;
   align-items: center;
   justify-contents: center;
@@ -150,11 +146,12 @@ const Card = styled.div`
       rgba(127, 127, 127, 0) 70.71%
     ),
     linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%);
+  background-image: ${props => props.theme.colors.card_gradient}
   background-size: cover;
   background-position: center;
 `
 
-const ProfileWrapper = styled.div`
+export const ProfileWrapper = styled.div`
   margin: 6rem 0 ${measurements.footerHeight}rem 0;
   display: flex;
 
@@ -163,18 +160,3 @@ const ProfileWrapper = styled.div`
     margin-top: 2rem;
   }
 `
-
-export {
-  GatsbyLink,
-  StyledList,
-  StyledLink,
-  Centered,
-  StyledButton,
-  PageTitle,
-  StyledLinkButton,
-  BlogImageWrapper,
-  BlogImageContainer,
-  BlogImageSubtitle,
-  Card,
-  ProfileWrapper,
-}

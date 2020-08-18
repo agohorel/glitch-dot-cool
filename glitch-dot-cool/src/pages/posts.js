@@ -2,23 +2,16 @@ import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
-import { Filter } from "../components/Filter"
+import { Filter } from "../components/Forms/Filter"
 import { slugify } from "../utils/utils"
 
-const Post = styled.div`
-  padding: 2rem;
-  background-color: #fff;
-  margin-top: 2rem;
-
-  :last-child {
-    margin-bottom: 2rem;
-  }
-`
-
 const Posts = () => {
+  const [filterTerm, setFilterTerm] = useState("")
+  const [filterResult, setfilterResult] = useState([])
+
   const data = useStaticQuery(graphql`
     query {
       allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
@@ -33,9 +26,6 @@ const Posts = () => {
       }
     }
   `)
-
-  const [filterTerm, setFilterTerm] = useState("")
-  const [filterResult, setfilterResult] = useState([])
 
   useEffect(() => {
     const result = data.allContentfulBlogPost.edges.filter(post =>
@@ -68,3 +58,13 @@ const Posts = () => {
 }
 
 export default Posts
+
+const Post = styled.div`
+  padding: 2rem;
+  background-color: #fff;
+  margin-top: 2rem;
+
+  :last-child {
+    margin-bottom: 2rem;
+  }
+`

@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import Profile from "../components/Profile/profile"
 import GalleryContainer from "../components/Gallery/GalleryContainer"
 import ProfileNav from "../components/Profile/ProfileNav"
@@ -36,11 +36,7 @@ export const query = graphql`
           url
         }
         fluid(maxWidth: 100) {
-          base64
-          sizes
-          src
-          srcSet
-          aspectRatio
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       links {

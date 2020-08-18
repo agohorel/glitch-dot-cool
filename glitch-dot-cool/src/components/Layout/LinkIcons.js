@@ -8,9 +8,8 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons"
 
-import colors from "../styles/colors"
-import measurements from "../styles/measurements"
-import { flicker } from "../styles/animations"
+import measurements from "../../styles/measurements"
+import { flicker } from "../../styles/animations"
 
 const LinkIcons = ({ className }) => {
   return (
@@ -55,12 +54,12 @@ const IconsContainer = styled.div`
   margin-bottom: 1rem;
 
   a {
-    font-decoration: none;
-    color: black;
+    text-decoration: none;
+    color: ${props => props.theme.colors.scale_1};
   }
 
   a:hover svg {
-    color: ${colors.lightgrey};
+    color: ${props => props.theme.colors.scale_5};
     animation: ${flicker} 0.2s forwards;
   }
 
@@ -75,7 +74,8 @@ const Icon = styled(FontAwesomeIcon)`
 
 const FooterLinks = styled(LinkIcons)`
   svg {
-    color: ${colors.midgrey};
+    margin-bottom: 1rem;
+    color: ${props => props.theme.colors.scale_3};
   }
 
   @media only screen and (max-width: ${measurements.breakpointMobileNav}px) {

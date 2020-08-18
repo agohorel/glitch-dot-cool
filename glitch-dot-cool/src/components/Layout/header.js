@@ -3,12 +3,14 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import DrawerToggle from "./sideDrawerToggle"
-import { StyledList, GatsbyLink } from "../utils/utilComponents"
-import { flicker, shifter } from "../styles/animations"
-import { activeNavStyles } from "../utils/utils"
-import measurements from "../styles/measurements"
+import ThemeToggle from "./themeToggle"
+import { StyledList, GatsbyLink } from "../../utils/utilComponents"
 
-const Header = props => {
+import { flicker, shifter } from "../../styles/animations"
+import { activeNavStyles } from "../../utils/utils"
+import measurements from "../../styles/measurements"
+
+const Header = ({ toggleNav }) => {
   return (
     <StyledHeader>
       <StyledList>
@@ -19,6 +21,7 @@ const Header = props => {
           </Link>
         </TextLogoWrapper>
       </StyledList>
+      <Spacer />
       <StyledNav>
         <GatsbyLink to="/" activeStyle={activeNavStyles}>
           home
@@ -32,15 +35,18 @@ const Header = props => {
           projects
         </GatsbyLink>
 
-        <GatsbyLink to="/feeds/" activeStyle={activeNavStyles}>
-          feeds
+        <GatsbyLink to="/members/" activeStyle={activeNavStyles}>
+          members
         </GatsbyLink>
 
         <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
           contact
         </GatsbyLink>
       </StyledNav>
-      <DrawerToggle click={props.drawerToggleClickHandler} />
+      <Controls>
+        <ThemeToggle></ThemeToggle>
+        <DrawerToggle click={toggleNav} />
+      </Controls>
     </StyledHeader>
   )
 }
@@ -100,4 +106,12 @@ const TextLogoShifted = styled.h3`
   left: 5.5px;
   opacity: 0;
   pointer-events: none;
+`
+
+const Controls = styled.div`
+  display: flex;
+`
+
+const Spacer = styled.div`
+  flex-grow: 1;
 `

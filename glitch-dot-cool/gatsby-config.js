@@ -45,5 +45,12 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-styled-components-dark-mode`,
+      options: {
+        light: require(`${__dirname}/src/styles/theme.js`).lightTheme,
+        dark: require(`${__dirname}/src/styles/theme.js`).darkTheme,
+      },
+    },
   ],
 }

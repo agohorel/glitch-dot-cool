@@ -3,57 +3,12 @@ import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import Head from "../components/head"
+import Layout from "../components/Layout/layout"
+import Head from "../components/Layout/head"
 import { GatsbyLink, StyledButton, PageTitle } from "../utils/utilComponents"
 import { slugify } from "../utils/utils"
-import colors from "../styles/colors"
 
-const CardWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`
-
-const MemberCard = styled(GatsbyLink)`
-  display: flex;
-  width: calc(50% - 1rem);
-  align-items: center;
-  margin-top: 2rem;
-  padding: 2rem;
-  background-color: ${colors.white};
-
-  h2 {
-    display: inline-block;
-  }
-
-  &:hover {
-    background-color: ${colors.lightgrey};
-  }
-
-  @media (max-width: 1000px) {
-    width: 100%;
-    &:last-child {
-      margin-bottom: 2rem;
-    }
-  }
-`
-
-const Avatar = styled(Image)`
-  display: inline-block;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  margin-right: 1rem;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-  transition: 0.2s ease-out opacity;
-
-  &:hover {
-    opacity: 0.5;
-  }
-`
-
-const Posts = () => {
+const Members = () => {
   const data = useStaticQuery(graphql`
     query {
       allContentfulAuthor {
@@ -88,8 +43,8 @@ const Posts = () => {
 
   return (
     <Layout>
-      <Head title="feeds" />
-      <PageTitle>feeds</PageTitle>
+      <Head title="members" />
+      <PageTitle>members</PageTitle>
 
       <GatsbyLink to={"/posts"}>
         <StyledButton style={{ marginTop: `1rem` }}>
@@ -115,4 +70,52 @@ const Posts = () => {
   )
 }
 
-export default Posts
+export default Members
+
+const CardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+
+const MemberCard = styled(GatsbyLink)`
+  display: flex;
+  width: calc(50% - 1rem);
+  align-items: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: ${props => props.theme.colors.scale_6};
+
+  h2 {
+    display: inline-block;
+  }
+
+  &:hover {
+    background-color: ${props => props.theme.colors.scale_2};
+
+    h2 {
+      color: ${props => props.theme.colors.scale_5};
+    }
+  }
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    &:last-child {
+      margin-bottom: 2rem;
+    }
+  }
+`
+
+const Avatar = styled(Image)`
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  transition: 0.2s ease-out opacity;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`

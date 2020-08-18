@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-import colors from "../../styles/colors"
 import { StyledButton } from "../../utils/utilComponents"
 import { slugify } from "../../utils/utils"
 
@@ -25,7 +24,7 @@ export default GalleryDetails
 const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${colors.white};
+  background-color: ${props => props.theme.colors.scale_6};
   padding: 2rem;
   margin: 3rem 6rem 0 0;
 
@@ -46,12 +45,12 @@ const Description = styled.p`
 
 const BackButton = styled(StyledButton)`
   padding: 0.5rem 1rem;
-  background-color: ${colors.lightgrey};
-  color: ${colors.midgrey};
+  background-color: ${props => props.theme.colors.scale_4};
+  color: ${props => props.theme.colors.scale_3};
   margin-top: 2rem;
   width: 100%;
 
   :hover {
-    color: ${colors.white};
+    color: ${props => props.theme.colors.scale_6};
   }
 `
