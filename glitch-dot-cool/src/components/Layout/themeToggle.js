@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons"
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons"
 import { ThemeManagerContext } from "gatsby-styled-components-dark-mode"
 
 import measurements from "../../styles/measurements"
