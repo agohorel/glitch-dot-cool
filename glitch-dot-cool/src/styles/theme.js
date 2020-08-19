@@ -12,6 +12,7 @@ const lightTheme = {
     footer: "#212121",
     footer_text: "#e6e6e6",
     footer_text_hover: "#c4c4c4",
+    social_icon_hover: "#e6e6e6",
     card_overlay: "rgba(255, 255, 255, 0.5)",
     card_gradient: `linear-gradient(
       217deg,
@@ -41,6 +42,7 @@ const darkTheme = {
     footer: "#2b2b2b",
     footer_text: "#e6e6e6",
     footer_text_hover: "#c4c4c4",
+    social_icon_hover: "#212121",
     card_overlay: "rgba(0, 0, 0, 0.45)",
     card_gradient: `linear-gradient(
       217deg,
