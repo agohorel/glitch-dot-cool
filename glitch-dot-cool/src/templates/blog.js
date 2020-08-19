@@ -12,6 +12,99 @@ import measurements from "../styles/measurements"
 import { slugify, renderOptions } from "../utils/utils"
 import { GatsbyLink } from "../utils/utilComponents"
 
+const Blog = props => {
+  let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
+  let blogContent = props.data.contentfulBlogPost.body.json
+  let parsedLinks
+
+  if (props.data.contentfulBlogPost.links) {
+    parsedLinks = JSON.parse(
+      props.data.contentfulBlogPost.links.internal.content
+    )
+  }
+
+  blogContent.content.forEach(contentItem => {
+    if (contentItem.nodeType === "embedded-asset-block") {
+      props.data.allContentfulAsset.edges.forEach(asset => {
+        if (
+          contentItem.data.target.fields.file["en-US"].fileName ===
+          asset.node.file.fileName
+        ) {
+          contentItem.img = asset.node.fluid
+        }
+      })
+    }
+  })
+
+  return (
+    <Layout>
+      <Head title={props.data.contentfulBlogPost.title} />
+      <BlogPost>
+        <BlogHeader>
+          <h1>{props.data.contentfulBlogPost.title}</h1>
+          <p>
+            {`by `}
+            <strong>
+              <GatsbyLink to={authorSlug}>
+                {props.data.contentfulBlogPost.author}
+              </GatsbyLink>
+            </strong>
+          </p>
+          <p>{props.data.contentfulBlogPost.publishedDate}</p>
+        </BlogHeader>
+
+        {documentToReactComponents(blogContent, renderOptions)}
+
+        {parsedLinks !== undefined ? <DistroLinks props={parsedLinks} /> : null}
+
+        <BlogTags>
+          {props.data.contentfulBlogPost.tags.length && <h3>tags:</h3>}
+          {props.data.contentfulBlogPost.tags.map(tag => {
+            return (
+              <BlogTag key={tag}>
+                <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
+              </BlogTag>
+            )
+          })}
+        </BlogTags>
+      </BlogPost>
+    </Layout>
+  )
+}
+
+export default Blog
+
+export const query = graphql`
+  query($slug: String!) {
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      publishedDate(formatString: "MMMM Do, YYYY")
+      body {
+        json
+      }
+      tags
+      author
+      links {
+        internal {
+          content
+        }
+      }
+    }
+    allContentfulAsset {
+      edges {
+        node {
+          file {
+            fileName
+          }
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+      }
+    }
+  }
+`
+
 const BlogPost = styled.div`
   display: block;
   width: calc(1920px - (65vw));
@@ -91,98 +184,11 @@ const BlogTag = styled.div`
     transition: 0.2s ease color;
   }
 
-  a:hover {
-    color: ${props => props.theme.colors.scale_5};
-  }
-`
-export const query = graphql`
-  query($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      title
-      publishedDate(formatString: "MMMM Do, YYYY")
-      body {
-        json
-      }
-      tags
-      author
-      links {
-        internal {
-          content
-        }
-      }
-    }
-    allContentfulAsset {
-      edges {
-        node {
-          file {
-            fileName
-          }
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-        }
-      }
+  :hover {
+    background-color: ${props => props.theme.colors.scale_3};
+
+    a {
+      color: ${props => props.theme.colors.scale_6};
     }
   }
 `
-
-const Blog = props => {
-  let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
-  let blogContent = props.data.contentfulBlogPost.body.json
-  let parsedLinks
-
-  if (props.data.contentfulBlogPost.links) {
-    parsedLinks = JSON.parse(
-      props.data.contentfulBlogPost.links.internal.content
-    )
-  }
-
-  blogContent.content.forEach(contentItem => {
-    if (contentItem.nodeType === "embedded-asset-block") {
-      props.data.allContentfulAsset.edges.forEach(asset => {
-        if (
-          contentItem.data.target.fields.file["en-US"].fileName ===
-          asset.node.file.fileName
-        ) {
-          contentItem.img = asset.node.fluid
-        }
-      })
-    }
-  })
-
-  return (
-    <Layout>
-      <Head title={props.data.contentfulBlogPost.title} />
-      <BlogPost>
-        <BlogHeader>
-          <h1>{props.data.contentfulBlogPost.title}</h1>
-          <p>
-            {`by `}
-            <strong>
-              <GatsbyLink to={authorSlug}>
-                {props.data.contentfulBlogPost.author}
-              </GatsbyLink>
-            </strong>
-          </p>
-          <p>{props.data.contentfulBlogPost.publishedDate}</p>
-        </BlogHeader>
-
-        {documentToReactComponents(blogContent, renderOptions)}
-
-        {parsedLinks !== undefined ? <DistroLinks props={parsedLinks} /> : null}
-
-        <BlogTags>
-          {props.data.contentfulBlogPost.tags.map(tag => {
-            return (
-              <BlogTag key={tag}>
-                <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
-              </BlogTag>
-            )
-          })}
-        </BlogTags>
-      </BlogPost>
-    </Layout>
-  )
-}
-
-export default Blog
