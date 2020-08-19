@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Helmet } from "react-helmet"
+import { ThemeContext } from "styled-components"
 
 const displayRandomSiteTitle = () => {
   let titles = [
@@ -18,6 +19,8 @@ const displayRandomSiteTitle = () => {
 }
 
 const Head = ({ title }) => {
+  const currentTheme = useContext(ThemeContext)
+
   return (
     <Helmet title={`${title} | ${displayRandomSiteTitle()}`}>
       <link
@@ -40,7 +43,7 @@ const Head = ({ title }) => {
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#191919" />
       <meta name="msapplication-TileColor" content="#191919" />
-      <meta name="theme-color" content="#191919" />
+      <meta name="theme-color" content={currentTheme.colors.scale_1} />
 
       <script type="text/javascript">
         {`

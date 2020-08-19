@@ -35,7 +35,7 @@ module.exports = {
         short_name: `glitch.cool`,
         start_url: `/`,
         background_color: `#191919`,
-        theme_color: `#e6e6e6`,
+        // theme_color: `#e6e6e6`,
         display: `standalone`,
         icon: `src/images/icon.png`,
       },
