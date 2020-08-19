@@ -43,7 +43,7 @@ const Head = ({ title }) => {
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#191919" />
       <meta name="msapplication-TileColor" content="#191919" />
-      <meta name="theme-color" content={currentTheme.colors.scale_1} />
+      <meta name="theme-color" content={currentTheme.colors.scale_5} />
 
       <script type="text/javascript">
         {`
