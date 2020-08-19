@@ -38,14 +38,24 @@ const BlogPost = styled.div`
   }
 
   code {
+    // override library css
+    background-color: ${props => props.theme.colors.scale_6} !important;
+    color: ${props => props.theme.colors.scale_0} !important;
+    box-shadow: -1px 0px 0px 0px ${props => props.theme.colors.scale_3},
+      0px 0px 0px 1px ${props => props.theme.colors.scale_4} !important;
+
     margin-bottom: 2rem;
     font-family: "Roboto Mono", monospace;
-    font-size: 1.6rem;
+    font-size: 1.6rem !important;
 
     // style nested elements within code block
     * {
       font-family: inherit;
       font-size: inherit;
+    }
+
+    span.token.operator {
+      background: ${props => props.theme.colors.scale_6} !important;
     }
   }
 
