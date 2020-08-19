@@ -59,7 +59,7 @@ const IconsContainer = styled.div`
   }
 
   a:hover svg {
-    color: ${props => props.theme.colors.scale_5};
+    color: ${props => props.theme.colors.social_icon_hover};
     animation: ${flicker} 0.2s forwards;
   }
 
