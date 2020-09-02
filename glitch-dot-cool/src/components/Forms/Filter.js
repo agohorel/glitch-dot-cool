@@ -33,7 +33,7 @@ const Form = styled.form`
 `
 
 const Label = styled.label`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: ${props => props.theme.colors.scale_2};
 `
 
