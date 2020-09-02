@@ -6,12 +6,9 @@ import Layout from "../components/Layout/layout"
 import Head from "../components/Layout/head"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { Filter } from "../components/Forms/Filter"
-import { slugify } from "../utils/utils"
+import { slugify, parseAuthorLinks } from "../utils/utils"
 
 const Posts = () => {
-  const [filterTerm, setFilterTerm] = useState("")
-  const [filterResult, setfilterResult] = useState([])
-
   const data = useStaticQuery(graphql`
     query {
       allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
@@ -27,6 +24,9 @@ const Posts = () => {
     }
   `)
 
+  const [filterTerm, setFilterTerm] = useState("")
+  const [filterResult, setfilterResult] = useState([])
+
   useEffect(() => {
     const result = data.allContentfulBlogPost.edges.filter(post =>
       post.node.title.toLowerCase().includes(filterTerm.toLowerCase())
@@ -40,15 +40,29 @@ const Posts = () => {
       <PageTitle>posts</PageTitle>
       <Filter setFilterTerm={setFilterTerm} path="/tags" />
       {filterResult.map(post => {
+        const authors = parseAuthorLinks(post.node.author)
         return (
           <Post key={post.node.title}>
-            <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
+            <GatsbyLink to={`/${slugify(authors[0].name)}/${post.node.slug}`}>
               <h2>{post.node.title}</h2>
-            </GatsbyLink>
-            <p>{post.node.publishedDate}</p>
-            {`by `}
-            <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
-              <strong>{post.node.author}</strong>
+              <p>{post.node.publishedDate}</p>
+              <p style={{ display: "inline" }}>{`by `}</p>
+
+              {authors.map((author, idx) => {
+                if (idx < authors.length - 1) {
+                  return (
+                    <GatsbyLink to={author.slug}>
+                      <strong>{author.name},</strong>
+                    </GatsbyLink>
+                  )
+                } else {
+                  return (
+                    <GatsbyLink to={author.slug}>
+                      <strong>{author.name}</strong>
+                    </GatsbyLink>
+                  )
+                }
+              })}
             </GatsbyLink>
           </Post>
         )
@@ -61,10 +75,14 @@ export default Posts
 
 const Post = styled.div`
   padding: 2rem;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.scale_6};
   margin-top: 2rem;
 
   :last-child {
     margin-bottom: 2rem;
+  }
+
+  :hover {
+    background-color: ${props => props.theme.colors.scale_3};
   }
 `
