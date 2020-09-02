@@ -44,12 +44,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
   // create new pages
   blogResponse.data.allContentfulBlogPost.edges.forEach(post => {
-    createPage({
-      component: blogTemplate,
-      path: `/${slugify(post.node.author)}/${post.node.slug}`,
-      context: {
-        slug: post.node.slug,
-      },
+    post.node.author.split(",").forEach(author => {
+      createPage({
+        component: blogTemplate,
+        path: `/${slugify(author)}/${post.node.slug}`,
+        context: {
+          slug: post.node.slug,
+        },
+      })
     })
   })
 
@@ -103,6 +105,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       path: `${slugify(author.fieldValue)}/posts`,
       context: {
         author: author.fieldValue,
+        regexTerm: `/${author.fieldValue}/`,
       },
     })
   })

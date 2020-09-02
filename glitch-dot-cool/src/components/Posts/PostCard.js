@@ -2,11 +2,13 @@ import React from "react"
 import styled from "styled-components"
 
 import { GatsbyLink } from "../../utils/utilComponents"
-import { slugify } from "../../utils/utils"
+import { slugify, parseAuthorLinks } from "../../utils/utils"
 
 const PostCard = ({ post }) => {
+  const authors = parseAuthorLinks(post.node.author)
+
   return (
-    <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
+    <GatsbyLink to={`/${slugify(authors[0].name)}/${post.node.slug}`}>
       <Post>
         <h3>{post.node.title}</h3>
 
