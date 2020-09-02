@@ -6,12 +6,9 @@ import Layout from "../components/Layout/layout"
 import Head from "../components/Layout/head"
 import { GatsbyLink, PageTitle } from "../utils/utilComponents"
 import { Filter } from "../components/Forms/Filter"
-import { slugify } from "../utils/utils"
+import { slugify, parseAuthorLinks } from "../utils/utils"
 
 const Posts = () => {
-  const [filterTerm, setFilterTerm] = useState("")
-  const [filterResult, setfilterResult] = useState([])
-
   const data = useStaticQuery(graphql`
     query {
       allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
@@ -27,6 +24,9 @@ const Posts = () => {
     }
   `)
 
+  const [filterTerm, setFilterTerm] = useState("")
+  const [filterResult, setfilterResult] = useState([])
+
   useEffect(() => {
     const result = data.allContentfulBlogPost.edges.filter(post =>
       post.node.title.toLowerCase().includes(filterTerm.toLowerCase())
@@ -39,32 +39,76 @@ const Posts = () => {
       <Head title="posts" />
       <PageTitle>posts</PageTitle>
       <Filter setFilterTerm={setFilterTerm} path="/tags" />
-      {filterResult.map(post => {
-        return (
-          <Post key={post.node.title}>
-            <GatsbyLink to={`/${slugify(post.node.author)}/${post.node.slug}`}>
-              <h2>{post.node.title}</h2>
-            </GatsbyLink>
-            <p>{post.node.publishedDate}</p>
-            {`by `}
-            <GatsbyLink to={`/${slugify(post.node.author)}/posts`}>
-              <strong>{post.node.author}</strong>
-            </GatsbyLink>
-          </Post>
-        )
-      })}
+      <PostContainer>
+        {filterResult.map(post => {
+          const authors = parseAuthorLinks(post.node.author)
+          return (
+            <Post key={post.node.title}>
+              <GatsbyLink to={`/${slugify(authors[0].name)}/${post.node.slug}`}>
+                <h2>{post.node.title}</h2>
+                <p>{post.node.publishedDate}</p>
+                <p style={{ display: "inline" }}>{`by `}</p>
+
+                {authors.map((author, idx) => {
+                  if (idx < authors.length - 1) {
+                    return (
+                      <GatsbyLink to={author.slug}>
+                        <strong>{author.name},</strong>
+                      </GatsbyLink>
+                    )
+                  } else {
+                    return (
+                      <GatsbyLink to={author.slug}>
+                        <strong>{author.name}</strong>
+                      </GatsbyLink>
+                    )
+                  }
+                })}
+              </GatsbyLink>
+            </Post>
+          )
+        })}
+      </PostContainer>
     </Layout>
   )
 }
 
 export default Posts
 
+const PostContainer = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  margin: 2rem 0 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(32%, 1fr));
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
+`
+
 const Post = styled.div`
   padding: 2rem;
-  background-color: #fff;
-  margin-top: 2rem;
+  height: 100%;
+  background-color: ${props => props.theme.colors.scale_6};
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p,
+  a {
+    font-size: 1.6rem;
+  }
 
   :last-child {
     margin-bottom: 2rem;
+  }
+
+  :hover {
+    background-color: ${props => props.theme.colors.scale_3};
   }
 `

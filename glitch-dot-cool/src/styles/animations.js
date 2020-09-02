@@ -1,16 +1,13 @@
 import { keyframes, css } from "styled-components"
+import { lightTheme } from "../styles/theme"
 
 const chromaticAbberationAnimation = keyframes`
     0% {
-      text-shadow: 1px 0px 1px ${props =>
-        props.theme.colors.valid}, -1px 0px 1px ${props =>
-  props.theme.colors.invalid};
+      text-shadow: 1px 0px 1px ${lightTheme.colors.valid}, -1px 0px 1px ${lightTheme.colors.invalid};
     }
 
     100% {
-      text-shadow: -1px 0px 2px ${props =>
-        props.theme.colors.valid}, 1px 0px 2px ${props =>
-  props.theme.colors.invalid};
+      text-shadow: -1px 0px 2px ${lightTheme.colors.valid}, 1px 0px 2px ${lightTheme.colors.invalid};
     }
 `
 

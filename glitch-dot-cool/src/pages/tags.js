@@ -50,25 +50,34 @@ const Tags = () => {
 export default Tags
 
 const TagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-gap: 2rem;
+  margin: 2rem 0 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+
+  @media (max-width: 450px) {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
 `
 
 const Tag = styled(GatsbyLink)`
   display: inline-block;
-  width: calc(50% - 1rem);
   padding: 1rem;
-  margin-top: 2rem;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.scale_6};
 
-  :hover {
-    background-color: ${props => props.theme.colors.scale_2};
-    color: ${props => props.theme.colors.scale_5};
+  h2 {
+    font-size: 1.6rem;
+    transition: 0s;
   }
 
-  @media only screen and (max-width: 550px) {
-    width: 100%;
+  :hover {
+    background-color: ${props => props.theme.colors.scale_4};
+    h2 {
+      color: ${props => props.theme.colors.scale_6};
+    }
   }
 `

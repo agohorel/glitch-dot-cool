@@ -2,33 +2,32 @@ import React from "react"
 import styled from "styled-components"
 
 import { FooterLinks } from "./LinkIcons"
-import { StyledList, GatsbyLink } from "../../utils/utilComponents"
+import { GatsbyLink } from "../../utils/utilComponents"
 import { activeNavStyles } from "../../utils/utils"
 
 import measurements from "../../styles/measurements"
-import { chromaticAbberation } from "../../styles/animations"
 
 const Footer = () => {
   return (
     <StyledFooter>
       <Nav>
-        <GatsbyLink to="/" activeStyle={activeNavStyles}>
+        <GatsbyLink dark="true" to="/" activeStyle={activeNavStyles}>
           home
         </GatsbyLink>
 
-        <GatsbyLink to="/about/" activeStyle={activeNavStyles}>
+        <GatsbyLink dark="true" to="/about/" activeStyle={activeNavStyles}>
           about
         </GatsbyLink>
 
-        <GatsbyLink to="/projects/" activeStyle={activeNavStyles}>
+        <GatsbyLink dark="true" to="/projects/" activeStyle={activeNavStyles}>
           projects
         </GatsbyLink>
 
-        <GatsbyLink to="/members/" activeStyle={activeNavStyles}>
+        <GatsbyLink dark="true" to="/members/" activeStyle={activeNavStyles}>
           members
         </GatsbyLink>
 
-        <GatsbyLink to="/contact/" activeStyle={activeNavStyles}>
+        <GatsbyLink dark="true" to="/contact/" activeStyle={activeNavStyles}>
           contact
         </GatsbyLink>
       </Nav>
@@ -76,7 +75,6 @@ const Nav = styled.nav`
   a,
   a:visited {
     transition: 0.2s ease all;
-    color: ${props => props.theme.colors.footer_text};
   }
 
   @media only screen and (max-width: 395px) {

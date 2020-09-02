@@ -9,11 +9,11 @@ import Layout from "../components/Layout/layout"
 import Head from "../components/Layout/head"
 import DistroLinks from "../components/Profile/distroLinks"
 import measurements from "../styles/measurements"
-import { slugify, renderOptions } from "../utils/utils"
+import { slugify, renderOptions, parseAuthorLinks } from "../utils/utils"
 import { GatsbyLink } from "../utils/utilComponents"
 
 const Blog = props => {
-  let authorSlug = `/${slugify(props.data.contentfulBlogPost.author)}/posts`
+  const authorLinks = parseAuthorLinks(props.data.contentfulBlogPost.author)
   let blogContent = props.data.contentfulBlogPost.body.json
   let parsedLinks
 
@@ -44,11 +44,21 @@ const Blog = props => {
           <h1>{props.data.contentfulBlogPost.title}</h1>
           <p>
             {`by `}
-            <strong>
-              <GatsbyLink to={authorSlug}>
-                {props.data.contentfulBlogPost.author}
-              </GatsbyLink>
-            </strong>
+            {authorLinks.map((author, idx) => {
+              if (idx < authorLinks.length - 1) {
+                return (
+                  <strong key={author.name}>
+                    <GatsbyLink to={author.slug}>{author.name},</GatsbyLink>
+                  </strong>
+                )
+              } else {
+                return (
+                  <strong key={author.name}>
+                    <GatsbyLink to={author.slug}>{author.name}</GatsbyLink>
+                  </strong>
+                )
+              }
+            })}
           </p>
           <p>{props.data.contentfulBlogPost.publishedDate}</p>
         </BlogHeader>

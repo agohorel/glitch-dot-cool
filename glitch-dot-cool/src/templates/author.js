@@ -34,7 +34,7 @@ const Author = ({
 export default Author
 
 export const query = graphql`
-  query($author: String!) {
+  query($author: String!, $regexTerm: String!) {
     contentfulAuthor(authorName: { eq: $author }) {
       authorName
       contactEmail
@@ -58,7 +58,7 @@ export const query = graphql`
       }
     }
     allContentfulBlogPost(
-      filter: { author: { eq: $author } }
+      filter: { author: { regex: $regexTerm } }
       sort: { fields: publishedDate, order: DESC }
     ) {
       edges {
