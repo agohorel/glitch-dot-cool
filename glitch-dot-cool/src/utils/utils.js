@@ -141,4 +141,21 @@ const mergePostsAndSortByDate = (posts, projects) => {
   return allPosts
 }
 
-export { slugify, activeNavStyles, renderOptions, mergePostsAndSortByDate }
+const parseAuthorLinks = authors => {
+  const authorLinks = []
+  authors.split(",").forEach(author =>
+    authorLinks.push({
+      name: author,
+      slug: `/${slugify(author)}/posts`,
+    })
+  )
+  return authorLinks
+}
+
+export {
+  slugify,
+  activeNavStyles,
+  renderOptions,
+  mergePostsAndSortByDate,
+  parseAuthorLinks,
+}
