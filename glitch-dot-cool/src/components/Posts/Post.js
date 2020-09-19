@@ -20,7 +20,7 @@ const Post = ({ post }) => {
           {authorLinks.map((author, idx) => {
             if (idx < authorLinks.length - 1) {
               return (
-                <GatsbyLink to={author.slug}>
+                <GatsbyLink key={idx} to={author.slug}>
                   <h3>
                     <strong>{author.name},</strong>
                   </h3>
@@ -28,7 +28,7 @@ const Post = ({ post }) => {
               )
             } else {
               return (
-                <GatsbyLink to={author.slug}>
+                <GatsbyLink key={idx} to={author.slug}>
                   <h3>
                     <strong>{author.name}</strong>
                   </h3>
