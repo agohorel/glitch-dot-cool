@@ -90,6 +90,7 @@ export const query = graphql`
       publishedDate(formatString: "MMMM Do YYYY")
       downloadLink
       torrentLink
+      previewLink
       distroLinks {
         internal {
           content
